@@ -25,15 +25,15 @@ posts = "/posts/:year/:month/:day/:slug/"
     weight = 3
 [[menu.cn]]
     name = "English"
-    url = "/"
+    url = "/en/posts/"
     weight = 4
-[[menu.en]]
-    name = "About"
-    url = "/en/about/"
-    weight = 1
 [[menu.en]]
     name = "Posts"
     url = "/en/posts/"
+    weight = 1
+[[menu.en]]
+    name = "About"
+    url = "/en/about/"
     weight = 2
 [[menu.en]]
     name = "中文"
