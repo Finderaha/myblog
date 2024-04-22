@@ -1,7 +1,7 @@
-baseURL = "https://finderaha.com/"
+baseURL = "https://example.com/"
 languageCode = "en-us"
-title = "Finder"
-theme = "hugo-zj"
+title = "Hugo-HT"
+theme = "hugo-ht"
 footnotereturnlinkcontents = "↩"
 enableRobotsTXT = true
 # enableGitInfo = true
@@ -11,54 +11,53 @@ cn = "/cn/:year/:month/:day/:slug/"
 en = "/en/:year/:month/:day/:slug/"
 posts = "/posts/:year/:month/:day/:slug/"
 
-[[menu.cn]]
-    name = "主页"
+[[menu.en]]
+    name = "Home"
     url = "/"
+    weight = 1
+[[menu.en]]
+    name = "About"
+    url = "/en/about/"
+    weight = 2
+[[menu.en]]
+    name = "Posts"
+    url = "/en/posts/"
+    weight = 3
+[[menu.en]]
+    name = "中文"
+    url = "/cn/posts/"
+    weight = 4
+[[menu.cn]]
+    name = "关于"
+    url = "/cn/about/"
     weight = 1
 [[menu.cn]]
     name = "日志"
     url = "/cn/posts/"
     weight = 2
 [[menu.cn]]
-    name = "关于"
-    url = "/cn/about/"
-    weight = 3
-[[menu.cn]]
     name = "English"
     url = "/"
-    weight = 4
-[[menu.en]]
-    name = "About"
-    url = "/en/about/"
-    weight = 1
-[[menu.en]]
-    name = "Posts"
-    url = "/en/posts/"
-    weight = 2
-[[menu.en]]
-    name = "中文"
-    url = "/cn/posts/"
     weight = 3
 
-
 [params]
-    description = "Peronal website of Finder"
+    description = "Peronal website of Your Name"
     homeText = "You just need a Hugo blog from scratch"
     # Please make sure `blogDirNmae` matches the name used in `menu` above:
     blogDirName = "posts"
     # singleLang = true
-    defaultLang = "cn"
+    defaultLang = "en"
     MathJaxCDN = "//cdnjs.cloudflare.com/ajax/libs" 
     MathJaxVersion = "2.7.5"
     favicon = "media/hugo-logo.png"
     # Edit by yourself:
-    GithubEdit = "https://github.com/UFinderaha/myblog/edit/main/content/"
+    GithubEdit = "https://github.com/USERNAME/REPONAME/edit/main/content/"
     copyright = "&copy;"
-    copyrightYear = "2024"
+    copyrightYear = "2020-2021"
     # Edit by yourself:
-    GithubRepo = "https://github.com/Finderaha/myblog"
+    GithubRepo = "https://github.com/USERNAME/REPONAME"
     # Edit by yourself:
-    ContentSource = "https://raw.githubusercontent.com/Finderaha/myblog/main/content/" 
+    ContentSource = "https://raw.githubusercontent.com/USERNAME/REPONAME/main/content/" 
 
 [params.logo]
   # Change the logo picture as your prefer:
@@ -70,8 +69,8 @@ posts = "/posts/:year/:month/:day/:slug/"
 [params.lang]
 
     [params.lang.author]
-      en = "Finder"
-      cn = "郝志杰"
+      en = "Your Name"
+      cn = "你的名字"
 
     [params.lang.madeWith]
       en = "Made with"
