@@ -1,1 +1,208 @@
- 
+<div class="interactive-demo kmeans-distribution">
+    <div class="visualization-container">
+      <canvas id="distributionCanvas"></canvas>
+      <div class="controls">
+        <div class="control-group">
+          <label>数据分布类型:</label>
+          <select id="distributionType" class="demo-select">
+            <option value="circular">环形分布</option>
+            <option value="gaussian">高斯分布</option>
+            <option value="anisotropic">各向异性分布</option>
+            <option value="nonconvex">非凸形分布</option>
+          </select>
+        </div>
+        <div class="control-group">
+          <label>聚类数量 (K):</label>
+          <input type="range" id="kValueDistribution" min="2" max="10" value="3" step="1">
+          <span id="kValueDistDisplay">3</span>
+        </div>
+      </div>
+    </div>
+  </div>
+  
+  <style>
+  .demo-select {
+    padding: 8px;
+    border-radius: 4px;
+    border: 1px solid #ddd;
+    background: white;
+    font-size: 14px;
+  }
+  
+  .demo-select:focus {
+    outline: none;
+    border-color: #3a6ea5;
+  }
+  </style>
+  
+  <script>
+  document.addEventListener('DOMContentLoaded', function() {
+    const canvas = document.getElementById('distributionCanvas');
+    const ctx = canvas.getContext('2d');
+    const distributionSelect = document.getElementById('distributionType');
+    const kSlider = document.getElementById('kValueDistribution');
+    const kDisplay = document.getElementById('kValueDistDisplay');
+  
+    let points = [];
+    let centroids = [];
+    let assignments = [];
+  
+    // 设置Canvas尺寸
+    function resizeCanvas() {
+      canvas.width = canvas.offsetWidth;
+      canvas.height = canvas.offsetHeight;
+    }
+    resizeCanvas();
+    window.addEventListener('resize', resizeCanvas);
+  
+    // 生成不同分布的数据
+    function generateDistributionPoints() {
+      points = [];
+      const type = distributionSelect.value;
+      const numPoints = 200;
+      const centerX = canvas.width / 2;
+      const centerY = canvas.height / 2;
+      const radius = Math.min(canvas.width, canvas.height) * 0.3;
+  
+      switch (type) {
+        case 'circular':
+          // 环形分布
+          for (let i = 0; i < numPoints; i++) {
+            const angle = Math.random() * Math.PI * 2;
+            const r = radius * (0.8 + Math.random() * 0.4);
+            points.push({
+              x: centerX + Math.cos(angle) * r,
+              y: centerY + Math.sin(angle) * r
+            });
+          }
+          break;
+  
+        case 'gaussian':
+          // 高斯分布
+          for (let i = 0; i < numPoints; i++) {
+            const u = Math.random() * 2 - 1;
+            const v = Math.random() * 2 - 1;
+            const r = Math.sqrt(-2 * Math.log(Math.random()));
+            points.push({
+              x: centerX + u * radius * 0.5,
+              y: centerY + v * radius * 0.5
+            });
+          }
+          break;
+  
+        case 'anisotropic':
+          // 各向异性分布
+          for (let i = 0; i < numPoints; i++) {
+            const angle = Math.random() * Math.PI * 2;
+            const r = Math.random() * radius;
+            points.push({
+              x: centerX + Math.cos(angle) * r * 2,
+              y: centerY + Math.sin(angle) * r * 0.5
+            });
+          }
+          break;
+  
+        case 'nonconvex':
+          // 非凸形分布（S形）
+          for (let i = 0; i < numPoints; i++) {
+            const t = (i / numPoints) * Math.PI * 2;
+            const noise = (Math.random() - 0.5) * radius * 0.2;
+            points.push({
+              x: centerX + Math.cos(t) * radius + noise,
+              y: centerY + Math.sin(2 * t) * radius * 0.5 + noise
+            });
+          }
+          break;
+      }
+    }
+  
+    // K-means算法实现
+    function kmeans() {
+      // 初始化质心
+      centroids = [];
+      for (let i = 0; i < parseInt(kSlider.value); i++) {
+        const randomIndex = Math.floor(Math.random() * points.length);
+        centroids.push({...points[randomIndex]});
+      }
+  
+      // 迭代直到收敛
+      let changed = true;
+      let maxIterations = 50;
+      while (changed && maxIterations > 0) {
+        changed = false;
+        maxIterations--;
+  
+        // 分配点到最近的质心
+        assignments = points.map(point => {
+          let minDist = Infinity;
+          let assignment = 0;
+          centroids.forEach((centroid, i) => {
+            const dist = Math.hypot(point.x - centroid.x, point.y - centroid.y);
+            if (dist < minDist) {
+              minDist = dist;
+              assignment = i;
+            }
+          });
+          return assignment;
+        });
+  
+        // 更新质心位置
+        centroids.forEach((centroid, i) => {
+          const assigned = points.filter((_, j) => assignments[j] === i);
+          if (assigned.length === 0) return;
+  
+          const newX = assigned.reduce((sum, p) => sum + p.x, 0) / assigned.length;
+          const newY = assigned.reduce((sum, p) => sum + p.y, 0) / assigned.length;
+  
+          if (Math.hypot(newX - centroid.x, newY - centroid.y) > 1) {
+            changed = true;
+          }
+          centroid.x = newX;
+          centroid.y = newY;
+        });
+      }
+    }
+  
+    // 绘制当前状态
+    function draw() {
+      ctx.clearRect(0, 0, canvas.width, canvas.height);
+      
+      // 绘制点
+      points.forEach((point, i) => {
+        ctx.beginPath();
+        ctx.arc(point.x, point.y, 4, 0, Math.PI * 2);
+        ctx.fillStyle = assignments.length ? `hsl(${assignments[i] * 360 / centroids.length}, 70%, 50%)` : '#666';
+        ctx.fill();
+      });
+  
+      // 绘制质心
+      centroids.forEach((centroid, i) => {
+        ctx.beginPath();
+        ctx.arc(centroid.x, centroid.y, 8, 0, Math.PI * 2);
+        ctx.fillStyle = `hsl(${i * 360 / centroids.length}, 70%, 30%)`;
+        ctx.fill();
+        ctx.strokeStyle = 'white';
+        ctx.lineWidth = 2;
+        ctx.stroke();
+      });
+    }
+  
+    // 更新演示
+    function update() {
+      generateDistributionPoints();
+      kmeans();
+      draw();
+    }
+  
+    // 事件监听
+    distributionSelect.addEventListener('change', update);
+    
+    kSlider.addEventListener('input', () => {
+      kDisplay.textContent = kSlider.value;
+      update();
+    });
+  
+    // 初始化
+    update();
+  });
+  </script>

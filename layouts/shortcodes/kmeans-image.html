@@ -1,1 +1,411 @@
- 
+<div class="interactive-demo kmeans-image">
+  <div class="visualization-container">
+    <div class="image-comparison">
+      <div class="image-original">
+        <h4>原始图像</h4>
+        <canvas id="originalCanvas"></canvas>
+        <div>颜色数: <span id="originalColors">0</span></div>
+      </div>
+      <div class="image-processed">
+        <h4>K-means 处理后</h4>
+        <canvas id="processedCanvas"></canvas>
+        <div>颜色数: <span id="compressedColors">0</span></div>
+      </div>
+    </div>
+    <div id="loader" class="loader"></div>
+    <div class="controls">
+      <div class="control-group">
+        <label>颜色数量 (K):</label>
+        <input type="range" id="kSlider" min="2" max="64" value="16" step="1">
+        <span id="kValue">16</span>
+      </div>
+      <div class="control-group">
+        <button id="uploadBtn" class="demo-btn">选择图片</button>
+        <input type="file" id="imageUpload" accept="image/*" style="display:none">
+        <button id="playPauseButton" class="demo-btn">暂停</button>
+      </div>
+      <div class="stats">
+        <div>压缩率: <span id="compressionRatio">0</span>%</div>
+      </div>
+    </div>
+    <div class="palette-container">
+      <h4>颜色调色板</h4>
+      <div id="colorPalette" class="color-palette"></div>
+    </div>
+  </div>
+</div>
+
+<style>
+.image-comparison {
+  display: flex;
+  gap: 20px;
+  margin-bottom: 20px;
+}
+
+.image-original, .image-processed {
+  flex: 1;
+  text-align: center;
+}
+
+.loader {
+  display: none;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 40px;
+  height: 40px;
+  border: 4px solid #f3f3f3;
+  border-top: 4px solid #3a6ea5;
+  border-radius: 50%;
+  animation: spin 1s linear infinite;
+}
+
+@keyframes spin {
+  0% { transform: translate(-50%, -50%) rotate(0deg); }
+  100% { transform: translate(-50%, -50%) rotate(360deg); }
+}
+
+.color-palette {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 5px;
+  justify-content: center;
+  margin-top: 10px;
+}
+
+.color-swatch {
+  width: 30px;
+  height: 30px;
+  border-radius: 4px;
+  border: 1px solid #ddd;
+}
+
+.stats {
+  background: white;
+  padding: 10px;
+  border-radius: 4px;
+  margin-top: 10px;
+  text-align: center;
+}
+</style>
+
+<script>
+document.addEventListener('DOMContentLoaded', function() {
+  // 获取DOM元素
+  const originalCanvas = document.getElementById('originalCanvas');
+  const processedCanvas = document.getElementById('processedCanvas');
+  const originalCtx = originalCanvas.getContext('2d');
+  const processedCtx = processedCanvas.getContext('2d');
+  const kSlider = document.getElementById('kSlider');
+  const kValueDisplay = document.getElementById('kValue');
+  const imageUpload = document.getElementById('imageUpload');
+  const uploadBtn = document.getElementById('uploadBtn');
+  const loader = document.getElementById('loader');
+  const originalColorsDisplay = document.getElementById('originalColors');
+  const compressedColorsDisplay = document.getElementById('compressedColors');
+  const compressionRatioDisplay = document.getElementById('compressionRatio');
+  const colorPalette = document.getElementById('colorPalette');
+  const playPauseButton = document.getElementById('playPauseButton');
+
+  let originalImage = null;
+  let originalImageData = null;
+  let kMeansWorker = null;
+  let isProcessing = false;
+  let isAnimationPaused = false;
+  let kValue = 16;
+
+  // 初始化Web Worker
+  function initWorker() {
+    const workerCode = `
+      onmessage = function(e) {
+        const { imageData, k, width, height } = e.data;
+        
+        // 提取像素数据
+        const pixels = [];
+        for (let i = 0; i < imageData.length; i += 4) {
+          if (imageData[i + 3] > 0) {
+            pixels.push([
+              imageData[i],
+              imageData[i + 1],
+              imageData[i + 2]
+            ]);
+          }
+        }
+        
+        // 随机初始化K个质心
+        let centroids = [];
+        for (let i = 0; i < k; i++) {
+          const randomIndex = Math.floor(Math.random() * pixels.length);
+          centroids.push([...pixels[randomIndex]]);
+        }
+        
+        // 运行K-Means算法
+        const maxIterations = 10;
+        let iteration = 0;
+        let changed = true;
+        let labels = new Array(pixels.length).fill(0);
+        
+        while (changed && iteration < maxIterations) {
+          changed = false;
+          
+          // 分配点到最近的质心
+          for (let i = 0; i < pixels.length; i++) {
+            const pixel = pixels[i];
+            let minDist = Infinity;
+            let minIndex = 0;
+            
+            for (let j = 0; j < centroids.length; j++) {
+              const centroid = centroids[j];
+              const dist = Math.sqrt(
+                Math.pow(pixel[0] - centroid[0], 2) +
+                Math.pow(pixel[1] - centroid[1], 2) +
+                Math.pow(pixel[2] - centroid[2], 2)
+              );
+              
+              if (dist < minDist) {
+                minDist = dist;
+                minIndex = j;
+              }
+            }
+            
+            if (labels[i] !== minIndex) {
+              changed = true;
+              labels[i] = minIndex;
+            }
+          }
+          
+          // 更新质心位置
+          const newCentroids = Array(k).fill().map(() => [0, 0, 0]);
+          const counts = Array(k).fill(0);
+          
+          for (let i = 0; i < pixels.length; i++) {
+            const label = labels[i];
+            const pixel = pixels[i];
+            
+            newCentroids[label][0] += pixel[0];
+            newCentroids[label][1] += pixel[1];
+            newCentroids[label][2] += pixel[2];
+            counts[label]++;
+          }
+          
+          for (let i = 0; i < k; i++) {
+            if (counts[i] > 0) {
+              newCentroids[i][0] = Math.round(newCentroids[i][0] / counts[i]);
+              newCentroids[i][1] = Math.round(newCentroids[i][1] / counts[i]);
+              newCentroids[i][2] = Math.round(newCentroids[i][2] / counts[i]);
+            } else {
+              const randomIndex = Math.floor(Math.random() * pixels.length);
+              newCentroids[i] = [...pixels[randomIndex]];
+            }
+          }
+          
+          centroids = newCentroids;
+          iteration++;
+          
+          postMessage({
+            type: 'progress',
+            progress: (iteration / maxIterations) * 100
+          });
+        }
+        
+        // 创建量化后的图像数据
+        const quantizedData = new Uint8ClampedArray(imageData.length);
+        let pixelIndex = 0;
+        
+        for (let i = 0; i < imageData.length; i += 4) {
+          if (imageData[i + 3] > 0) {
+            const label = labels[pixelIndex];
+            quantizedData[i] = centroids[label][0];
+            quantizedData[i + 1] = centroids[label][1];
+            quantizedData[i + 2] = centroids[label][2];
+            quantizedData[i + 3] = imageData[i + 3];
+            pixelIndex++;
+          } else {
+            quantizedData[i] = 0;
+            quantizedData[i + 1] = 0;
+            quantizedData[i + 2] = 0;
+            quantizedData[i + 3] = 0;
+          }
+        }
+        
+        postMessage({
+          type: 'result',
+          quantizedData,
+          centroids,
+          width,
+          height
+        });
+      };
+    `;
+    
+    const blob = new Blob([workerCode], { type: 'application/javascript' });
+    const workerUrl = URL.createObjectURL(blob);
+    kMeansWorker = new Worker(workerUrl);
+    
+    kMeansWorker.onmessage = function(e) {
+      const data = e.data;
+      
+      if (data.type === 'progress') {
+        // 更新进度
+      } else if (data.type === 'result') {
+        // 处理结果
+        const processedImageData = new ImageData(
+          data.quantizedData, 
+          data.width, 
+          data.height
+        );
+        
+        processedCanvas.width = data.width;
+        processedCanvas.height = data.height;
+        processedCtx.putImageData(processedImageData, 0, 0);
+        
+        updateColorInfo(countUniqueColors(originalImageData), data.centroids);
+        displayColorPalette(data.centroids);
+        
+        loader.style.display = 'none';
+        isProcessing = false;
+      }
+    };
+  }
+
+  // 计算唯一颜色数
+  function countUniqueColors(imageData) {
+    const colorSet = new Set();
+    
+    for (let i = 0; i < imageData.data.length; i += 4) {
+      if (imageData.data[i + 3] > 0) {
+        const color = `${imageData.data[i]},${imageData.data[i + 1]},${imageData.data[i + 2]}`;
+        colorSet.add(color);
+      }
+    }
+    
+    return colorSet.size;
+  }
+
+  // 更新颜色信息
+  function updateColorInfo(originalColorCount, centroids) {
+    originalColorsDisplay.textContent = originalColorCount.toLocaleString();
+    compressedColorsDisplay.textContent = centroids.length.toLocaleString();
+    
+    const compressionRatio = ((1 - (centroids.length / originalColorCount)) * 100).toFixed(2);
+    compressionRatioDisplay.textContent = compressionRatio;
+  }
+
+  // 显示颜色调色板
+  function displayColorPalette(centroids) {
+    colorPalette.innerHTML = '';
+    
+    centroids.forEach(centroid => {
+      const [r, g, b] = centroid;
+      const colorSwatch = document.createElement('div');
+      colorSwatch.className = 'color-swatch';
+      colorSwatch.style.backgroundColor = `rgb(${r}, ${g}, ${b})`;
+      colorSwatch.title = `RGB(${r}, ${g}, ${b})`;
+      colorPalette.appendChild(colorSwatch);
+    });
+  }
+
+  // 处理图像
+  function processImage() {
+    if (!originalImage || isProcessing) return;
+    
+    isProcessing = true;
+    loader.style.display = 'block';
+    
+    const imageData = originalCtx.getImageData(
+      0, 0, 
+      originalCanvas.width, 
+      originalCanvas.height
+    );
+    
+    kMeansWorker.postMessage({
+      imageData: imageData.data,
+      k: kValue,
+      width: imageData.width,
+      height: imageData.height
+    });
+  }
+
+  // 加载演示图像
+  function loadDemoImage() {
+    originalImage = new Image();
+    originalImage.crossOrigin = 'anonymous';
+    originalImage.onload = function() {
+      renderOriginalImage();
+      processImage();
+    };
+    originalImage.src = 'https://source.unsplash.com/featured/800x600/?nature,landscape';
+  }
+
+  // 渲染原始图像
+  function renderOriginalImage() {
+    const maxWidth = 400;
+    const maxHeight = 300;
+    let width = originalImage.width;
+    let height = originalImage.height;
+    
+    if (width > maxWidth) {
+      height = (maxWidth / width) * height;
+      width = maxWidth;
+    }
+    
+    if (height > maxHeight) {
+      width = (maxHeight / height) * width;
+      height = maxHeight;
+    }
+    
+    originalCanvas.width = width;
+    originalCanvas.height = height;
+    processedCanvas.width = width;
+    processedCanvas.height = height;
+    
+    originalCtx.drawImage(originalImage, 0, 0, width, height);
+    originalImageData = originalCtx.getImageData(0, 0, width, height);
+  }
+
+  // 事件监听
+  kSlider.addEventListener('input', function() {
+    kValue = parseInt(this.value);
+    kValueDisplay.textContent = kValue;
+    
+    if (!isAnimationPaused) {
+      processImage();
+    }
+  });
+
+  uploadBtn.addEventListener('click', () => {
+    imageUpload.click();
+  });
+
+  imageUpload.addEventListener('change', function(e) {
+    if (e.target.files && e.target.files[0]) {
+      const reader = new FileReader();
+      
+      reader.onload = function(event) {
+        originalImage = new Image();
+        originalImage.onload = function() {
+          renderOriginalImage();
+          processImage();
+        };
+        originalImage.src = event.target.result;
+      };
+      
+      reader.readAsDataURL(e.target.files[0]);
+    }
+  });
+
+  playPauseButton.addEventListener('click', function() {
+    isAnimationPaused = !isAnimationPaused;
+    this.textContent = isAnimationPaused ? '播放' : '暂停';
+    
+    if (!isAnimationPaused) {
+      processImage();
+    }
+  });
+
+  // 初始化
+  initWorker();
+  loadDemoImage();
+});
+</script>
