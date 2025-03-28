@@ -1,0 +1,29 @@
+{{ if .Page.Store.Get "hasInteractive" }}
+<!-- 交互式演示所需的通用样式和脚本 -->
+<style>
+/* 交互式演示的通用样式 */
+.interactive-demo {
+  background: #f8f9fa;
+  border-radius: 8px;
+  padding: 20px;
+  margin: 20px 0;
+  box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+  overflow: hidden;
+}
+
+.error {
+  background: #f8d7da;
+  color: #721c24;
+  padding: 10px;
+  border-radius: 4px;
+  margin: 10px 0;
+}
+</style>
+
+<script>
+// 通用辅助函数
+function getUniqueDemoId(prefix) {
+  return `${prefix}-${Math.random().toString(36).substring(2, 9)}`;
+}
+</script>
+{{ end }} 

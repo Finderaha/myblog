@@ -1,0 +1,18 @@
+{{ $type := .Get 0 }}
+{{ $id := .Get 1 | default "default" }}
+
+{{ if hasPrefix $type "kmeans" }}
+  {{ partial "shortcodes/interactive/common/styles.html" . }}
+  
+  {{ if eq $type "kmeans-basic" }}
+    {{ partial "shortcodes/interactive/kmeans/basic.html" . }}
+  {{ else if eq $type "kmeans-distribution" }}
+    {{ partial "shortcodes/interactive/kmeans/distribution.html" . }}
+  {{ else if eq $type "kmeans-image" }}
+    {{ partial "shortcodes/interactive/kmeans/image.html" . }}
+  {{ else }}
+    <div class="error">未知的K-means演示类型: {{ $type }}</div>
+  {{ end }}
+{{ else }}
+  <div class="error">未知的交互式演示类型: {{ $type }}</div>
+{{ end }} 

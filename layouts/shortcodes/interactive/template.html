@@ -1,0 +1,89 @@
+<div class="interactive-demo demo-template">
+  <div class="visualization-container">
+    <canvas id="demoCanvas" class="demo-canvas"></canvas>
+    <div class="controls">
+      <div class="control-group">
+        <label>参数1:</label>
+        <input type="range" id="param1" min="1" max="100" value="50" step="1">
+        <span id="param1Display">50</span>
+      </div>
+      <div class="control-group">
+        <label>参数2:</label>
+        <select id="param2" class="demo-select">
+          <option value="option1">选项1</option>
+          <option value="option2">选项2</option>
+          <option value="option3">选项3</option>
+        </select>
+      </div>
+      <div class="control-buttons">
+        <button id="resetBtn" class="demo-btn">重置</button>
+        <button id="actionBtn" class="demo-btn">执行</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+<script>
+document.addEventListener('DOMContentLoaded', function() {
+  // 获取DOM元素
+  const canvas = document.getElementById('demoCanvas');
+  const ctx = canvas.getContext('2d');
+  const param1Slider = document.getElementById('param1');
+  const param1Display = document.getElementById('param1Display');
+  const param2Select = document.getElementById('param2');
+  const resetBtn = document.getElementById('resetBtn');
+  const actionBtn = document.getElementById('actionBtn');
+
+  // 设置Canvas尺寸
+  function resizeCanvas() {
+    canvas.width = canvas.offsetWidth;
+    canvas.height = canvas.offsetHeight;
+    draw(); // 重绘
+  }
+  resizeCanvas();
+  window.addEventListener('resize', resizeCanvas);
+
+  // 绘制函数
+  function draw() {
+    ctx.clearRect(0, 0, canvas.width, canvas.height);
+    
+    // 绘制内容
+    ctx.fillStyle = 'blue';
+    ctx.fillRect(50, 50, parseInt(param1Slider.value) * 2, 100);
+    
+    ctx.font = '16px Arial';
+    ctx.fillStyle = 'black';
+    ctx.fillText(`参数1: ${param1Slider.value}`, 50, 180);
+    ctx.fillText(`参数2: ${param2Select.value}`, 50, 210);
+  }
+
+  // 重置函数
+  function reset() {
+    param1Slider.value = 50;
+    param1Display.textContent = 50;
+    param2Select.value = 'option1';
+    draw();
+  }
+
+  // 执行操作函数
+  function executeAction() {
+    // 在这里实现您的自定义操作
+    alert(`执行操作，参数值: ${param1Slider.value}, ${param2Select.value}`);
+  }
+
+  // 事件监听
+  param1Slider.addEventListener('input', function() {
+    param1Display.textContent = this.value;
+    draw();
+  });
+  
+  param2Select.addEventListener('change', draw);
+  
+  resetBtn.addEventListener('click', reset);
+  
+  actionBtn.addEventListener('click', executeAction);
+
+  // 初始化
+  reset();
+});
+</script> 
