@@ -1,0 +1,87 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="900" height="600" xmlns="http://www.w3.org/2000/svg">
+    <!-- 定义渐变和样式 -->
+    <defs>
+        <linearGradient id="dataGradient" x1="0%" y1="0%" x2="100%" y2="0%">
+            <stop offset="0%" style="stop-color:#4a90e2;stop-opacity:0.2"/>
+            <stop offset="100%" style="stop-color:#4a90e2;stop-opacity:0.8"/>
+        </linearGradient>
+        <linearGradient id="featureGradient" x1="0%" y1="0%" x2="100%" y2="0%">
+            <stop offset="0%" style="stop-color:#50C878;stop-opacity:0.2"/>
+            <stop offset="100%" style="stop-color:#50C878;stop-opacity:0.8"/>
+        </linearGradient>
+        <linearGradient id="modelGradient" x1="0%" y1="0%" x2="100%" y2="0%">
+            <stop offset="0%" style="stop-color:#FFB6C1;stop-opacity:0.2"/>
+            <stop offset="100%" style="stop-color:#FFB6C1;stop-opacity:0.8"/>
+        </linearGradient>
+    </defs>
+
+    <!-- 数据阶段 -->
+    <g transform="translate(50,50)">
+        <rect x="0" y="0" width="160" height="80" rx="10" fill="url(#dataGradient)" stroke="#4a90e2" stroke-width="2"/>
+        <text x="80" y="35" text-anchor="middle" fill="#333" font-size="14" font-weight="bold">数据收集</text>
+        <text x="80" y="60" text-anchor="middle" fill="#666" font-size="12">训练数据获取与标注</text>
+    </g>
+
+    <!-- 预处理阶段 -->
+    <g transform="translate(50,170)">
+        <rect x="0" y="0" width="160" height="80" rx="10" fill="url(#dataGradient)" stroke="#4a90e2" stroke-width="2"/>
+        <text x="80" y="35" text-anchor="middle" fill="#333" font-size="14" font-weight="bold">数据预处理</text>
+        <text x="80" y="60" text-anchor="middle" fill="#666" font-size="12">清洗、标准化、去噪</text>
+    </g>
+
+    <!-- 特征工程 -->
+    <g transform="translate(270,110)">
+        <rect x="0" y="0" width="160" height="80" rx="10" fill="url(#featureGradient)" stroke="#50C878" stroke-width="2"/>
+        <text x="80" y="35" text-anchor="middle" fill="#333" font-size="14" font-weight="bold">特征工程</text>
+        <text x="80" y="60" text-anchor="middle" fill="#666" font-size="12">特征提取与选择</text>
+    </g>
+
+    <!-- 模型训练 -->
+    <g transform="translate(490,50)">
+        <rect x="0" y="0" width="160" height="80" rx="10" fill="url(#modelGradient)" stroke="#FFB6C1" stroke-width="2"/>
+        <text x="80" y="35" text-anchor="middle" fill="#333" font-size="14" font-weight="bold">模型训练</text>
+        <text x="80" y="60" text-anchor="middle" fill="#666" font-size="12">算法选择与参数优化</text>
+    </g>
+
+    <!-- 模型评估 -->
+    <g transform="translate(490,170)">
+        <rect x="0" y="0" width="160" height="80" rx="10" fill="url(#modelGradient)" stroke="#FFB6C1" stroke-width="2"/>
+        <text x="80" y="35" text-anchor="middle" fill="#333" font-size="14" font-weight="bold">模型评估</text>
+        <text x="80" y="60" text-anchor="middle" fill="#666" font-size="12">性能指标评估</text>
+    </g>
+
+    <!-- 模型部署 -->
+    <g transform="translate(710,110)">
+        <rect x="0" y="0" width="160" height="80" rx="10" fill="#f8f9fa" stroke="#666" stroke-width="2"/>
+        <text x="80" y="35" text-anchor="middle" fill="#333" font-size="14" font-weight="bold">模型部署</text>
+        <text x="80" y="60" text-anchor="middle" fill="#666" font-size="12">生产环境应用</text>
+    </g>
+
+    <!-- 持续监控 -->
+    <g transform="translate(380,350)">
+        <rect x="0" y="0" width="160" height="80" rx="10" fill="#f8f9fa" stroke="#666" stroke-width="2"/>
+        <text x="80" y="35" text-anchor="middle" fill="#333" font-size="14" font-weight="bold">持续监控</text>
+        <text x="80" y="60" text-anchor="middle" fill="#666" font-size="12">性能监控与更新</text>
+    </g>
+
+    <!-- 连接箭头 -->
+    <g fill="none" stroke="#666" stroke-width="2">
+        <!-- 数据流向 -->
+        <path d="M210 90 L270 150" marker-end="url(#arrowhead)"/>
+        <path d="M210 210 L270 150" marker-end="url(#arrowhead)"/>
+        <path d="M430 150 L490 90" marker-end="url(#arrowhead)"/>
+        <path d="M570 130 L570 170" marker-end="url(#arrowhead)"/>
+        <path d="M650 150 L710 150" marker-end="url(#arrowhead)"/>
+        
+        <!-- 反馈循环 -->
+        <path d="M460 390 C300 390 200 300 200 250" stroke="#ff6666" stroke-dasharray="5,5" marker-end="url(#arrowhead)"/>
+    </g>
+
+    <!-- 箭头标记定义 -->
+    <defs>
+        <marker id="arrowhead" markerWidth="10" markerHeight="7" refX="9" refY="3.5" orient="auto">
+            <polygon points="0 0, 10 3.5, 0 7" fill="#666"/>
+        </marker>
+    </defs>
+</svg> 

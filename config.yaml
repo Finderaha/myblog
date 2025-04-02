@@ -1,0 +1,8 @@
+# 添加以下配置
+security:
+  enableInlineShortcodes: true
+  
+# 确保图片文件被复制
+staticDir:
+  - static
+  - content/cn/posts/images 

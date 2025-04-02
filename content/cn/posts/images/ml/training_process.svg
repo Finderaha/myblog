@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="800" height="400" xmlns="http://www.w3.org/2000/svg">
+    <!-- 定义渐变 -->
+    <defs>
+        <linearGradient id="dataGradient" x1="0%" y1="0%" x2="100%" y2="0%">
+            <stop offset="0%" style="stop-color:#4a90e2;stop-opacity:0.2"/>
+            <stop offset="100%" style="stop-color:#4a90e2;stop-opacity:0.8"/>
+        </linearGradient>
+        <linearGradient id="modelGradient" x1="0%" y1="0%" x2="100%" y2="0%">
+            <stop offset="0%" style="stop-color:#50C878;stop-opacity:0.2"/>
+            <stop offset="100%" style="stop-color:#50C878;stop-opacity:0.8"/>
+        </linearGradient>
+    </defs>
+
+    <!-- 训练数据 -->
+    <rect x="50" y="100" width="120" height="60" rx="10" fill="url(#dataGradient)" stroke="#4a90e2" stroke-width="2"/>
+    <text x="110" y="140" text-anchor="middle" fill="#333" font-size="14">训练数据</text>
+
+    <!-- 模型 -->
+    <rect x="250" y="90" width="140" height="80" rx="10" fill="url(#modelGradient)" stroke="#50C878" stroke-width="2"/>
+    <text x="320" y="135" text-anchor="middle" fill="#333" font-size="14">模型</text>
+
+    <!-- 预测输出 -->
+    <rect x="470" y="100" width="120" height="60" rx="10" fill="#f8f9fa" stroke="#666" stroke-width="2"/>
+    <text x="530" y="140" text-anchor="middle" fill="#333" font-size="14">预测结果</text>
+
+    <!-- 损失函数 -->
+    <circle cx="530" y="250" r="40" fill="#ff9999" stroke="#ff6666" stroke-width="2"/>
+    <text x="530" y="250" text-anchor="middle" fill="#333" font-size="14">损失函数</text>
+
+    <!-- 箭头和数据流 -->
+    <path d="M170 130 L250 130" stroke="#666" stroke-width="2" marker-end="url(#arrowhead)"/>
+    <path d="M390 130 L470 130" stroke="#666" stroke-width="2" marker-end="url(#arrowhead)"/>
+    <path d="M530 160 L530 210" stroke="#666" stroke-width="2" marker-end="url(#arrowhead)"/>
+    <path d="M490 250 C400 250 350 200 320 170" stroke="#ff6666" stroke-width="2" stroke-dasharray="5,5" marker-end="url(#arrowhead)"/>
+
+    <!-- 箭头标记定义 -->
+    <defs>
+        <marker id="arrowhead" markerWidth="10" markerHeight="7" refX="9" refY="3.5" orient="auto">
+            <polygon points="0 0, 10 3.5, 0 7" fill="#666"/>
+        </marker>
+    </defs>
+
+    <!-- 注释文字 -->
+    <text x="200" y="110" fill="#666" font-size="12">前向传播</text>
+    <text x="400" y="230" fill="#ff6666" font-size="12">反向传播</text>
+    <text x="530" y="320" fill="#666" font-size="12">优化参数</text>
+</svg> 
