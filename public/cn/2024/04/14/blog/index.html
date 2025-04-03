@@ -1,0 +1,217 @@
+<script src="/livereload.js?mindelay=10&amp;v=2&amp;port=1313&amp;path=livereload" data-no-instant defer></script><a name="top"></a>
+<!DOCTYPE html>
+<html lang="en-us">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Finder</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+
+    <link rel="stylesheet" href="/css/style.css" />
+    <link rel="stylesheet" href="/css/fonts.css" />
+     
+  </head>
+  
+  <body>
+    <div class="wrapper">
+      <header class="header">
+        <nav class="nav" >
+      <a href="/" class="nav-logo">
+        <img src="/media/hugo-logo.png"
+         width="50"
+         height="50"
+         alt="Hugo-ht">
+      </a>
+
+      <ul class="nav-links" >
+        
+        
+           <li><a href="/">主页</a></li>
+       
+           <li><a href="/cn/posts/">日志</a></li>
+       
+           <li><a href="/cn/about/">关于</a></li>
+       
+           <li><a href="/en/posts/">English</a></li>
+       
+       
+      </ul>
+</nav>
+
+      </header>
+
+<main class = "content" role="main">
+<div style="text-align: center">
+
+<h1>hugo搭建博客过程中遇到的问题</h1>
+
+<p>Finder 
+ / 2024-04-14 </p>
+
+<hr/>
+</div>
+
+<span class="article-toolbar">
+  
+  
+  
+  
+  
+  
+  
+  <a href='https://github.com/UFinderaha/myblog/edit/main/content/cn%5cposts%5c2024-04-14-%e4%b8%aa%e4%ba%ba%e5%8d%9a%e5%ae%a2%e7%bd%91%e7%ab%99%e6%90%ad%e5%bb%ba%e9%97%ae%e9%a2%98.md'style="font-size: 24px; color: black;" target="_blank"><i class="fa fa-edit" aria-hidden="true" title="编辑本页"></i>
+  </a>
+  
+  
+  
+</span>
+
+
+
+<div class="body-text list-text">
+<p>本文基于郝鸿涛<a href="https://hongtaoh.com/cn/2024/03/22/personal-website-tutorial/" target="_blank" rel="noreferrer noopener">如何零基础免费搭建个人网站 (2024 更新版)</a>
+
+，将个人参考教程中遇到的问题进行详细记述。下面会根据原文流程中的步骤逐条记录。</p>
+<h2 id="网站主题">网站主题<a href="#网站主题" class="header-anchor" ariaLabel="Anchor"> # </a></h2>
+<p><a href="https://hongtaoh.com/cn/2021/03/02/personal-website-tutorial/#%E7%BD%91%E7%AB%99%E4%B8%BB%E9%A2%98" target="_blank" rel="noreferrer noopener">如何零基础免费搭建个人网站</a>
+
+ 中的这个步骤是可以不执行的，直接进入<a href="https://hongtaoh.com/cn/2024/03/22/personal-website-tutorial/" target="_blank" rel="noreferrer noopener">如何零基础免费搭建个人网站 (2024 更新版)</a>
+
+ 往下操作即可。但是如果你执行了这一步骤，有 2 点需要关注：</p>
+<h3 id="1-为什么要执行下面这段代码">1. 为什么要执行下面这段代码<a href="#1-为什么要执行下面这段代码" class="header-anchor" ariaLabel="Anchor"> # </a></h3>
+<pre tabindex="0"><code>mkdir hugo-ht-new # create a new folder called hugo-ht-new
+cp -r hugo-ht/* hugo-ht-new # copy everything in hugo-ht to hugo-ht-new
+rm -rf hugo-ht # delete the folder of hugo-ht
+mv hugo-ht-new hugo-ht # change folder name
+</code></pre><p>这段代码看上去好像没有意义，但其实非常重要，需要特别关注。执行完</p>
+<pre tabindex="0"><code>git clone https://github.com/hongtaoh/hugo-ht
+</code></pre><p>将 hugo-ht 复制到本地，这里需要注意是，虽然本地有了 hugo-ht 的的文件，但是其实并不属于你自己的博客项目，而是一个外部引用。因为是一个外部引用，所以后面无论你改动 themes/hugo-ht 下的什么内容，都无法实际生效。执行上面的代码意义就是将其从引用，变为个人项目的一部分。</p>
+<h3 id="2-hugo-server--d-报错">2. hugo server -D 报错<a href="#2-hugo-server--d-报错" class="header-anchor" ariaLabel="Anchor"> # </a></h3>
+<p>当你执行</p>
+<pre tabindex="0"><code>hugo server -D # 这里的 D 是 draft 的意思
+</code></pre><p>可能会遇到报错：page not found.</p>
+<p>这里可能的原因是在quickstart文件夹下有同时有 hugo.toml 和 config.toml 导致的。2个文件会引起系统执行时不知道应该执行哪个，只需要删除 hugo.toml 即可。</p>
+<h2 id="复制仓库-url">复制仓库 url<a href="#复制仓库-url" class="header-anchor" ariaLabel="Anchor"> # </a></h2>
+<h3 id="1-git-submodule-add-httpsgithubcomhongtaohhugo-ht-themeshugo-ht-报错">1. git submodule add https://github.com/hongtaoh/hugo-ht themes/hugo-ht 报错<a href="#1-git-submodule-add-httpsgithubcomhongtaohhugo-ht-themeshugo-ht-报错" class="header-anchor" ariaLabel="Anchor"> # </a></h3>
+<p>如果你上面执行了“网站主题”部分，则可能会报错：</p>
+<pre tabindex="0"><code>fatal: &#39;themes/hugo-ht&#39; already exists in the index
+</code></pre><p>意思是已经有这个文件了，不能再次操作。如果想执行，那就需要先删除掉，删除 hugo-ht 文件夹。当然，删除后，再次执行 add 操作时，会提醒：</p>
+<pre tabindex="0"><code>fatal: A git directory for &#39;themes/hugo-ht&#39; is found locally with remote(s):
+  origin	https://github.com/hongtaoh/hugo-ht
+If you want to reuse this local git directory instead of cloning again from
+  https://github.com/hongtaoh/hugo-ht
+use the &#39;--force&#39; option. If the local git directory is not the correct repo
+or you are unsure what this means choose another name with the &#39;--name&#39; option.
+</code></pre><p>执行下面的代码可以解决：</p>
+<pre tabindex="0"><code>git rm --cached themes/hugo-ht
+rm -rf themes/hugo-ht
+</code></pre><p>这里提一句，git clone 其实不建议使用 hugo-ht 的名字，比如我，使用的是：</p>
+<pre tabindex="0"><code>git submodule add https://github.com/hongtaoh/hugo-ht themes/hugo-zj
+</code></pre><p>然后将 config.toml  中 theme = &ldquo;hugo-ht&rdquo; 改为 theme = &ldquo;hugo-zj&rdquo; 就好了。</p>
+<h3 id="2-git-remote-add-origin-yourrepo-中-yourrepo-写什么">2. git remote add origin YOURREPO 中 YOURREPO 写什么<a href="#2-git-remote-add-origin-yourrepo-中-yourrepo-写什么" class="header-anchor" ariaLabel="Anchor"> # </a></h3>
+<p>这里因为需要和git远程代码库做操作，所以需要本机和git进行授信。你执行的时候可能会要求输入git的账户密码。为了避免之后做 git 操作时都要先授信，建议在做这一步操作时，先完成 ssh 部分，详见 <a href="https://hongtaoh.com/cn/2021/03/02/personal-website-tutorial/#%E7%BD%91%E7%AB%99%E4%B8%BB%E9%A2%98" target="_blank" rel="noreferrer noopener">如何零基础免费搭建个人网站</a>
+
+ 中设置 SSH Deploy Key 的部分。</p>
+<p>⚠️完成设置 SSH Deploy Key后，YOURREPO应该是ssh链接，而不是 https 链接。</p>
+<h2 id="vercel-导入项目">Vercel 导入项目<a href="#vercel-导入项目" class="header-anchor" ariaLabel="Anchor"> # </a></h2>
+<h3 id="1-点击-deploy--报错">1. 点击 Deploy  报错<a href="#1-点击-deploy--报错" class="header-anchor" ariaLabel="Anchor"> # </a></h3>
+<p>点击 Deploy  可能会报错</p>
+<pre tabindex="0"><code>sh: line 1: hugo: command not found
+Error: Command &#34;hugo --gc&#34; exited with 127
+</code></pre><p>这是因为 vercel 使用的 hugo 版本比较老导致的，解决方法如下：</p>
+<ol>
+<li>在 vercel 的博客项目中 setting 里，点击“Environment Variables”</li>
+<li>在key 中填写 HUGO_VERSION ，在Value 里填写 hugo 版本号，店家 save 即可。</li>
+</ol>
+<p>本地 hugo 版本，可以在终端里输入 hugo version 查看，v 之后的内容就是，注意不写 v。</p>
+<h2 id="自定义域名">自定义域名<a href="#自定义域名" class="header-anchor" ariaLabel="Anchor"> # </a></h2>
+<p>原文使用域名是在 <a href="https://www.namecheap.com/" target="_blank" rel="noreferrer noopener">Namecheap</a>
+
+ 上买的，我是在<a href="https://porkbun.com/" target="_blank" rel="noreferrer noopener">porkbun</a>
+
+买的，因为更加便宜一点。下面是如何在porkbun上配置域名。</p>
+<ol>
+<li>在 vercel  的 项目 setting 中，选择 Domains , 将自己购买的域名进行 add。点击添加时，会遇到红字提醒，那不是报错，是需要在 porkbun 上进行设置。</li>
+<li>在 porkbun 上，点击域名下的 DNS ,进入 DNS 设置页面，按照vercel上的提醒，做相应的添加即可。</li>
+</ol>
+<p>大概10s左右，就会生效。</p>
+<h2 id="中文为主英文为辅">中文为主，英文为辅<a href="#中文为主英文为辅" class="header-anchor" ariaLabel="Anchor"> # </a></h2>
+<p>在修改网站设置时，可能会遇到，本地做了修改 hugo server -D 也是对的，但是网站不生效的情况。</p>
+<p>很可能是因为上面提到的 网站主题部分中第 1 个问题引发的。建议是修改文件夹名称，然后将 config.toml  中 theme = &ldquo;hugo-ht&rdquo; 改为 theme = &ldquo;hugo-zj&rdquo; 就好了。</p>
+
+
+  
+    <a href="http://localhost:1313//tags/%E5%8D%9A%E5%AE%A2%E6%90%AD%E5%BB%BA/">#博客搭建</a>
+  
+
+<p style="color:#777;">最后一次修改于 2024-04-14</p>
+</div>
+<a href="#top"><i class="fa fa-chevron-up" style="font-size: 30px; color: black;"></i></a>
+
+</main>
+
+<footer class="footer">
+  <div class="content">
+
+<script src="https://giscus.app/client.js"
+        data-repo="finderaha/myblog"
+        data-repo-id="R_kgDOLxcP2A"
+        data-category="Announcements"
+        data-category-id="DIC_kwDOLxcP2M4Ce2as"
+        data-mapping="pathname"
+        data-strict="0"
+        data-reactions-enabled="1"
+        data-emit-metadata="0"
+        data-input-position="top"
+        data-theme="preferred_color_scheme"
+        data-lang="zh-CN"
+        data-loading="lazy"
+        crossorigin="anonymous"
+        async>
+</script>
+</br>
+ 
+</div>
+
+  <script type="text/javascript" src="/js/math-code.js"></script>
+<script async src="//mathjax.rstudio.com/latest/MathJax.js?config=TeX-MML-AM_CHTML"></script>
+<script type="text/javascript" src="/js/center-img.js"></script>
+
+
+
+     <ul class="footer-links">
+      
+       
+       
+       
+       <li><a href="/cn/posts/index.xml" type="application/rss+xml" title="RSS feed">
+       订阅 </a>
+       </li>
+       
+       
+       <li>
+       
+       <a href="http://creativecommons.org/licenses/by-nc-sa/4.0/deed.zh" target="_blank">
+       
+        版权
+        <i class="fa fa-cc" aria-hidden="true" title="Attribution-NonCommercial-ShareAlike 4.0 International"></i> 
+        </a>
+       </li>
+       
+     </ul>
+     <div class="copyright-text">
+            
+            ©
+            
+            郝志杰
+            
+            2024
+            
+     </div>
+
+</footer>
+
+
+
+
+

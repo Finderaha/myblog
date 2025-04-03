@@ -1,0 +1,174 @@
+<script src="/livereload.js?mindelay=10&amp;v=2&amp;port=1313&amp;path=livereload" data-no-instant defer></script><a name="top"></a>
+<!DOCTYPE html>
+<html lang="en-us">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Finder</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+
+    <link rel="stylesheet" href="/css/style.css" />
+    <link rel="stylesheet" href="/css/fonts.css" />
+     
+  </head>
+  
+  <body>
+    <div class="wrapper">
+      <header class="header">
+        <nav class="nav" >
+      <a href="/" class="nav-logo">
+        <img src="/media/hugo-logo.png"
+         width="50"
+         height="50"
+         alt="Hugo-ht">
+      </a>
+
+      <ul class="nav-links" >
+        
+        
+           <li><a href="/">主页</a></li>
+       
+           <li><a href="/cn/posts/">日志</a></li>
+       
+           <li><a href="/cn/about/">关于</a></li>
+       
+           <li><a href="/en/posts/">English</a></li>
+       
+       
+      </ul>
+</nav>
+
+      </header>
+
+<main class = "content" role="main">
+<div style="text-align: center">
+
+<h1>Stable Diffusion 底层逻辑</h1>
+
+<p>Finder 
+ / 2024-10-15 </p>
+
+<hr/>
+</div>
+
+<span class="article-toolbar">
+  
+  
+  
+  
+  
+  
+  
+  <a href='https://github.com/UFinderaha/myblog/edit/main/content/cn%5cposts%5c2024-10-15-Stable%20Diffusion%20%e5%ba%95%e5%b1%82%e9%80%bb%e8%be%91.md'style="font-size: 24px; color: black;" target="_blank"><i class="fa fa-edit" aria-hidden="true" title="编辑本页"></i>
+  </a>
+  
+  
+  
+</span>
+
+
+<aside class="toc">
+Table of Contents:
+<nav id="TableOfContents"></nav>
+</aside>
+
+
+<div class="body-text list-text">
+<p>Stable Diffusion (以下简称SD)翻译成中文是‘稳定的扩散’。的底层逻辑基于生成对抗网络（GAN）和扩散模型的理论，它的主要目标是从随机噪声中生成高质量的图像。</p>
+<h1 id="扩散算法">扩散算法<a href="#扩散算法" class="header-anchor" ariaLabel="Anchor"> # </a></h1>
+<p>扩散算法的原理简单来讲就是生噪到去噪的一个过程，声噪就是增加噪点叫做正向扩散，去噪就是消除噪点，反向扩散。</p>
+<p>在我们生图的时候，它是先把图片铺满噪点，然后根据我们的步数慢慢把噪点降噪、降噪，把噪点删除，变成一个我们想要的图片。</p>
+<p>举个例子，假设我们想让 AI 生成&quot;美丽女孩&quot;的图片。首先，我们需要一个**&ldquo;翻译器&rdquo;（如 CLIP）**将人类语言转换为计算机可理解的数字化描述。这个过程称为文本编码。</p>
+<p>编码后的信息进入&quot;<strong>latent space&quot;（潜在空间）</strong>。使用潜在空间的原因是为了减少计算量。直接处理一张 512 × 512 像素的图片需要计算 786,432 个数据点（512 × 512 × 3 RGB 通道），这会消耗大量算力。通过使用潜在空间，我们可以更高效地处理这些数据。它可以将数据压缩成64 × 64 × 4 = 16,384个通道，大大降低了计算成本。这就是为什么在使用Comfy UI时，我们需要将数据转换到潜在空间。</p>
+<p>AI生成图像的过程包括添加噪声和去除噪声两个步骤。在潜在空间中，有一个叫做**&ldquo;unit&quot;的组件**，它会指导如何根据随机种子生成带噪声的图像。</p>
+<aside>
+💡
+<p>随机种子是什么呢？它就像是一个起点数字。即使使用相同的关键词（比如&quot;one girl&rdquo;），每次生成的图像都会不同，这是因为每次都会随机选择一个不同的种子数字。不同的随机种子会产生不同的噪点，所以在去除噪点的过程中，我们会得到不同的图像。</p>
+</aside>
+<p>在生成图像时，我们还可以选择不同的参数，比如采样器、CFC和skill等。如果你现在不了解这些参数也不用担心，我们以后会详细解释的。</p>
+<p>借助unit组件，图片在计算机内已经生成，但它是计算机理解的形式。对计算机来说，这些数据就是图片，但对我们人类来说，它只是一串数字，我们无法直接看懂。</p>
+<p>接下来是最后一步：解压缩。因为之前我们压缩了数据，所以现在需要解压缩。这个过程通过<strong>VAE解码器</strong>完成。之前我们用编码器让计算机理解我们的语言，现在解码器则是让计算机输出我们能看懂的图像。</p>
+<p>解码完成后，我们就能看到最终的图像了。这就是整个图像生成的过程，建议大家多次回顾以便更好地理解。</p>
+
+
+  
+    
+      <a href="http://localhost:1313//tags/stable-diffusion-%E7%B3%BB%E7%BB%9F%E8%AF%BE/">#Stable Diffusion 系统课</a>
+    
+      <a href="http://localhost:1313//tags/comfyui/">#ComfyUI</a>
+    
+      <a href="http://localhost:1313//tags/ai/">#AI</a>
+    
+  
+
+<p style="color:#777;">最后一次修改于 2024-10-15</p>
+</div>
+<a href="#top"><i class="fa fa-chevron-up" style="font-size: 30px; color: black;"></i></a>
+
+</main>
+
+<footer class="footer">
+  <div class="content">
+
+<script src="https://giscus.app/client.js"
+        data-repo="finderaha/myblog"
+        data-repo-id="R_kgDOLxcP2A"
+        data-category="Announcements"
+        data-category-id="DIC_kwDOLxcP2M4Ce2as"
+        data-mapping="pathname"
+        data-strict="0"
+        data-reactions-enabled="1"
+        data-emit-metadata="0"
+        data-input-position="top"
+        data-theme="preferred_color_scheme"
+        data-lang="zh-CN"
+        data-loading="lazy"
+        crossorigin="anonymous"
+        async>
+</script>
+</br>
+ 
+</div>
+
+  <script type="text/javascript" src="/js/math-code.js"></script>
+<script async src="//mathjax.rstudio.com/latest/MathJax.js?config=TeX-MML-AM_CHTML"></script>
+<script type="text/javascript" src="/js/center-img.js"></script>
+
+
+
+     <ul class="footer-links">
+      
+       
+       
+       
+       <li><a href="/cn/posts/index.xml" type="application/rss+xml" title="RSS feed">
+       订阅 </a>
+       </li>
+       
+       
+       <li>
+       
+       <a href="http://creativecommons.org/licenses/by-nc-sa/4.0/deed.zh" target="_blank">
+       
+        版权
+        <i class="fa fa-cc" aria-hidden="true" title="Attribution-NonCommercial-ShareAlike 4.0 International"></i> 
+        </a>
+       </li>
+       
+     </ul>
+     <div class="copyright-text">
+            
+            ©
+            
+            郝志杰
+            
+            2024
+            
+     </div>
+
+</footer>
+
+
+
+
+

@@ -1,0 +1,30 @@
+# 确保工作流配置正确
+name: Deploy Hugo site
+
+on:
+  push:
+    branches:
+      - main  # 确认分支名称正确
+
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v2
+        with:
+          submodules: true
+          fetch-depth: 0
+          
+      - name: Setup Hugo
+        uses: peaceiris/actions-hugo@v2
+        with:
+          hugo-version: 'latest'
+          
+      - name: Build
+        run: hugo --minify
+        
+      - name: Deploy
+        uses: peaceiris/actions-gh-pages@v3
+        with:
+          github_token: ${{ secrets.GITHUB_TOKEN }}
+          publish_dir: ./public 

@@ -1,0 +1,321 @@
+<script src="/livereload.js?mindelay=10&amp;v=2&amp;port=1313&amp;path=livereload" data-no-instant defer></script><a name="top"></a>
+<!DOCTYPE html>
+<html lang="en-us">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Finder</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+
+    <link rel="stylesheet" href="/css/style.css" />
+    <link rel="stylesheet" href="/css/fonts.css" />
+     
+  </head>
+  
+  <body>
+    <div class="wrapper">
+      <header class="header">
+        <nav class="nav" >
+      <a href="/" class="nav-logo">
+        <img src="/media/hugo-logo.png"
+         width="50"
+         height="50"
+         alt="Hugo-ht">
+      </a>
+
+      <ul class="nav-links" >
+        
+        
+           <li><a href="/">主页</a></li>
+       
+           <li><a href="/cn/posts/">日志</a></li>
+       
+           <li><a href="/cn/about/">关于</a></li>
+       
+           <li><a href="/en/posts/">English</a></li>
+       
+       
+      </ul>
+</nav>
+
+      </header>
+
+<main class = "content" role="main">
+<div style="text-align: center">
+
+<h1>一个python新浪面试题</h1>
+
+<p>Finder 
+ / 2024-08-18 </p>
+
+<hr/>
+</div>
+
+<span class="article-toolbar">
+  
+  
+  
+  
+  
+  
+  
+  <a href='https://github.com/UFinderaha/myblog/edit/main/content/cn%5cposts%5c2024-8-18-%e8%a7%a3%e5%86%b3%e4%b8%80%e4%b8%aapython%e9%97%ae%e9%a2%98.md'style="font-size: 24px; color: black;" target="_blank"><i class="fa fa-edit" aria-hidden="true" title="编辑本页"></i>
+  </a>
+  
+  
+  
+</span>
+
+
+<aside class="toc">
+Table of Contents:
+<nav id="TableOfContents">
+  <ol>
+    <li><a href="#推导式">推导式</a></li>
+    <li><a href="#匿名函数">匿名函数</a>
+      <ol>
+        <li><a href="#定义">定义</a></li>
+        <li><a href="#使用场景">使用场景</a></li>
+        <li><a href="#原理">原理</a></li>
+      </ol>
+    </li>
+    <li><a href="#题目代码拆解">题目代码拆解</a></li>
+  </ol>
+</nav>
+</aside>
+
+
+<div class="body-text list-text">
+<p>以下是一道新浪微博面试题，我们将详细拆解该题目。</p>
+<div class="highlight"><pre tabindex="0" style=";-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-python" data-lang="python"><span style="display:flex;"><span>data_list <span style="color:#666">=</span> [<span style="color:#008000;font-weight:bold">lambda</span> x: x <span style="color:#666">+</span> i <span style="color:#008000;font-weight:bold">for</span> i <span style="color:#a2f;font-weight:bold">in</span> <span style="color:#008000">range</span>(<span style="color:#666">10</span>)]  <span style="color:#408080;font-style:italic"># [函数, 函数, 函数]   i=9</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>v1 <span style="color:#666">=</span> data_list[<span style="color:#666">0</span>](<span style="color:#666">100</span>)
+</span></span><span style="display:flex;"><span>v2 <span style="color:#666">=</span> data_list[<span style="color:#666">3</span>](<span style="color:#666">100</span>)
+</span></span><span style="display:flex;"><span><span style="color:#008000">print</span>(v1, v2)  <span style="color:#408080;font-style:italic"># 109 109</span>
+</span></span></code></pre></div><p>如果不仔细阅题，可能会得出&quot;100&quot;和&quot;102&quot;的答案。有趣的是，如果将此题目输入ChatGPT-4或Kimi，它们会给出&quot;100&quot;和&quot;103&quot;的答案。唯一给出正确答案的是Claude 3.5（值得表扬）。</p>
+<p>为了便于后续拆解题目，让我们先复习一些相关知识：</p>
+<h2 id="推导式">推导式<a href="#推导式" class="header-anchor" ariaLabel="Anchor"> # </a></h2>
+<p>推导式（Comprehension）是Python中一种简洁而强大的语法特性，用于创建列表、字典、集合或生成器。它允许你用一行简洁的代码替代更冗长的for循环。让我们详细了解各种类型的推导式：</p>
+<ol>
+<li>
+<p>列表推导式（List Comprehension）:</p>
+<p>基本语法：<code>[expression for item in iterable if condition]</code></p>
+<p>例子：</p>
+<div class="highlight"><pre tabindex="0" style=";-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-python" data-lang="python"><span style="display:flex;"><span>squares <span style="color:#666">=</span> [x<span style="color:#666">**</span><span style="color:#666">2</span> <span style="color:#008000;font-weight:bold">for</span> x <span style="color:#a2f;font-weight:bold">in</span> <span style="color:#008000">range</span>(<span style="color:#666">10</span>)]
+</span></span><span style="display:flex;"><span><span style="color:#408080;font-style:italic"># 结果：[0, 1, 4, 9, 16, 25, 36, 49, 64, 81]</span>
+</span></span></code></pre></div></li>
+<li>
+<p>字典推导式（Dictionary Comprehension）:</p>
+<p>基本语法：<code>{key_expression: value_expression for item in iterable if condition}</code></p>
+<p>例子：</p>
+<div class="highlight"><pre tabindex="0" style=";-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-python" data-lang="python"><span style="display:flex;"><span>square_dict <span style="color:#666">=</span> {x: x<span style="color:#666">**</span><span style="color:#666">2</span> <span style="color:#008000;font-weight:bold">for</span> x <span style="color:#a2f;font-weight:bold">in</span> <span style="color:#008000">range</span>(<span style="color:#666">5</span>)}
+</span></span><span style="display:flex;"><span><span style="color:#408080;font-style:italic"># 结果：{0: 0, 1: 1, 2: 4, 3: 9, 4: 16}</span>
+</span></span></code></pre></div></li>
+<li>
+<p>集合推导式（Set Comprehension）:</p>
+<p>基本语法：<code>{expression for item in iterable if condition}</code></p>
+<p>例子：</p>
+<div class="highlight"><pre tabindex="0" style=";-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-python" data-lang="python"><span style="display:flex;"><span>even_squares <span style="color:#666">=</span> {x<span style="color:#666">**</span><span style="color:#666">2</span> <span style="color:#008000;font-weight:bold">for</span> x <span style="color:#a2f;font-weight:bold">in</span> <span style="color:#008000">range</span>(<span style="color:#666">10</span>) <span style="color:#008000;font-weight:bold">if</span> x <span style="color:#666">%</span> <span style="color:#666">2</span> <span style="color:#666">==</span> <span style="color:#666">0</span>}
+</span></span><span style="display:flex;"><span><span style="color:#408080;font-style:italic"># 结果：{0, 4, 16, 36, 64}</span>
+</span></span></code></pre></div></li>
+<li>
+<p>生成器表达式（Generator Expression）:</p>
+<p>基本语法：<code>(expression for item in iterable if condition)</code></p>
+<p>例子：</p>
+<div class="highlight"><pre tabindex="0" style=";-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-python" data-lang="python"><span style="display:flex;"><span>gen <span style="color:#666">=</span> (x<span style="color:#666">**</span><span style="color:#666">2</span> <span style="color:#008000;font-weight:bold">for</span> x <span style="color:#a2f;font-weight:bold">in</span> <span style="color:#008000">range</span>(<span style="color:#666">10</span>))
+</span></span><span style="display:flex;"><span><span style="color:#408080;font-style:italic"># 创建一个生成器对象，可以逐个生成平方数</span>
+</span></span></code></pre></div></li>
+</ol>
+<p>特点和注意事项：</p>
+<ol>
+<li>简洁性：推导式通常比等效的for循环更简洁。</li>
+<li>可读性：对于简单操作，推导式可提高代码可读性。但对于复杂逻辑，可能会降低可读性。</li>
+<li>性能：在某些情况下，推导式可能比等效的for循环更高效。</li>
+<li>条件筛选：可以使用if子句进行筛选。</li>
+<li>嵌套：可以使用嵌套的for循环。
+例如：<code>[(x, y) for x in [1,2,3] for y in [3,1,4] if x != y]</code></li>
+<li>变量作用域：推导式有自己的局部作用域。</li>
+<li>lambda函数：可以在推导式中使用lambda函数。</li>
+</ol>
+<p>示例：结合多个特性的复杂推导式</p>
+<div class="highlight"><pre tabindex="0" style=";-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-python" data-lang="python"><span style="display:flex;"><span>matrix <span style="color:#666">=</span> [[<span style="color:#666">1</span>, <span style="color:#666">2</span>, <span style="color:#666">3</span>], [<span style="color:#666">4</span>, <span style="color:#666">5</span>, <span style="color:#666">6</span>], [<span style="color:#666">7</span>, <span style="color:#666">8</span>, <span style="color:#666">9</span>]]
+</span></span><span style="display:flex;"><span>flattened <span style="color:#666">=</span> [num <span style="color:#008000;font-weight:bold">for</span> row <span style="color:#a2f;font-weight:bold">in</span> matrix <span style="color:#008000;font-weight:bold">for</span> num <span style="color:#a2f;font-weight:bold">in</span> row <span style="color:#008000;font-weight:bold">if</span> num <span style="color:#666">%</span> <span style="color:#666">2</span> <span style="color:#666">!=</span> <span style="color:#666">0</span>]
+</span></span><span style="display:flex;"><span><span style="color:#408080;font-style:italic"># 结果：[1, 3, 5, 7, 9]</span>
+</span></span></code></pre></div><p>推导式是Python中非常有用的特性，能够使代码更加简洁和富有表现力。但是，过度使用或在复杂情况下使用可能会降低代码的可读性，所以需要权衡使用。</p>
+<h2 id="匿名函数">匿名函数<a href="#匿名函数" class="header-anchor" ariaLabel="Anchor"> # </a></h2>
+<p>Python中的匿名函数通常被称为<code>lambda</code>函数。它们是简洁的一行函数，没有名字，适合用于需要简单功能的小场景。以下是关于匿名函数的定义、使用场景、原理和一些例子的详细介绍。</p>
+<h3 id="定义">定义<a href="#定义" class="header-anchor" ariaLabel="Anchor"> # </a></h3>
+<p>匿名函数使用<code>lambda</code>关键字定义，语法如下：</p>
+<div class="highlight"><pre tabindex="0" style=";-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-python" data-lang="python"><span style="display:flex;"><span><span style="color:#008000;font-weight:bold">lambda</span> 参数1, 参数2, <span style="color:#666">...</span> : 表达式
+</span></span></code></pre></div><p>例如，一个简单的匿名函数如下：</p>
+<div class="highlight"><pre tabindex="0" style=";-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-python" data-lang="python"><span style="display:flex;"><span>add <span style="color:#666">=</span> <span style="color:#008000;font-weight:bold">lambda</span> x, y: x <span style="color:#666">+</span> y
+</span></span><span style="display:flex;"><span><span style="color:#008000">print</span>(add(<span style="color:#666">3</span>, <span style="color:#666">5</span>))  <span style="color:#408080;font-style:italic"># 输出: 8</span>
+</span></span></code></pre></div><h3 id="使用场景">使用场景<a href="#使用场景" class="header-anchor" ariaLabel="Anchor"> # </a></h3>
+<ol>
+<li><strong>简化代码</strong>：在需要简单功能的地方，如排序、过滤等，可以使用匿名函数，避免定义额外的函数。</li>
+<li><strong>函数式编程</strong>：与高阶函数（如<code>map</code>、<code>filter</code>、<code>reduce</code>）一起使用，可以使代码更简洁。</li>
+<li><strong>回调函数</strong>：在事件处理或异步编程中，匿名函数可以作为回调函数传递。</li>
+</ol>
+<h3 id="原理">原理<a href="#原理" class="header-anchor" ariaLabel="Anchor"> # </a></h3>
+<p>匿名函数本质上是一个内联函数（inline function），它在定义时即创建，不需要命名。与普通函数不同，匿名函数只能包含一个表达式，不能包含复杂的语句或多行代码。这使得匿名函数非常轻量，适合用于简单的操作。</p>
+<h2 id="题目代码拆解">题目代码拆解<a href="#题目代码拆解" class="header-anchor" ariaLabel="Anchor"> # </a></h2>
+<p>根据上面的两个知识点，我们可以将</p>
+<div class="highlight"><pre tabindex="0" style=";-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-python" data-lang="python"><span style="display:flex;"><span>data_list <span style="color:#666">=</span> [<span style="color:#008000;font-weight:bold">lambda</span> x: x <span style="color:#666">+</span> i <span style="color:#008000;font-weight:bold">for</span> i <span style="color:#a2f;font-weight:bold">in</span> <span style="color:#008000">range</span>(<span style="color:#666">10</span>)]
+</span></span></code></pre></div><p>代码拆解成常规函数的样子，如下：</p>
+<div class="highlight"><pre tabindex="0" style=";-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-python" data-lang="python"><span style="display:flex;"><span>data_list <span style="color:#666">=</span> []
+</span></span><span style="display:flex;"><span><span style="color:#008000;font-weight:bold">for</span> i <span style="color:#a2f;font-weight:bold">in</span> <span style="color:#008000">range</span>(<span style="color:#666">10</span>):
+</span></span><span style="display:flex;"><span>    <span style="color:#008000;font-weight:bold">def</span> <span style="color:#00f">func</span>(x):
+</span></span><span style="display:flex;"><span>        <span style="color:#008000;font-weight:bold">return</span> x <span style="color:#666">+</span> i
+</span></span><span style="display:flex;"><span>    data_list<span style="color:#666">.</span>append(func)
+</span></span></code></pre></div><p>起初，我理所当然地将函数拆解成了如下的样子：</p>
+<div class="highlight"><pre tabindex="0" style=";-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-python" data-lang="python"><span style="display:flex;"><span><span style="color:#408080;font-style:italic"># 错误写法</span>
+</span></span><span style="display:flex;"><span>data_list <span style="color:#666">=</span> []
+</span></span><span style="display:flex;"><span><span style="color:#008000;font-weight:bold">def</span> <span style="color:#00f">func</span>(x):
+</span></span><span style="display:flex;"><span>    <span style="color:#008000;font-weight:bold">for</span> i <span style="color:#a2f;font-weight:bold">in</span> <span style="color:#008000">range</span>(<span style="color:#666">10</span>):
+</span></span><span style="display:flex;"><span>        <span style="color:#008000;font-weight:bold">return</span> x <span style="color:#666">+</span> i
+</span></span></code></pre></div><p>分析列表推导式</p>
+<div class="highlight"><pre tabindex="0" style=";-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-python" data-lang="python"><span style="display:flex;"><span>data_list <span style="color:#666">=</span> [<span style="color:#008000;font-weight:bold">lambda</span> x: x <span style="color:#666">+</span> i <span style="color:#008000;font-weight:bold">for</span> i <span style="color:#a2f;font-weight:bold">in</span> <span style="color:#008000">range</span>(<span style="color:#666">10</span>)]
+</span></span></code></pre></div><p>首先确定的应该是data_list的元素，也就是for前面的部分lambda x: x + i。这意味着匿名函数是列表的元素。所以可以写成：</p>
+<div class="highlight"><pre tabindex="0" style=";-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-python" data-lang="python"><span style="display:flex;"><span><span style="color:#008000;font-weight:bold">for</span> i <span style="color:#a2f;font-weight:bold">in</span> <span style="color:#008000">range</span>(<span style="color:#666">10</span>):
+</span></span><span style="display:flex;"><span>    <span style="color:#008000;font-weight:bold">lambda</span> x: x <span style="color:#666">+</span> i
+</span></span></code></pre></div><p>进而可以整理出它的完整函数写法（如上所示）。</p>
+<p>接下来查看</p>
+<div class="highlight"><pre tabindex="0" style=";-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-python" data-lang="python"><span style="display:flex;"><span>v1 <span style="color:#666">=</span> data_list[<span style="color:#666">0</span>](<span style="color:#666">100</span>)  <span style="color:#408080;font-style:italic"># 列表第1个函数，参数x为100</span>
+</span></span><span style="display:flex;"><span>v2 <span style="color:#666">=</span> data_list[<span style="color:#666">3</span>](<span style="color:#666">100</span>)  <span style="color:#408080;font-style:italic"># 列表第4个函数，参数x为100</span>
+</span></span><span style="display:flex;"><span><span style="color:#008000">print</span>(v1, v2)  <span style="color:#408080;font-style:italic"># 109 109</span>
+</span></span></code></pre></div><p>这里需要确定的是隐藏参数i的值。由于Python的后期绑定特性，i的值都为9。因此，可以确定v1和v2都是109。</p>
+<aside>
+Python的后期绑定（late binding）是一个重要的语言特性，它主要涉及到闭包（closures）和变量作用域。让我详细解释一下：
+<ol>
+<li>定义：
+后期绑定指的是在闭包中，自由变量（在内部函数中使用但不在其中定义的变量）的值是在函数被调用时确定的，而不是在函数定义时确定。</li>
+<li>工作原理：
+<ul>
+<li>当Python创建一个闭包时，它不会复制外部变量的值。</li>
+<li>相反，它保存了对变量的引用。</li>
+<li>当闭包最终被执行时，它会查找当前的变量值。</li>
+</ul>
+</li>
+<li></li>
+</ol>
+<pre><code>示例：
+
+这会打印 `[6, 6, 6, 6]`，而不是预期的 `[0, 2, 4, 6]`，因为所有的 lambda 函数都引用了最终的 `i` 值（3）。
+
+```python
+def create_multipliers():
+    return [lambda x: i * x for i in range(4)]
+
+multipliers = create_multipliers()
+print([m(2) for m in multipliers])
+```
+</code></pre>
+<ol start="4">
+<li>影响：
+<ul>
+<li>这可能导致一些反直觉的行为，特别是在使用循环创建函数时。</li>
+<li>它影响到列表推导式、生成器表达式和 lambda 函数中的变量绑定。</li>
+</ul>
+</li>
+<li>优点：
+<ul>
+<li>允许更灵活的编程模式。</li>
+<li>在某些情况下可以节省内存，因为不需要在闭包创建时复制值。</li>
+</ul>
+</li>
+<li>缺点：
+<ul>
+<li>可能导致难以追踪的bug，特别是对于不熟悉这个特性的程序员。</li>
+<li>在循环中创建函数时可能会产生意外结果。</li>
+</ul>
+</li>
+<li>解决方法：
+<ul>
+<li>使用默认参数来捕获当前值：<code>lambda x, i=i: i * x</code></li>
+<li>在 Python 3.x 中，可以使用 <code>nonlocal</code> 关键字（虽然在列表推导式中不适用）。</li>
+</ul>
+</li>
+<li>为什么存在：
+这是 Python 设计的一个有意识的选择，旨在保持语言的一致性和简洁性。它与 Python 的整体变量作用域规则相一致。</li>
+<li>其他语言的对比：
+不同的编程语言处理这种情况的方式不同。例如，JavaScript 在引入 let 关键字之前也有类似的行为。</li>
+</ol>
+</aside>
+
+  
+    
+      <a href="http://localhost:1313//tags/python%E5%AD%A6%E4%B9%A0%E8%AE%B0%E5%BD%95/">#Python学习记录</a>
+    
+  
+
+<p style="color:#777;">最后一次修改于 2024-08-18</p>
+</div>
+<a href="#top"><i class="fa fa-chevron-up" style="font-size: 30px; color: black;"></i></a>
+
+</main>
+
+<footer class="footer">
+  <div class="content">
+
+<script src="https://giscus.app/client.js"
+        data-repo="finderaha/myblog"
+        data-repo-id="R_kgDOLxcP2A"
+        data-category="Announcements"
+        data-category-id="DIC_kwDOLxcP2M4Ce2as"
+        data-mapping="pathname"
+        data-strict="0"
+        data-reactions-enabled="1"
+        data-emit-metadata="0"
+        data-input-position="top"
+        data-theme="preferred_color_scheme"
+        data-lang="zh-CN"
+        data-loading="lazy"
+        crossorigin="anonymous"
+        async>
+</script>
+</br>
+ 
+</div>
+
+  <script type="text/javascript" src="/js/math-code.js"></script>
+<script async src="//mathjax.rstudio.com/latest/MathJax.js?config=TeX-MML-AM_CHTML"></script>
+<script type="text/javascript" src="/js/center-img.js"></script>
+
+
+
+     <ul class="footer-links">
+      
+       
+       
+       
+       <li><a href="/cn/posts/index.xml" type="application/rss+xml" title="RSS feed">
+       订阅 </a>
+       </li>
+       
+       
+       <li>
+       
+       <a href="http://creativecommons.org/licenses/by-nc-sa/4.0/deed.zh" target="_blank">
+       
+        版权
+        <i class="fa fa-cc" aria-hidden="true" title="Attribution-NonCommercial-ShareAlike 4.0 International"></i> 
+        </a>
+       </li>
+       
+     </ul>
+     <div class="copyright-text">
+            
+            ©
+            
+            郝志杰
+            
+            2024
+            
+     </div>
+
+</footer>
+
+
+
+
+
