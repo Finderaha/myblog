@@ -6,3 +6,16 @@ security:
 staticDir:
   - static
   - content/cn/posts/images 
+
+module:
+  mounts:
+    - source: static
+      target: static
+    - source: content
+      target: content
+    - source: layouts
+      target: layouts
+    - source: data
+      target: data
+    - source: assets
+      target: assets 

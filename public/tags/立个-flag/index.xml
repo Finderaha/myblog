@@ -1,19 +1,5 @@
-<?xml version="1.0" encoding="utf-8" standalone="yes"?>
-<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
-  <channel>
-    <title>立个 Flag on Finder</title>
-    <link>http://localhost:1313/tags/%E7%AB%8B%E4%B8%AA-flag/</link>
-    <description>Recent content in 立个 Flag on Finder</description>
-    <generator>Hugo -- gohugo.io</generator>
-    <language>en-us</language>
-    <lastBuildDate>Sat, 11 May 2024 00:00:00 +0000</lastBuildDate>
-    <atom:link href="http://localhost:1313/tags/%E7%AB%8B%E4%B8%AA-flag/index.xml" rel="self" type="application/rss+xml" />
-    <item>
-      <title>Python学习</title>
-      <link>http://localhost:1313/cn/2024/05/11/python/</link>
-      <pubDate>Sat, 11 May 2024 00:00:00 +0000</pubDate>
-      <guid>http://localhost:1313/cn/2024/05/11/python/</guid>
-      <description>从 21 年开始，因为各种原因，都想过要学习一门编程语言，始终没坚持下来。最近因为收入压力，希望能借助编程赚一点外快，下定决心要学习一门编程语言。&#xA;对于一个没有编程基础的人来说，未知是最难逾越的障碍。即便前面陆续学过一点基础语法知识 ，但距离真正的写项目代码，中间仍然有非常大的鸿沟。所以，找到一个合适自己的教程是首要问题。&#xA;起初我是打算报个班的，一是解决自制力不足，无法每天学习问题；二是编写代码过程中会遇到很多问题，需要有人指导。咨询了一下，市面上靠点谱的培训都在 1w 左右，主打的基本都是系统的课程、1 对 1 老师答疑、包就业。但是看参加培训的人反馈，差强人意（主要还是穷）。而且每天跟程序员打交道，真遇到不会的问题，可以当面问这些可爱的“亲人”。果断在淘宝上花50购买了一个体系课程。&#xA;学习计划： Python 体系化开发学习 学习目标 可以独立完成 python 项目开发 验证标准 1. 医院自助挂号系统搭建 2. 自媒体“刚刚”自动化更新流程搭建 学习周期 2024年 5 月 - 24 年 11 月 学习路径 学习阶段 学习周期 学习内容 第1关: 开发基础 12天 Python开发基础、数据类型、流程控制、字符编码、⽂件IO操作、股票分析、抽奖程序 第2关: 函数编程 12天 函数、递归、闭包、装饰器、迭代器、re正则、邮件处理、excel处理、⽇期模块、加密模块、ssh客户端、logging处理、ATM程序、炸⾦花游戏 第3关: ⾯向对象&amp;amp;⽹络编程&amp;amp;并发 11天 类&amp;amp;对象&amp;amp;实例、私有变量、静态变量、反射、MetaClass、构造⽅法、封装、多态、继承、领域建模。&#xA;TCP/IP原理剖析、Socket模块、粘包问题、⽹络消息传送、⽂件传输、⽂件完整性校验、⽹络通信安全、SocketServer源码剖析\线程、进程、协程、IO多路复⽤模型 、信号、锁、管道、队列。 第4关: 数据库开发 6天 Mysql数据库表结构设计、SQL语句、索引设计 、事务ACID、触发器、存储过程、图书管理系统设计实战 第5关: WEB前端开发 16天 1. HTML标签 2. CSS元素渲染和布局 3. JavaScript基本语法 4. jQuery框架&amp;amp;BootStrap框架 5. 实战开发案例：⼩⽶商城⻚⾯设计开发 第6关: ⼤名鼎鼎的Django 17天 1.</description>
-    </item>
-  </channel>
-</rss>
+<?xml version="1.0" encoding="utf-8" standalone="yes"?><rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>立个 Flag on Finder</title><link>https://finderaha.com/tags/%E7%AB%8B%E4%B8%AA-flag/</link><description>Recent content in 立个 Flag on Finder</description><generator>Hugo -- gohugo.io</generator><language>en-us</language><lastBuildDate>Sat, 11 May 2024 00:00:00 +0000</lastBuildDate><atom:link href="https://finderaha.com/tags/%E7%AB%8B%E4%B8%AA-flag/index.xml" rel="self" type="application/rss+xml"/><item><title>Python学习</title><link>https://finderaha.com/cn/2024/05/11/python/</link><pubDate>Sat, 11 May 2024 00:00:00 +0000</pubDate><guid>https://finderaha.com/cn/2024/05/11/python/</guid><description>从 21 年开始，因为各种原因，都想过要学习一门编程语言，始终没坚持下来。最近因为收入压力，希望能借助编程赚一点外快，下定决心要学习一门编程语言。
+对于一个没有编程基础的人来说，未知是最难逾越的障碍。即便前面陆续学过一点基础语法知识 ，但距离真正的写项目代码，中间仍然有非常大的鸿沟。所以，找到一个合适自己的教程是首要问题。
+起初我是打算报个班的，一是解决自制力不足，无法每天学习问题；二是编写代码过程中会遇到很多问题，需要有人指导。咨询了一下，市面上靠点谱的培训都在 1w 左右，主打的基本都是系统的课程、1 对 1 老师答疑、包就业。但是看参加培训的人反馈，差强人意（主要还是穷）。而且每天跟程序员打交道，真遇到不会的问题，可以当面问这些可爱的“亲人”。果断在淘宝上花50购买了一个体系课程。
+学习计划： Python 体系化开发学习 学习目标 可以独立完成 python 项目开发 验证标准 1. 医院自助挂号系统搭建 2. 自媒体“刚刚”自动化更新流程搭建 学习周期 2024年 5 月 - 24 年 11 月 学习路径 学习阶段 学习周期 学习内容 第1关: 开发基础 12天 Python开发基础、数据类型、流程控制、字符编码、⽂件IO操作、股票分析、抽奖程序 第2关: 函数编程 12天 函数、递归、闭包、装饰器、迭代器、re正则、邮件处理、excel处理、⽇期模块、加密模块、ssh客户端、logging处理、ATM程序、炸⾦花游戏 第3关: ⾯向对象&amp;amp;⽹络编程&amp;amp;并发 11天 类&amp;amp;对象&amp;amp;实例、私有变量、静态变量、反射、MetaClass、构造⽅法、封装、多态、继承、领域建模。
+TCP/IP原理剖析、Socket模块、粘包问题、⽹络消息传送、⽂件传输、⽂件完整性校验、⽹络通信安全、SocketServer源码剖析\线程、进程、协程、IO多路复⽤模型 、信号、锁、管道、队列。 第4关: 数据库开发 6天 Mysql数据库表结构设计、SQL语句、索引设计 、事务ACID、触发器、存储过程、图书管理系统设计实战 第5关: WEB前端开发 16天 1. HTML标签 2. CSS元素渲染和布局 3. JavaScript基本语法 4. jQuery框架&amp;amp;BootStrap框架 5. 实战开发案例：⼩⽶商城⻚⾯设计开发 第6关: ⼤名鼎鼎的Django 17天 1.</description></item></channel></rss>

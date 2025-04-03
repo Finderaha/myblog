@@ -1,54 +1,73 @@
-<?xml version="1.0" encoding="utf-8" standalone="yes"?>
-<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
-  <channel>
-    <title>AI on Finder</title>
-    <link>http://localhost:1313/tags/ai/</link>
-    <description>Recent content in AI on Finder</description>
-    <generator>Hugo -- gohugo.io</generator>
-    <language>en-us</language>
-    <lastBuildDate>Fri, 01 Nov 2024 00:00:00 +0000</lastBuildDate>
-    <atom:link href="http://localhost:1313/tags/ai/index.xml" rel="self" type="application/rss+xml" />
-    <item>
-      <title>图生图基础工作流搭建&#43;人物转绘&#43;Controlnet线稿应用</title>
-      <link>http://localhost:1313/cn/2024/11/01/stable-diffusion/</link>
-      <pubDate>Fri, 01 Nov 2024 00:00:00 +0000</pubDate>
-      <guid>http://localhost:1313/cn/2024/11/01/stable-diffusion/</guid>
-      <description>图生图（Image-to-Image）的工作流和其核心用途，包括风格转换、细节增强、清晰度提升、人脸和手部修复等多个方面。&#xA;图生图的主要用途： 风格转绘：将现有图像转为其他风格，比如将写实人物变为动漫风格。 让画面更加丰富：增加图像细节，让画面更丰富。 提升图像的清晰度。 修复面部和手部。 扩充图像尺寸。 图生图的工作流搭建： 1. 图像加载节点和 VAE 编码器 与文生图（Text-to-Image）类似，但增加了两个新节点：“图像加载”节点和 VAE 编码器。 图像加载节点用于加载图像，VAE 编码器将图像从像素空间转换到潜在空间。 将checkpiont加载器(简易) 的 VAE 和‘加载图片’节点中的图像 链接到VAE编码器上，将VAE编码器latent链接到K采样器节点的latent上，此时，空latent就不需要了。 2. 增加‘复制latent批次’节点 添加‘’’节点控制单次生成图片的数量&#xA;添加‘复制latent批次’节点，将其放在VAE编码器和K采样器之间 缩放方法选择默认，裁剪建议使用center(中心裁剪)的方式 3. K采样器 降噪参数的调整 降噪参数用于控制图像的重绘幅度。&#xA;降噪=denoising=重绘幅度，阈值在0 - 1 之间。 值越高，生成图像与原图相似度越低；值越低，相似度越高。适当调节降噪值可以实现保留原图特征的同时进行风格转换。 4. 添加‘图像缩放’节点 图像缩放节点控制生成图像的比例。&#xA;将图像缩放节点添加到‘加载图像’与‘VAE编码’之间 5. 生成后对比工具 图像对比节点可以直观展示原图和生成图之间的差异，让用户一目了然看到风格转换的效果。&#xA;管理器-节点管理-搜索rgthree,安装后，重启comfyUI 双击搜索-添加‘图像对比’节点 控制网（Control Net）的使用： 控制网可以精细控制图像的结构和形状，确保在转换风格时保持人物的轮廓不变。添加 Control Net 应用模块和预处理器可以达到更精确的风格转换效果。&#xA;1. 选择合适的大模型： 使用特定风格的大模型决定生成的图像风格，例如写实风格或动漫风格模型。选择合适的模型可以在最大程度上实现预期的转换效果。&#xA;2. ControlNet加载器和ControlNet应用 添加ControlNet加载器和ControlNet应用 大模型什么版本就选什么版本的控制网络模型版本，1.5和2.1版本是共通的，XL模型有专门的XL Controlnet 3. 添加预处理器 根据Controlnet对应的模型，添加对应的预处理器&#xA;💡&#xD;LineArt艺术线预处理器&#xA;粗糙化：管控Controlnet模型强度，强度越高，生成的图片与预处理的图像越相似。 分辨率： 自定义生成提示音： 可以在节点中添加提示音功能，在生成完成后播放音效。通过自定义音频文件，还可以为生成过程添加个性化提示音。&#xA;添加“播放声音”节点 如果找不到，管理器-节点管理-搜索Custom Script - 安装重启 将输入链接到VAE解码图像上即可 如果声音不喜欢，则在 根目录 - custom nodes - custom scripts web - js - assets 添加声音mp3 </description>
-    </item>
-    <item>
-      <title>在ComfyUI实现中文提示词输入</title>
-      <link>http://localhost:1313/cn/2024/10/29/stable-diffusion/</link>
-      <pubDate>Tue, 29 Oct 2024 00:00:00 +0000</pubDate>
-      <guid>http://localhost:1313/cn/2024/10/29/stable-diffusion/</guid>
-      <description>Comfy UI 中实现中文提示词的书写，主要通过以下步骤和节点进行操作：&#xA;中文提示词 1. 节点管理与安装扩展 双击空白处，搜索 translate，查看是否出现六个翻译节点。 如果没有出现，前往管理器，点击节点管理，搜索并安装 ALEKPET 扩展。 安装完成后重启，再次搜索 translate，即可看到相关节点。 2. 选择翻译节点 Argos 翻译：完全本地翻译，无需网络，适合快速翻译。输入格式为 zh（中文简体）到 EN（英文）。 Google Translate：需要网络，选择 from 为 auto，系统会自动检测输入语言，适合多种语言的翻译。 Clip 文本编码器（翻译高级）：也可自动检测语言，支持多个 API 接口（如 Google、MyMemory 等），灵活切换。 3. 展示英文翻译 可通过双击空白处，搜索“展示文本”或“预览文本”来查看英文翻译。 连接翻译节点的“字符串”和展示文本节点的“文本”，以便实时查看翻译结果。 💡&#xD;提升测试效率&#xA;在测试翻译节点时，为了避免渲染图像影响速度，可以使用快捷键： Ctrl + B：忽略当前节点功能，保持节点连接。 Ctrl + M：忽略当前节点及其前后连接节点，完全断开。 在添加节点时，可以点击上个节点尾部，拖拽就会出现提示，会提示常用的几个节点，方便快速添加。 分类分段提示词 当我们希望将提示按照主体、主体特征、风格、镜头、环境等分类分段填写时，借助“字符床操作”节点可以快速实现。&#xA;1. 双击空白处，搜索“字符串操作” 在‘字符串操作’节点中，append代表叠加，replace代表上面输入框内容覆盖下面输入框内容，通常选择append即可。 在‘字符串操作’节点中，整个词条 选择 yes即可。 2. 选择‘clip文本编码器’节点，右键-转化为输入-转化文本为输入 此时clip文本编码器节点中的输入框会消失不见，变成一个输入节点 将‘字符床操作’的尾部链接到该输入节点即可 3. 选择‘字符床操作’节点，右键-转化为输入-转化文本A/B/C 为输入 添加‘翻译文本(argos翻译)’节点，复制3个相同节点 将‘翻译文本(argos翻译)’节点的‘字符串’链接到‘字符串操作’节点对应输入文本上 4. 添加‘自动负面关键词’节点 找到管理器-节点管理-one button prompt, install 如果无法成功安装，可以在chrome中搜索‘one button prompt comfyui’-点击github-下载zip文件，找到comfyui根目录-custom_nodes，解压后删掉压缩包，重启comfyui即可 双击，搜索‘自动负面提示词’，添加即可 增强负面添加到1 随机强度为0 base_model 根据大模型版本进行选择 将负面提示词的‘clip文本编码器’的组件转化为输入，链接到‘自动负面提示词’即可。 </description>
-    </item>
-    <item>
-      <title>提示词书写方法和技巧</title>
-      <link>http://localhost:1313/cn/2024/10/20/stable-diffusion/</link>
-      <pubDate>Sun, 20 Oct 2024 00:00:00 +0000</pubDate>
-      <guid>http://localhost:1313/cn/2024/10/20/stable-diffusion/</guid>
-      <description>大家好，今天我们来学习如何写好AI绘图的提示词。&#xA;提示词应该包含以下几个部分：&#xA;主体特征 背景和灯光 视觉风格（关键词最前面） 艺术家风格 高清精度修饰 提示词越详细，AI生成的图像就越接近你的想法。但是，这并不意味着你应该写很长的提示词。最好控制在100个单词以内，超过限制可能会导致重要元素无法出现在图中。实际上，用10-20个单词就能生成很好看的图片。不要被网上那些使用几百个关键词生成的精美图片迷惑。记住，少而精的提示词才是关键。&#xA;主题特征 主体描述是AI绘图提示词的基础。它可以很简单，比如：&#xA;一个女孩（one girl） 一个男孩（one boy） 一只狗（one dog） 一双鞋（one pair of shoes） 你也可以用特定人物的名字，但要确保AI模型认识这个名字。&#xA;接下来，描述主体的特征。例如：&#xA;&amp;ldquo;一个穿白色裙子的女孩&amp;rdquo;（one girl wearing a white dress）&#xA;你可以添加更多细节，比如：&#xA;黑色帽子 红色耳环 蓝色项链 绿色皮鞋 背景和灯光 背景，就是你想让这个主体在哪个场景中出现，比如说在海滩 on the beach，在沙滩上面，或者说你想让它在月球漫步，walking on the moon。&#xA;其次就是灯光，常用的灯光有自然光、工作室灯光，还有电影光，当然了其他灯光也有很多，大家可以到这边的提示词里边去找，比如说这边光影正面、侧面等等等等，大家都可以做一些测试。什么霓虹灯灯光，我们试一下这个 new Lighting 是不是霓虹灯灯光就体现出来了</description>
-    </item>
-    <item>
-      <title>ComfyUI 页面介绍</title>
-      <link>http://localhost:1313/cn/2024/10/16/stable-diffusion/</link>
-      <pubDate>Wed, 16 Oct 2024 00:00:00 +0000</pubDate>
-      <guid>http://localhost:1313/cn/2024/10/16/stable-diffusion/</guid>
-      <description>Workspace 首先说说左上角的功能。如果你用的是启动器安装的ComfyUI，这个功能应该是自动有的。它属于Workspace扩展的一部分。如果你没看到这个功能，可以这样做：&#xA;点击管理器 选择节点管理 搜索&amp;quot;workspace comfyUI workspace manager&amp;quot; 如果显示&amp;quot;install&amp;quot;，就点击安装 如果显示三个按钮，就点击&amp;quot;try update&amp;quot; 更新后重启ComfyUI，功能就会出现了 有时候，即使我们在外部更新了扩展，这个功能可能还是不显示。我经过多次测试发现，在ComfyUI管理器里更新扩展更可靠，能更新到最新版本。如果你发现之前有的功能突然不见了，或者老师演示时有的功能你这里没有，就用上面的方法去更新一下。&#xA;左上角的白色文件夹图标很有用。点击它会显示一个下拉列表，里面保存了你从开始使用到现在创建或复制的所有工作流。你可以把它理解为预设或者工作流保存的地方。当你想使用某个功能时，不需要重新搭建，只要在这里点击一下就可以了。比如，我之前做的TRI高分辨率修复工作流，只要点一下就能用了。&#xA;如果你是第一次使用ComfyUI，不用担心工作流数量少。随着你学习课程，工作流会逐渐增多。好好管理和整理这些工作流，对将来使用很有帮助。&#xA;我们来看看一些基本功能：&#xA;导入工作流：你可以导入单个工作流或整个文件夹的工作流。比如，当你下载ComfyUI时，可能会有一些入门工作流。上传工作流：你可以上传整个文件夹的工作流。系统会显示文件夹中的工作流数量，点击上传后就能看到所有工作流。 新建工作流：点击加号就可以创建新的工作流。 右边的三条横线菜单包含以下选项：&#xA;设置：这里可以更改保存工作流的文件夹位置和快捷键。 深色模式：可以切换界面主题。 管理标签：可以给你的工作流添加标签，方便整理。 一些实用的快捷键：&#xA;保存工作流：Shift + S 另存为新工作流：Ctrl + Alt + S 快速搜索工作流：Ctrl + P 建议开启&amp;quot;双向同步&amp;quot;功能。这样当你手动添加工作流到文件夹时，ComfyUI界面也会自动显示。&#xA;最后，建议开启&amp;quot;照片始终置顶&amp;quot;功能，这样可以更方便地整理你的工作流。&#xA;右侧工具栏 现在我们来看看ComfyUI界面右侧的一些功能。&#xA;首先是&amp;quot;添加提示词队列&amp;quot;按钮，也就是生成图片的按钮。&amp;ldquo;执行队列&amp;quot;和&amp;quot;添加提示词队列&amp;quot;做的是同样的事情。 旁边有个&amp;quot;更多选项&amp;rdquo;，主要是用来设置批量生成的数量。我们通常不在这里改，而是在&amp;quot;批次大小&amp;quot;那里调整。 &amp;ldquo;显示队列&amp;quot;会显示你当前正在生成的所有任务。与Web UI不同，ComfyUI可以同时进行多个任务。比如，你可以同时生成图片、视频，或者使用不同的工作流。 &amp;ldquo;历史&amp;quot;会显示你之前生成的图片。点击&amp;quot;加载&amp;quot;可以显示那张图片的工作流和参数。你也可以删除历史记录。 &amp;ldquo;保存&amp;quot;是用来保存当前的工作流。这和界面上方的&amp;quot;save workflow&amp;quot;功能是一样的。 &amp;ldquo;加载&amp;quot;是用来加载一个已有的工作流。 &amp;ldquo;刷新&amp;quot;按钮用来更新界面。比如，当你添加了新的模型，可能需要点击刷新才能在界面上看到。 &amp;ldquo;清除&amp;quot;会清空整个页面，相当于重置。 &amp;ldquo;加载默认&amp;quot;会加载默认的图片生成工作流。 &amp;ldquo;重置视图&amp;quot;很有用。当你的工作流太大或移动到了看不见的地方，点击这个按钮可以让视图回到中心位置。 &amp;ldquo;切换语言&amp;quot;可以在中文和英文之间切换。 管理器 最后，&amp;ldquo;管理器&amp;quot;是一个很有用的扩展，可以让你在线下载插件和模型等。&#xA;管理器是一个非常有用的扩展，可以让你在线下载插件和大模型等。&#xA;让我们来看看左边的预览设置：&#xA;通常我们会设置为&amp;quot;自动&amp;rdquo; 如果选择&amp;quot;taesd&amp;rdquo;，生成图片会稍慢，但可以实时预览 选择&amp;quot;无&amp;quot;会最快，但不会显示中间过程 这些标签设置主要是为了帮助你区分不同的扩展，选择你觉得好看的即可。&#xA;中间的&amp;quot;节点管理&amp;quot;是最重要的部分：&#xA;这里保存了很多常用的插件扩展 你可以在这里搜索和安装新的扩展 对于已安装的扩展，你可以尝试更新、禁用或卸载 安装插件的几种方法：&#xA;在管理器中搜索并安装 在Google搜索插件名称加&amp;quot;ComfyUI&amp;rdquo;，然后从GitHub下载 使用Git命令行安装（需要安装Git） 如果你导入的工作流有红色的缺失节点，可以：&#xA;打开管理器 点击&amp;quot;安装缺失节点&amp;rdquo; 选择所有缺失的节点并安装 安装后重启ComfyUI 其他功能：</description>
-    </item>
-    <item>
-      <title>文生图工作流程</title>
-      <link>http://localhost:1313/cn/2024/10/16/stable-diffusion/</link>
-      <pubDate>Wed, 16 Oct 2024 00:00:00 +0000</pubDate>
-      <guid>http://localhost:1313/cn/2024/10/16/stable-diffusion/</guid>
-      <description>大家好，今天我来教大家如何搭建文生图工作流。听完上节课的SD原理后，相信大家会更容易理解这节课的内容。&#xA;首先，我们来打开启动器。如果你安装了康复UI，在根目录下会有一个启动器，双击打开它。&#xA;进入页面后，养成这样的习惯：&#xA;先到版本管理 更新内核 更新扩展 回到第一个页面，点击一键启动 启动后，你可能会看到全是英文的界面，不要害怕！我来教你如何把它改成中文：&#xA;点击右上角的设置（齿轮图标） 往下拉，找到&amp;quot;text auto complete&amp;quot;，点击启用 找到&amp;quot;AGL translation language&amp;quot;，选择&amp;quot;Chinese simplified&amp;quot; 点击确定，界面就会变成中文了 现在，让我们看看主页面。你会看到很多长方形框，我们称为&amp;quot;节点&amp;quot;。主页面上有7个节点，组成了基本的文生图工作流。&#xA;虽然可以直接使用这个工作流，但自己动手搭建会让你学到更多，也会让后面的学习更轻松。所以，让我们一起来搭建自己的工作流吧！&#xA;这个工作流对应上节课讲的SD原理。先教大家一个选择多个节点的小技巧：按住Control键，用鼠标左键在空白处框选，然后按DELETE删除。我们现在来自己搭建。&#xA;SD的核心是什么？是大模型。它就像SD的心脏和大脑，没有它，再好的工作流也出不了图。这就是为什么上节课强调至少要有一个大模型。大模型的作用是定义图片风格，比如写实或动漫风格。&#xA;添加节点有两种常用方法：&#xA;在空白处右键点击&amp;quot;新建节点&amp;quot;。 双击页面空白处，直接搜索节点名称。 我们先添加一个大模型加载器节点。搜索&amp;quot;checkpoint&amp;quot;，选择&amp;quot;checkpoint加载器（简易）&amp;quot;。&#xA;接下来，我们需要添加文本编码器节点。这是用来输入关键词的地方。我们需要两个：一个用于正向关键词，一个用于负向关键词。&#xA;添加完节点后，我们需要把它们连接起来。节点的左边叫&amp;quot;首部&amp;quot;，右边叫&amp;quot;尾部&amp;quot;。只能把一个节点的尾部连到另一个节点的首部。&#xA;然后，我们需要添加采样器节点。右键新建节点，找到&amp;quot;采样&amp;quot;，选择&amp;quot;K采样器&amp;quot;。这里有几个重要设置：&#xA;随机种子：控制生成图片的随机性。 步数：决定降噪的次数，通常设为30-40。 CFG Scale：控制关键词和图片的相关性，建议设为7-8。 采样器：推荐使用Euler a或DPM++ 2M SDE。 调度器：通常选择normal或Karras。 最后，我们需要添加一个空latent节点来设置图片尺寸。尺寸选择取决于你使用的模型版本：&#xA;SD 1.5版本：建议512x512或512x768 SD 2.1版本：可以用768x768 SD XL或更新版本：建议1024x1024 记住，越新的模型通常支持更高的分辨率，因为它们使用更高质量的训练图片。&#xA;这样，我们就完成了基本工作流的搭建。后面的课程我们会学习如何使用这个工作流来生成图片。&#xA;打开启动器。如果你安装了康复UI，在根目录下有一个启动器，双击打开它。&#xA;进入页面后，请养成以下习惯：&#xA;先去版本管理 更新内核 更新扩展 回到第一个页面，点击一键启动 启动后，你可能会看到全是英文的界面，不用担心！我来教你如何改成中文：&#xA;点击右上角的设置（齿轮图标） 往下滑，找到&amp;quot;text auto complete&amp;quot;，点击启用 找到&amp;quot;AGL translation language&amp;quot;，选择&amp;quot;Chinese simplified&amp;quot; 点击确定，界面就会变成中文了 现主页面有很多长方形的框，我们称为&amp;quot;节点&amp;quot;。默认会有7个节点，组成了基本的文生图工作流。&#xA;这套工作流程对应上节课讲的SD原理。&#xA;💡&#xD;按住Control键，用鼠标左键在空白处框选，然后按DELETE键删除选中的节点。&#xD;大模型节点 首先，SD的核心是大模型。它就像SD的心脏和大脑，没有它就无法生成图片。大模型的作用是定义图片风格，比如写实或动漫风格。&#xA;如何添加大模型流程如下：&#xA;打开节点添加入口，有两种常用方法： 在空白处右键点击&amp;quot;新建节点&amp;quot;。这里会显示所有可用的节点。 双击页面空白处，直接搜索节点名称。这种方法更快捷，特别是当你熟悉节点名称时。 搜索&amp;quot;checkpoint&amp;quot;，你会看到&amp;quot;checkpoint加载器（简易）&amp;ldquo;和&amp;quot;checkpoint加载器&amp;rdquo;。选择第一个简易版本就可以了，两者功能差不多。 当你添加节点时，最好记住它们的名称。大模型在SD中英文叫做&amp;quot;checkpoint&amp;quot;，简称为&amp;quot;CKPT&amp;quot;。加载器的英文是&amp;quot;checkpoint loader&amp;quot;。</description>
-    </item>
-    <item>
-      <title>Stable Diffusion 底层逻辑</title>
-      <link>http://localhost:1313/cn/2024/10/15/stable-diffusion/</link>
-      <pubDate>Tue, 15 Oct 2024 00:00:00 +0000</pubDate>
-      <guid>http://localhost:1313/cn/2024/10/15/stable-diffusion/</guid>
-      <description>Stable Diffusion (以下简称SD)翻译成中文是‘稳定的扩散’。的底层逻辑基于生成对抗网络（GAN）和扩散模型的理论，它的主要目标是从随机噪声中生成高质量的图像。&#xA;扩散算法 扩散算法的原理简单来讲就是生噪到去噪的一个过程，声噪就是增加噪点叫做正向扩散，去噪就是消除噪点，反向扩散。&#xA;在我们生图的时候，它是先把图片铺满噪点，然后根据我们的步数慢慢把噪点降噪、降噪，把噪点删除，变成一个我们想要的图片。&#xA;举个例子，假设我们想让 AI 生成&amp;quot;美丽女孩&amp;quot;的图片。首先，我们需要一个**&amp;ldquo;翻译器&amp;rdquo;（如 CLIP）**将人类语言转换为计算机可理解的数字化描述。这个过程称为文本编码。&#xA;编码后的信息进入&amp;quot;latent space&amp;quot;（潜在空间）。使用潜在空间的原因是为了减少计算量。直接处理一张 512 × 512 像素的图片需要计算 786,432 个数据点（512 × 512 × 3 RGB 通道），这会消耗大量算力。通过使用潜在空间，我们可以更高效地处理这些数据。它可以将数据压缩成64 × 64 × 4 = 16,384个通道，大大降低了计算成本。这就是为什么在使用Comfy UI时，我们需要将数据转换到潜在空间。&#xA;AI生成图像的过程包括添加噪声和去除噪声两个步骤。在潜在空间中，有一个叫做**&amp;ldquo;unit&amp;quot;的组件**，它会指导如何根据随机种子生成带噪声的图像。&#xA;💡&#xD;随机种子是什么呢？它就像是一个起点数字。即使使用相同的关键词（比如&amp;quot;one girl&amp;rdquo;），每次生成的图像都会不同，这是因为每次都会随机选择一个不同的种子数字。不同的随机种子会产生不同的噪点，所以在去除噪点的过程中，我们会得到不同的图像。&#xA;在生成图像时，我们还可以选择不同的参数，比如采样器、CFC和skill等。如果你现在不了解这些参数也不用担心，我们以后会详细解释的。&#xA;借助unit组件，图片在计算机内已经生成，但它是计算机理解的形式。对计算机来说，这些数据就是图片，但对我们人类来说，它只是一串数字，我们无法直接看懂。&#xA;接下来是最后一步：解压缩。因为之前我们压缩了数据，所以现在需要解压缩。这个过程通过VAE解码器完成。之前我们用编码器让计算机理解我们的语言，现在解码器则是让计算机输出我们能看懂的图像。&#xA;解码完成后，我们就能看到最终的图像了。这就是整个图像生成的过程，建议大家多次回顾以便更好地理解。</description>
-    </item>
-  </channel>
-</rss>
+<?xml version="1.0" encoding="utf-8" standalone="yes"?><rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>AI on Finder</title><link>https://finderaha.com/tags/ai/</link><description>Recent content in AI on Finder</description><generator>Hugo -- gohugo.io</generator><language>en-us</language><lastBuildDate>Fri, 01 Nov 2024 00:00:00 +0000</lastBuildDate><atom:link href="https://finderaha.com/tags/ai/index.xml" rel="self" type="application/rss+xml"/><item><title>图生图基础工作流搭建+人物转绘+Controlnet线稿应用</title><link>https://finderaha.com/cn/2024/11/01/stable-diffusion/</link><pubDate>Fri, 01 Nov 2024 00:00:00 +0000</pubDate><guid>https://finderaha.com/cn/2024/11/01/stable-diffusion/</guid><description>图生图（Image-to-Image）的工作流和其核心用途，包括风格转换、细节增强、清晰度提升、人脸和手部修复等多个方面。
+图生图的主要用途： 风格转绘：将现有图像转为其他风格，比如将写实人物变为动漫风格。 让画面更加丰富：增加图像细节，让画面更丰富。 提升图像的清晰度。 修复面部和手部。 扩充图像尺寸。 图生图的工作流搭建： 1. 图像加载节点和 VAE 编码器 与文生图（Text-to-Image）类似，但增加了两个新节点：“图像加载”节点和 VAE 编码器。 图像加载节点用于加载图像，VAE 编码器将图像从像素空间转换到潜在空间。 将checkpiont加载器(简易) 的 VAE 和‘加载图片’节点中的图像 链接到VAE编码器上，将VAE编码器latent链接到K采样器节点的latent上，此时，空latent就不需要了。 2. 增加‘复制latent批次’节点 添加‘’’节点控制单次生成图片的数量
+添加‘复制latent批次’节点，将其放在VAE编码器和K采样器之间 缩放方法选择默认，裁剪建议使用center(中心裁剪)的方式 3. K采样器 降噪参数的调整 降噪参数用于控制图像的重绘幅度。
+降噪=denoising=重绘幅度，阈值在0 - 1 之间。 值越高，生成图像与原图相似度越低；值越低，相似度越高。适当调节降噪值可以实现保留原图特征的同时进行风格转换。 4. 添加‘图像缩放’节点 图像缩放节点控制生成图像的比例。
+将图像缩放节点添加到‘加载图像’与‘VAE编码’之间 5. 生成后对比工具 图像对比节点可以直观展示原图和生成图之间的差异，让用户一目了然看到风格转换的效果。
+管理器-节点管理-搜索rgthree,安装后，重启comfyUI 双击搜索-添加‘图像对比’节点 控制网（Control Net）的使用： 控制网可以精细控制图像的结构和形状，确保在转换风格时保持人物的轮廓不变。添加 Control Net 应用模块和预处理器可以达到更精确的风格转换效果。
+1. 选择合适的大模型： 使用特定风格的大模型决定生成的图像风格，例如写实风格或动漫风格模型。选择合适的模型可以在最大程度上实现预期的转换效果。
+2. ControlNet加载器和ControlNet应用 添加ControlNet加载器和ControlNet应用 大模型什么版本就选什么版本的控制网络模型版本，1.5和2.1版本是共通的，XL模型有专门的XL Controlnet 3. 添加预处理器 根据Controlnet对应的模型，添加对应的预处理器
+💡LineArt艺术线预处理器
+粗糙化：管控Controlnet模型强度，强度越高，生成的图片与预处理的图像越相似。 分辨率： 自定义生成提示音： 可以在节点中添加提示音功能，在生成完成后播放音效。通过自定义音频文件，还可以为生成过程添加个性化提示音。
+添加“播放声音”节点 如果找不到，管理器-节点管理-搜索Custom Script - 安装重启 将输入链接到VAE解码图像上即可 如果声音不喜欢，则在 根目录 - custom nodes - custom scripts web - js - assets 添加声音mp3</description></item><item><title>在ComfyUI实现中文提示词输入</title><link>https://finderaha.com/cn/2024/10/29/stable-diffusion/</link><pubDate>Tue, 29 Oct 2024 00:00:00 +0000</pubDate><guid>https://finderaha.com/cn/2024/10/29/stable-diffusion/</guid><description>Comfy UI 中实现中文提示词的书写，主要通过以下步骤和节点进行操作：
+中文提示词 1. 节点管理与安装扩展 双击空白处，搜索 translate，查看是否出现六个翻译节点。 如果没有出现，前往管理器，点击节点管理，搜索并安装 ALEKPET 扩展。 安装完成后重启，再次搜索 translate，即可看到相关节点。 2. 选择翻译节点 Argos 翻译：完全本地翻译，无需网络，适合快速翻译。输入格式为 zh（中文简体）到 EN（英文）。 Google Translate：需要网络，选择 from 为 auto，系统会自动检测输入语言，适合多种语言的翻译。 Clip 文本编码器（翻译高级）：也可自动检测语言，支持多个 API 接口（如 Google、MyMemory 等），灵活切换。 3. 展示英文翻译 可通过双击空白处，搜索“展示文本”或“预览文本”来查看英文翻译。 连接翻译节点的“字符串”和展示文本节点的“文本”，以便实时查看翻译结果。 💡提升测试效率
+在测试翻译节点时，为了避免渲染图像影响速度，可以使用快捷键： Ctrl + B：忽略当前节点功能，保持节点连接。 Ctrl + M：忽略当前节点及其前后连接节点，完全断开。 在添加节点时，可以点击上个节点尾部，拖拽就会出现提示，会提示常用的几个节点，方便快速添加。 分类分段提示词 当我们希望将提示按照主体、主体特征、风格、镜头、环境等分类分段填写时，借助“字符床操作”节点可以快速实现。
+1. 双击空白处，搜索“字符串操作” 在‘字符串操作’节点中，append代表叠加，replace代表上面输入框内容覆盖下面输入框内容，通常选择append即可。 在‘字符串操作’节点中，整个词条 选择 yes即可。 2. 选择‘clip文本编码器’节点，右键-转化为输入-转化文本为输入 此时clip文本编码器节点中的输入框会消失不见，变成一个输入节点 将‘字符床操作’的尾部链接到该输入节点即可 3. 选择‘字符床操作’节点，右键-转化为输入-转化文本A/B/C 为输入 添加‘翻译文本(argos翻译)’节点，复制3个相同节点 将‘翻译文本(argos翻译)’节点的‘字符串’链接到‘字符串操作’节点对应输入文本上 4. 添加‘自动负面关键词’节点 找到管理器-节点管理-one button prompt, install 如果无法成功安装，可以在chrome中搜索‘one button prompt comfyui’-点击github-下载zip文件，找到comfyui根目录-custom_nodes，解压后删掉压缩包，重启comfyui即可 双击，搜索‘自动负面提示词’，添加即可 增强负面添加到1 随机强度为0 base_model 根据大模型版本进行选择 将负面提示词的‘clip文本编码器’的组件转化为输入，链接到‘自动负面提示词’即可。</description></item><item><title>提示词书写方法和技巧</title><link>https://finderaha.com/cn/2024/10/20/stable-diffusion/</link><pubDate>Sun, 20 Oct 2024 00:00:00 +0000</pubDate><guid>https://finderaha.com/cn/2024/10/20/stable-diffusion/</guid><description>大家好，今天我们来学习如何写好AI绘图的提示词。
+提示词应该包含以下几个部分：
+主体特征 背景和灯光 视觉风格（关键词最前面） 艺术家风格 高清精度修饰 提示词越详细，AI生成的图像就越接近你的想法。但是，这并不意味着你应该写很长的提示词。最好控制在100个单词以内，超过限制可能会导致重要元素无法出现在图中。实际上，用10-20个单词就能生成很好看的图片。不要被网上那些使用几百个关键词生成的精美图片迷惑。记住，少而精的提示词才是关键。
+主题特征 主体描述是AI绘图提示词的基础。它可以很简单，比如：
+一个女孩（one girl） 一个男孩（one boy） 一只狗（one dog） 一双鞋（one pair of shoes） 你也可以用特定人物的名字，但要确保AI模型认识这个名字。
+接下来，描述主体的特征。例如：
+&amp;ldquo;一个穿白色裙子的女孩&amp;rdquo;（one girl wearing a white dress）
+你可以添加更多细节，比如：
+黑色帽子 红色耳环 蓝色项链 绿色皮鞋 背景和灯光 背景，就是你想让这个主体在哪个场景中出现，比如说在海滩 on the beach，在沙滩上面，或者说你想让它在月球漫步，walking on the moon。
+其次就是灯光，常用的灯光有自然光、工作室灯光，还有电影光，当然了其他灯光也有很多，大家可以到这边的提示词里边去找，比如说这边光影正面、侧面等等等等，大家都可以做一些测试。什么霓虹灯灯光，我们试一下这个 new Lighting 是不是霓虹灯灯光就体现出来了</description></item><item><title>ComfyUI 页面介绍</title><link>https://finderaha.com/cn/2024/10/16/stable-diffusion/</link><pubDate>Wed, 16 Oct 2024 00:00:00 +0000</pubDate><guid>https://finderaha.com/cn/2024/10/16/stable-diffusion/</guid><description>Workspace 首先说说左上角的功能。如果你用的是启动器安装的ComfyUI，这个功能应该是自动有的。它属于Workspace扩展的一部分。如果你没看到这个功能，可以这样做：
+点击管理器 选择节点管理 搜索&amp;quot;workspace comfyUI workspace manager&amp;quot; 如果显示&amp;quot;install&amp;quot;，就点击安装 如果显示三个按钮，就点击&amp;quot;try update&amp;quot; 更新后重启ComfyUI，功能就会出现了 有时候，即使我们在外部更新了扩展，这个功能可能还是不显示。我经过多次测试发现，在ComfyUI管理器里更新扩展更可靠，能更新到最新版本。如果你发现之前有的功能突然不见了，或者老师演示时有的功能你这里没有，就用上面的方法去更新一下。
+左上角的白色文件夹图标很有用。点击它会显示一个下拉列表，里面保存了你从开始使用到现在创建或复制的所有工作流。你可以把它理解为预设或者工作流保存的地方。当你想使用某个功能时，不需要重新搭建，只要在这里点击一下就可以了。比如，我之前做的TRI高分辨率修复工作流，只要点一下就能用了。
+如果你是第一次使用ComfyUI，不用担心工作流数量少。随着你学习课程，工作流会逐渐增多。好好管理和整理这些工作流，对将来使用很有帮助。
+我们来看看一些基本功能：
+导入工作流：你可以导入单个工作流或整个文件夹的工作流。比如，当你下载ComfyUI时，可能会有一些入门工作流。上传工作流：你可以上传整个文件夹的工作流。系统会显示文件夹中的工作流数量，点击上传后就能看到所有工作流。 新建工作流：点击加号就可以创建新的工作流。 右边的三条横线菜单包含以下选项：
+设置：这里可以更改保存工作流的文件夹位置和快捷键。 深色模式：可以切换界面主题。 管理标签：可以给你的工作流添加标签，方便整理。 一些实用的快捷键：
+保存工作流：Shift + S 另存为新工作流：Ctrl + Alt + S 快速搜索工作流：Ctrl + P 建议开启&amp;quot;双向同步&amp;quot;功能。这样当你手动添加工作流到文件夹时，ComfyUI界面也会自动显示。
+最后，建议开启&amp;quot;照片始终置顶&amp;quot;功能，这样可以更方便地整理你的工作流。
+右侧工具栏 现在我们来看看ComfyUI界面右侧的一些功能。
+首先是&amp;quot;添加提示词队列&amp;quot;按钮，也就是生成图片的按钮。&amp;ldquo;执行队列&amp;quot;和&amp;quot;添加提示词队列&amp;quot;做的是同样的事情。 旁边有个&amp;quot;更多选项&amp;rdquo;，主要是用来设置批量生成的数量。我们通常不在这里改，而是在&amp;quot;批次大小&amp;quot;那里调整。 &amp;ldquo;显示队列&amp;quot;会显示你当前正在生成的所有任务。与Web UI不同，ComfyUI可以同时进行多个任务。比如，你可以同时生成图片、视频，或者使用不同的工作流。 &amp;ldquo;历史&amp;quot;会显示你之前生成的图片。点击&amp;quot;加载&amp;quot;可以显示那张图片的工作流和参数。你也可以删除历史记录。 &amp;ldquo;保存&amp;quot;是用来保存当前的工作流。这和界面上方的&amp;quot;save workflow&amp;quot;功能是一样的。 &amp;ldquo;加载&amp;quot;是用来加载一个已有的工作流。 &amp;ldquo;刷新&amp;quot;按钮用来更新界面。比如，当你添加了新的模型，可能需要点击刷新才能在界面上看到。 &amp;ldquo;清除&amp;quot;会清空整个页面，相当于重置。 &amp;ldquo;加载默认&amp;quot;会加载默认的图片生成工作流。 &amp;ldquo;重置视图&amp;quot;很有用。当你的工作流太大或移动到了看不见的地方，点击这个按钮可以让视图回到中心位置。 &amp;ldquo;切换语言&amp;quot;可以在中文和英文之间切换。 管理器 最后，&amp;ldquo;管理器&amp;quot;是一个很有用的扩展，可以让你在线下载插件和模型等。
+管理器是一个非常有用的扩展，可以让你在线下载插件和大模型等。
+让我们来看看左边的预览设置：
+通常我们会设置为&amp;quot;自动&amp;rdquo; 如果选择&amp;quot;taesd&amp;rdquo;，生成图片会稍慢，但可以实时预览 选择&amp;quot;无&amp;quot;会最快，但不会显示中间过程 这些标签设置主要是为了帮助你区分不同的扩展，选择你觉得好看的即可。
+中间的&amp;quot;节点管理&amp;quot;是最重要的部分：
+这里保存了很多常用的插件扩展 你可以在这里搜索和安装新的扩展 对于已安装的扩展，你可以尝试更新、禁用或卸载 安装插件的几种方法：
+在管理器中搜索并安装 在Google搜索插件名称加&amp;quot;ComfyUI&amp;rdquo;，然后从GitHub下载 使用Git命令行安装（需要安装Git） 如果你导入的工作流有红色的缺失节点，可以：
+打开管理器 点击&amp;quot;安装缺失节点&amp;rdquo; 选择所有缺失的节点并安装 安装后重启ComfyUI 其他功能：</description></item><item><title>文生图工作流程</title><link>https://finderaha.com/cn/2024/10/16/stable-diffusion/</link><pubDate>Wed, 16 Oct 2024 00:00:00 +0000</pubDate><guid>https://finderaha.com/cn/2024/10/16/stable-diffusion/</guid><description>大家好，今天我来教大家如何搭建文生图工作流。听完上节课的SD原理后，相信大家会更容易理解这节课的内容。
+首先，我们来打开启动器。如果你安装了康复UI，在根目录下会有一个启动器，双击打开它。
+进入页面后，养成这样的习惯：
+先到版本管理 更新内核 更新扩展 回到第一个页面，点击一键启动 启动后，你可能会看到全是英文的界面，不要害怕！我来教你如何把它改成中文：
+点击右上角的设置（齿轮图标） 往下拉，找到&amp;quot;text auto complete&amp;quot;，点击启用 找到&amp;quot;AGL translation language&amp;quot;，选择&amp;quot;Chinese simplified&amp;quot; 点击确定，界面就会变成中文了 现在，让我们看看主页面。你会看到很多长方形框，我们称为&amp;quot;节点&amp;quot;。主页面上有7个节点，组成了基本的文生图工作流。
+虽然可以直接使用这个工作流，但自己动手搭建会让你学到更多，也会让后面的学习更轻松。所以，让我们一起来搭建自己的工作流吧！
+这个工作流对应上节课讲的SD原理。先教大家一个选择多个节点的小技巧：按住Control键，用鼠标左键在空白处框选，然后按DELETE删除。我们现在来自己搭建。
+SD的核心是什么？是大模型。它就像SD的心脏和大脑，没有它，再好的工作流也出不了图。这就是为什么上节课强调至少要有一个大模型。大模型的作用是定义图片风格，比如写实或动漫风格。
+添加节点有两种常用方法：
+在空白处右键点击&amp;quot;新建节点&amp;quot;。 双击页面空白处，直接搜索节点名称。 我们先添加一个大模型加载器节点。搜索&amp;quot;checkpoint&amp;quot;，选择&amp;quot;checkpoint加载器（简易）&amp;quot;。
+接下来，我们需要添加文本编码器节点。这是用来输入关键词的地方。我们需要两个：一个用于正向关键词，一个用于负向关键词。
+添加完节点后，我们需要把它们连接起来。节点的左边叫&amp;quot;首部&amp;quot;，右边叫&amp;quot;尾部&amp;quot;。只能把一个节点的尾部连到另一个节点的首部。
+然后，我们需要添加采样器节点。右键新建节点，找到&amp;quot;采样&amp;quot;，选择&amp;quot;K采样器&amp;quot;。这里有几个重要设置：
+随机种子：控制生成图片的随机性。 步数：决定降噪的次数，通常设为30-40。 CFG Scale：控制关键词和图片的相关性，建议设为7-8。 采样器：推荐使用Euler a或DPM++ 2M SDE。 调度器：通常选择normal或Karras。 最后，我们需要添加一个空latent节点来设置图片尺寸。尺寸选择取决于你使用的模型版本：
+SD 1.5版本：建议512x512或512x768 SD 2.1版本：可以用768x768 SD XL或更新版本：建议1024x1024 记住，越新的模型通常支持更高的分辨率，因为它们使用更高质量的训练图片。
+这样，我们就完成了基本工作流的搭建。后面的课程我们会学习如何使用这个工作流来生成图片。
+打开启动器。如果你安装了康复UI，在根目录下有一个启动器，双击打开它。
+进入页面后，请养成以下习惯：
+先去版本管理 更新内核 更新扩展 回到第一个页面，点击一键启动 启动后，你可能会看到全是英文的界面，不用担心！我来教你如何改成中文：
+点击右上角的设置（齿轮图标） 往下滑，找到&amp;quot;text auto complete&amp;quot;，点击启用 找到&amp;quot;AGL translation language&amp;quot;，选择&amp;quot;Chinese simplified&amp;quot; 点击确定，界面就会变成中文了 现主页面有很多长方形的框，我们称为&amp;quot;节点&amp;quot;。默认会有7个节点，组成了基本的文生图工作流。
+这套工作流程对应上节课讲的SD原理。
+💡按住Control键，用鼠标左键在空白处框选，然后按DELETE键删除选中的节点。大模型节点 首先，SD的核心是大模型。它就像SD的心脏和大脑，没有它就无法生成图片。大模型的作用是定义图片风格，比如写实或动漫风格。
+如何添加大模型流程如下：
+打开节点添加入口，有两种常用方法： 在空白处右键点击&amp;quot;新建节点&amp;quot;。这里会显示所有可用的节点。 双击页面空白处，直接搜索节点名称。这种方法更快捷，特别是当你熟悉节点名称时。 搜索&amp;quot;checkpoint&amp;quot;，你会看到&amp;quot;checkpoint加载器（简易）&amp;ldquo;和&amp;quot;checkpoint加载器&amp;rdquo;。选择第一个简易版本就可以了，两者功能差不多。 当你添加节点时，最好记住它们的名称。大模型在SD中英文叫做&amp;quot;checkpoint&amp;quot;，简称为&amp;quot;CKPT&amp;quot;。加载器的英文是&amp;quot;checkpoint loader&amp;quot;。</description></item><item><title>Stable Diffusion 底层逻辑</title><link>https://finderaha.com/cn/2024/10/15/stable-diffusion/</link><pubDate>Tue, 15 Oct 2024 00:00:00 +0000</pubDate><guid>https://finderaha.com/cn/2024/10/15/stable-diffusion/</guid><description>Stable Diffusion (以下简称SD)翻译成中文是‘稳定的扩散’。的底层逻辑基于生成对抗网络（GAN）和扩散模型的理论，它的主要目标是从随机噪声中生成高质量的图像。
+扩散算法 扩散算法的原理简单来讲就是生噪到去噪的一个过程，声噪就是增加噪点叫做正向扩散，去噪就是消除噪点，反向扩散。
+在我们生图的时候，它是先把图片铺满噪点，然后根据我们的步数慢慢把噪点降噪、降噪，把噪点删除，变成一个我们想要的图片。
+举个例子，假设我们想让 AI 生成&amp;quot;美丽女孩&amp;quot;的图片。首先，我们需要一个**&amp;ldquo;翻译器&amp;rdquo;（如 CLIP）**将人类语言转换为计算机可理解的数字化描述。这个过程称为文本编码。
+编码后的信息进入&amp;quot;latent space&amp;quot;（潜在空间）。使用潜在空间的原因是为了减少计算量。直接处理一张 512 × 512 像素的图片需要计算 786,432 个数据点（512 × 512 × 3 RGB 通道），这会消耗大量算力。通过使用潜在空间，我们可以更高效地处理这些数据。它可以将数据压缩成64 × 64 × 4 = 16,384个通道，大大降低了计算成本。这就是为什么在使用Comfy UI时，我们需要将数据转换到潜在空间。
+AI生成图像的过程包括添加噪声和去除噪声两个步骤。在潜在空间中，有一个叫做**&amp;ldquo;unit&amp;quot;的组件**，它会指导如何根据随机种子生成带噪声的图像。
+💡随机种子是什么呢？它就像是一个起点数字。即使使用相同的关键词（比如&amp;quot;one girl&amp;rdquo;），每次生成的图像都会不同，这是因为每次都会随机选择一个不同的种子数字。不同的随机种子会产生不同的噪点，所以在去除噪点的过程中，我们会得到不同的图像。
+在生成图像时，我们还可以选择不同的参数，比如采样器、CFC和skill等。如果你现在不了解这些参数也不用担心，我们以后会详细解释的。
+借助unit组件，图片在计算机内已经生成，但它是计算机理解的形式。对计算机来说，这些数据就是图片，但对我们人类来说，它只是一串数字，我们无法直接看懂。
+接下来是最后一步：解压缩。因为之前我们压缩了数据，所以现在需要解压缩。这个过程通过VAE解码器完成。之前我们用编码器让计算机理解我们的语言，现在解码器则是让计算机输出我们能看懂的图像。
+解码完成后，我们就能看到最终的图像了。这就是整个图像生成的过程，建议大家多次回顾以便更好地理解。</description></item></channel></rss>

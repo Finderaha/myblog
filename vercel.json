@@ -9,8 +9,11 @@
   "framework": "hugo",
   "builds": [
     {
-      "src": "static/**/*",
-      "use": "@vercel/static"
+      "src": "config.yaml",
+      "use": "@vercel/static-build",
+      "config": {
+        "distDir": "public"
+      }
     }
   ]
 }

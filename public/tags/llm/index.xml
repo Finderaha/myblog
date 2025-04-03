@@ -1,26 +1,25 @@
-<?xml version="1.0" encoding="utf-8" standalone="yes"?>
-<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
-  <channel>
-    <title>LLM on Finder</title>
-    <link>http://localhost:1313/tags/llm/</link>
-    <description>Recent content in LLM on Finder</description>
-    <generator>Hugo -- gohugo.io</generator>
-    <language>en-us</language>
-    <lastBuildDate>Tue, 01 Apr 2025 00:00:00 +0000</lastBuildDate>
-    <atom:link href="http://localhost:1313/tags/llm/index.xml" rel="self" type="application/rss+xml" />
-    <item>
-      <title>01-机器学习</title>
-      <link>http://localhost:1313/cn/2025/04/01/machine-learning/</link>
-      <pubDate>Tue, 01 Apr 2025 00:00:00 +0000</pubDate>
-      <guid>http://localhost:1313/cn/2025/04/01/machine-learning/</guid>
-      <description>什么是机器学习 Field of study that gives computers the ability to learn without being explicitly programmed.&#xA;机器学习就是让计算机在没有明确编程的情况下学习的领域。&#xA;——Arthur Samuel (1959)&#xA;通俗的讲，机器学习是一种让计算机从数据中“学习”并做出决策的技术。它通过算法分析数据，发现其中的规律，并利用这些规律对新数据进行预测或分类。&#xA;机器学习的关键要素： 数据：机器学习的基础，包括训练数据和测试数据。 模型：用于从数据中学习规律的数学或统计模型。 算法：用于训练模型的优化方法（如梯度下降、决策树、神经网络等）。 任务：机器学习的目标，如分类、回归、聚类、降维等。 机器学习的类型： 监督学习（Supervised Learning）：使用带有标签的数据进行训练，模型学习输入与输出之间的映射关系。例如：图像分类、房价预测。&#xA;无监督学习（Unsupervised Learning）：使用无标签的数据进行训练，模型发现数据中的潜在结构或模式。例如：聚类分析、降维。&#xA;强化学习（Reinforcement Learning）：模型通过与环境的交互来学习策略，以最大化某种奖励信号。例如：游戏AI、机器人控制。&#xA;机器学习的特点 泛化能力：&#xA;机器学习的目标是让模型在未见过的数据上也能表现良好，而不仅仅是对训练数据的记忆。泛化能力是评估模型好坏的重要指标。&#xA;自动学习：&#xA;机器学习算法能够自动从数据中提取特征和规律，无需人工显式编程。 例如，在图像分类任务中，模型可以自动学习识别图像中的关键特征。&#xA;处理大数据：&#xA;机器学习依赖于大量数据作为输入，通过分析数据中的模式和规律来完成任务。数据的质量和数量直接影响模型的性能。&#xA;机器学习应用于图像识别、语音识别、自然语言处理、推荐系统、金融风控等。&#xA;应用领域： 自然语言处理（NLP） 计算机视觉（CV） 推荐系统 医疗诊断 金融风控 </description>
-    </item>
-    <item>
-      <title>02-监督学习</title>
-      <link>http://localhost:1313/cn/2025/04/01/machine-learning/</link>
-      <pubDate>Tue, 01 Apr 2025 00:00:00 +0000</pubDate>
-      <guid>http://localhost:1313/cn/2025/04/01/machine-learning/</guid>
-      <description>监督学习 监督学习（Supervised Learning）是机器学习中一种重要的学习范式，其核心思想是通过已知的输入-输出对（训练数据）来训练模型，使其能够对新的、未见过的输入进行准确的预测或分类。&#xA;这种学习方式的特点在于训练数据中每个样本都包含明确的标签或期望输出值，这些标签被称为“监督信号”，用于指导模型的学习过程。&#xA;监督学习定义 定义：监督学习是一种通过已知输入-输出对训练模型的方法，目标是找到一个映射函数f:X→Y，使得模型能够根据输入X 预测出相应的输出Y。&#xA;输入与输出：输入通常是一个向量（特征），而输出是一个标签或期望值。例如，在分类任务中，输出是一个离散的类别标签；在回归任务中，输出是一个连续的数值。&#xA;训练过程 数据准备：收集并标注训练数据，这些数据通常由人工标注或实际观测得到。 模型训练：通过调整模型参数，使模型能够拟合训练数据中的输入-输出关系。常见的优化目标是最小化预测值与实际值之间的误差。 模型评估：使用测试数据评估模型的性能，确保模型在未见过的数据上也能表现良好 监督学习模型训练流程示意图，展示了从输入数据到模型训练的完整过程&#xA;监督学习分类 监督学习广泛应用于各种实际问题中，包括但不限于：&#xA;分类任务 垃圾邮件检测、图像分类、语音识别等。这些任务的目标是将输入数据映射到离散的类别标签。&#xA;结构化输出 预测复杂的结构化输出，如序列标注。&#xA;回归任务 如房价预测、股票价格预测等。这些任务的目标是预测一个连续的数值输出&#xA;异常检测 如信用卡欺诈检测、设备故障预测等。这些任务的目标是识别不符合正常模式的数据&#xA;监督学习的挑战与局限性 数据标注成本高：标注数据需要大量的人力和时间投入，尤其是在复杂任务中 过拟合风险：如果模型过于复杂，可能会在训练数据上表现很好，但在新数据上表现不佳 对噪声敏感：训练数据中的噪声可能会影响模型的性能 </description>
-    </item>
-  </channel>
-</rss>
+<?xml version="1.0" encoding="utf-8" standalone="yes"?><rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>LLM on Finder</title><link>https://finderaha.com/tags/llm/</link><description>Recent content in LLM on Finder</description><generator>Hugo -- gohugo.io</generator><language>en-us</language><lastBuildDate>Tue, 01 Apr 2025 00:00:00 +0000</lastBuildDate><atom:link href="https://finderaha.com/tags/llm/index.xml" rel="self" type="application/rss+xml"/><item><title>01-机器学习</title><link>https://finderaha.com/cn/2025/04/01/machine-learning/</link><pubDate>Tue, 01 Apr 2025 00:00:00 +0000</pubDate><guid>https://finderaha.com/cn/2025/04/01/machine-learning/</guid><description>什么是机器学习 Field of study that gives computers the ability to learn without being explicitly programmed.
+机器学习就是让计算机在没有明确编程的情况下学习的领域。
+——Arthur Samuel (1959)
+通俗的讲，机器学习是一种让计算机从数据中“学习”并做出决策的技术。它通过算法分析数据，发现其中的规律，并利用这些规律对新数据进行预测或分类。
+机器学习的关键要素： 数据：机器学习的基础，包括训练数据和测试数据。 模型：用于从数据中学习规律的数学或统计模型。 算法：用于训练模型的优化方法（如梯度下降、决策树、神经网络等）。 任务：机器学习的目标，如分类、回归、聚类、降维等。 机器学习的类型： 监督学习（Supervised Learning）：使用带有标签的数据进行训练，模型学习输入与输出之间的映射关系。例如：图像分类、房价预测。
+无监督学习（Unsupervised Learning）：使用无标签的数据进行训练，模型发现数据中的潜在结构或模式。例如：聚类分析、降维。
+强化学习（Reinforcement Learning）：模型通过与环境的交互来学习策略，以最大化某种奖励信号。例如：游戏AI、机器人控制。
+机器学习的特点 泛化能力：
+机器学习的目标是让模型在未见过的数据上也能表现良好，而不仅仅是对训练数据的记忆。泛化能力是评估模型好坏的重要指标。
+自动学习：
+机器学习算法能够自动从数据中提取特征和规律，无需人工显式编程。 例如，在图像分类任务中，模型可以自动学习识别图像中的关键特征。
+处理大数据：
+机器学习依赖于大量数据作为输入，通过分析数据中的模式和规律来完成任务。数据的质量和数量直接影响模型的性能。
+机器学习应用于图像识别、语音识别、自然语言处理、推荐系统、金融风控等。
+应用领域： 自然语言处理（NLP） 计算机视觉（CV） 推荐系统 医疗诊断 金融风控</description></item><item><title>02-监督学习</title><link>https://finderaha.com/cn/2025/04/01/supervised-learning/</link><pubDate>Tue, 01 Apr 2025 00:00:00 +0000</pubDate><guid>https://finderaha.com/cn/2025/04/01/supervised-learning/</guid><description>监督学习 监督学习（Supervised Learning）是机器学习中一种重要的学习范式，其核心思想是通过已知的输入-输出对（训练数据）来训练模型，使其能够对新的、未见过的输入进行准确的预测或分类。
+这种学习方式的特点在于训练数据中每个样本都包含明确的标签或期望输出值，这些标签被称为“监督信号”，用于指导模型的学习过程。
+监督学习定义 定义：监督学习是一种通过已知输入-输出对训练模型的方法，目标是找到一个映射函数f:X→Y，使得模型能够根据输入X 预测出相应的输出Y。
+输入与输出：输入通常是一个向量（特征），而输出是一个标签或期望值。例如，在分类任务中，输出是一个离散的类别标签；在回归任务中，输出是一个连续的数值。
+训练过程 数据准备：收集并标注训练数据，这些数据通常由人工标注或实际观测得到。 模型训练：通过调整模型参数，使模型能够拟合训练数据中的输入-输出关系。常见的优化目标是最小化预测值与实际值之间的误差。 模型评估：使用测试数据评估模型的性能，确保模型在未见过的数据上也能表现良好 监督学习模型训练流程示意图，展示了从输入数据到模型训练的完整过程
+监督学习分类 监督学习广泛应用于各种实际问题中，包括但不限于：
+分类任务 垃圾邮件检测、图像分类、语音识别等。这些任务的目标是将输入数据映射到离散的类别标签。
+结构化输出 预测复杂的结构化输出，如序列标注。
+回归任务 如房价预测、股票价格预测等。这些任务的目标是预测一个连续的数值输出
+异常检测 如信用卡欺诈检测、设备故障预测等。这些任务的目标是识别不符合正常模式的数据
+监督学习的挑战与局限性 数据标注成本高：标注数据需要大量的人力和时间投入，尤其是在复杂任务中 过拟合风险：如果模型过于复杂，可能会在训练数据上表现很好，但在新数据上表现不佳 对噪声敏感：训练数据中的噪声可能会影响模型的性能</description></item></channel></rss>
