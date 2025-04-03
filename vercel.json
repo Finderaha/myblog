@@ -1,19 +1,10 @@
 {
   "build": {
     "env": {
-    "HUGO_VERSION": "0.124.1"
+      "HUGO_VERSION": "0.124.1"
     }
   },
   "buildCommand": "hugo --minify",
   "outputDirectory": "public",
-  "framework": "hugo",
-  "builds": [
-    {
-      "src": "config.yaml",
-      "use": "@vercel/static-build",
-      "config": {
-        "distDir": "public"
-      }
-    }
-  ]
+  "framework": "hugo"
 }
