@@ -3,5 +3,14 @@
     "env": {
     "HUGO_VERSION": "0.124.1"
     }
-  }
+  },
+  "buildCommand": "hugo --minify",
+  "outputDirectory": "public",
+  "framework": "hugo",
+  "builds": [
+    {
+      "src": "static/**/*",
+      "use": "@vercel/static"
+    }
+  ]
 }
