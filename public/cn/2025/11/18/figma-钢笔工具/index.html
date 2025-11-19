@@ -1,0 +1,232 @@
+<script src="/livereload.js?mindelay=10&amp;v=2&amp;port=1313&amp;path=livereload" data-no-instant defer></script><a name="top"></a>
+<!DOCTYPE html>
+<html lang="en-us">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Finder</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+
+    <link rel="stylesheet" href="/css/style.css" />
+    <link rel="stylesheet" href="/css/fonts.css" />
+     
+  </head>
+  
+  <body>
+    <div class="wrapper">
+      <header class="header">
+        <nav class="nav" >
+      <a href="/" class="nav-logo">
+        <img src="/media/hugo-logo.png"
+         width="50"
+         height="50"
+         alt="Hugo-ht">
+      </a>
+
+      <ul class="nav-links" >
+        
+        
+           <li><a href="/">主页</a></li>
+       
+           <li><a href="/cn/posts/">日志</a></li>
+       
+           <li><a href="/cn/about/">关于</a></li>
+       
+       
+      </ul>
+</nav>
+
+      </header>
+
+<main class = "content" role="main">
+<div style="text-align: center">
+
+<h1>Figma 钢笔工具</h1>
+
+<p>Finder 
+ / 2025-11-18 </p>
+
+<hr/>
+</div>
+
+<span class="article-toolbar">
+  
+  
+  
+  
+  
+  
+  
+  <a href='https://github.com/UFinderaha/myblog/edit/main/content/cn%5cposts%5c2025-11-18-Figma%20%e9%92%a2%e7%ac%94%e5%b7%a5%e5%85%b7.md'style="font-size: 24px; color: black;" target="_blank"><i class="fa fa-edit" aria-hidden="true" title="编辑本页"></i>
+  </a>
+  
+  
+  
+</span>
+
+
+
+<div class="body-text list-text">
+<h2 id="一-钢笔工具的核心地位与应用场景">一、 钢笔工具的核心地位与应用场景<a href="#一-钢笔工具的核心地位与应用场景" class="header-anchor" ariaLabel="Anchor"> # </a></h2>
+<ul>
+<li><strong>核心工具：</strong> 钢笔工具（Pen Tool）是<strong>矢量绘图最核心</strong>的一个工具。</li>
+<li><strong>应用场景：</strong> 在 UI 设计中，钢笔工具的应用非常关键和广泛，包括：
+<ul>
+<li>绘制 IP 形象或 B 端插画。</li>
+<li>绘制<strong>图标</strong>。</li>
+<li>进行 UI 设计中<strong>异形内容的重轮廓</strong>（如对齐和重塑非规则图形的边缘）。</li>
+</ul>
+</li>
+</ul>
+<h2 id="二-钢笔工具的底层逻辑贝塞尔曲线控制">二、 钢笔工具的底层逻辑：贝塞尔曲线控制<a href="#二-钢笔工具的底层逻辑贝塞尔曲线控制" class="header-anchor" ariaLabel="Anchor"> # </a></h2>
+<p>理解钢笔工具的使用，就是理解对**贝塞尔曲线（Bézier Curve）**的控制。</p>
+<ul>
+<li><strong>矢量图形构成：</strong> 矢量图形由<strong>点、线、面</strong>组成，其中<strong>点和线</strong>的控制是核心。</li>
+<li><strong>控制目标：</strong> 钢笔工具的根本作用在于控制<strong>点和点之间的线段</strong>。</li>
+</ul>
+<h2 id="三-顶点的四种状态控制杆类型">三、 顶点的四种状态（控制杆类型）<a href="#三-顶点的四种状态控制杆类型" class="header-anchor" ariaLabel="Anchor"> # </a></h2>
+<p>在编辑矢量图形时，顶点的状态决定了其连接线段的形状：</p>
+<table>
+<thead>
+<tr>
+<th style="text-align:left">状态名称</th>
+<th style="text-align:left">特点与功能</th>
+<th style="text-align:left">示例</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:left"><strong>无控制杆</strong></td>
+<td style="text-align:left">两点之间选择<strong>最短距离</strong>，即<strong>直线</strong>。当不需要弧线时，此状态默认形成直线。</td>
+<td style="text-align:left">随意点点点连接成的多边形，双击进入编辑状态时没有控制杆。</td>
+</tr>
+<tr>
+<td style="text-align:left"><strong>平行控制杆</strong></td>
+<td style="text-align:left">形成<strong>圆润的边</strong>缘，而不是最短距离的直线。当两边的控制杆呈 <strong>180 度</strong>状态时，可产生良好的弧度过渡。</td>
+<td style="text-align:left">绘制圆时，其上下左右的控制杆就处于平行状态。</td>
+</tr>
+<tr>
+<td style="text-align:left"><strong>对称控制杆</strong></td>
+<td style="text-align:left">拖动一侧的控制杆时，两侧会呈 <strong>180 度</strong>状态移动。同时，它还可能包含<strong>长度上的对称</strong>。</td>
+<td style="text-align:left">这是实现平滑圆弧过渡的基础。</td>
+</tr>
+<tr>
+<td style="text-align:left"><strong>不对称控制杆</strong></td>
+<td style="text-align:left">通过 <code>Alt</code> 键（Windows）或 <code>Option</code> 键（Mac）单独拖拽控制杆，可以自由编辑，使两侧的线段<strong>不平行</strong>。</td>
+<td style="text-align:left"><strong>后果：</strong> 如果线段不平行，它们相交时<strong>一定会形成一个尖锐的角</strong>。</td>
+</tr>
+</tbody>
+</table>
+<h3 id="1-状态间的切换与操作">1. 状态间的切换与操作<a href="#1-状态间的切换与操作" class="header-anchor" ariaLabel="Anchor"> # </a></h3>
+<ul>
+<li><strong>创建尖角：</strong> 如果不希望形成尖锐的角，而希望有好的弧度过渡，<strong>就必须处于平行的状态</strong>（180 度）。</li>
+<li><strong>自由编辑：</strong> 按住 <code>Alt</code> 键（Mac 上可能需要用对应的键）可以<strong>移除</strong>平行的状态，进行不对称的自由拖拽。</li>
+<li><strong>新建时的自动生成：</strong> 在使用钢笔工具绘制时，如果按住并拖动，系统会自动生成一个<strong>平行等长控制杆</strong>。</li>
+</ul>
+<h2 id="四-钢笔工具的绘制技巧与流程">四、 钢笔工具的绘制技巧与流程<a href="#四-钢笔工具的绘制技巧与流程" class="header-anchor" ariaLabel="Anchor"> # </a></h2>
+<h3 id="1-核心绘制思想先打点后控制曲线">1. 核心绘制思想：先打点，后控制曲线<a href="#1-核心绘制思想先打点后控制曲线" class="header-anchor" ariaLabel="Anchor"> # </a></h3>
+<p>设计师在绘制复杂插画时，通常<strong>不会</strong>一边创建一边修改曲线。</p>
+<ul>
+<li><strong>正确流程：</strong> 绘制流程应是<strong>先完成打点</strong>，<strong>再</strong>去控制它的<strong>曲线</strong>。</li>
+<li><strong>为什么要先打点：</strong> 这能够让设计师先理解图形中的<strong>顶点位置</strong>。</li>
+</ul>
+<h3 id="2-如何选择打点位置顶点">2. 如何选择打点位置（顶点）<a href="#2-如何选择打点位置顶点" class="header-anchor" ariaLabel="Anchor"> # </a></h3>
+<ul>
+<li><strong>顶点定义：</strong> 顶点通常位于图形的<strong>转折点</strong>和<strong>最顶端</strong>。</li>
+<li><strong>圆弧的顶点：</strong> 即使是圆弧（如耳朵的圆弧），也应该在<strong>圆弧的最顶端</strong>打上顶点，不应该用两端的点去控制整个圆弧。</li>
+</ul>
+<h3 id="3-绘制实战中的微调技巧">3. 绘制实战中的微调技巧<a href="#3-绘制实战中的微调技巧" class="header-anchor" ariaLabel="Anchor"> # </a></h3>
+<ul>
+<li><strong>创建弧线：</strong> 在进入编辑状态后，可以通过按住 <code>Command</code> 或 <code>Ctrl</code> 键拖拽，来创建圆弧。</li>
+<li><strong>局部收缩/调整：</strong> 绘制完成后，如果想对某一部分（如脸部）进行局部调整，可以按住 <code>Alt</code> 键（Option 键）<strong>单独控制一侧的控制杆</strong>。</li>
+<li><strong>弧度控制：</strong> 拖动控制杆的距离越远，其弧度<strong>越大</strong>、<strong>延伸得越多</strong>。</li>
+<li><strong>平滑过渡提示：</strong> 在拖动控制杆时，如果出现<strong>红色线段</strong>提示，则表示它已进入<strong>平行对称</strong>的状态，可以放心拖拽。</li>
+<li><strong>端点圆弧化：</strong> 选中线段后，可以在 <code>End Point</code>（端点）位置选择 <strong>Round</strong> 选项，将端点变成圆弧形状。</li>
+</ul>
+<h2 id="五-绘制的优势与未来学习建议">五、 绘制的优势与未来学习建议<a href="#五-绘制的优势与未来学习建议" class="header-anchor" ariaLabel="Anchor"> # </a></h2>
+<ul>
+<li><strong>优势：</strong> 钢笔工具的弧线调节可以<strong>反复撤销和修改</strong>，不像手绘那样画错就需要重画。它可以非常方便地进行<strong>线段的转化</strong>。</li>
+<li><strong>普遍性：</strong> 只要学会了钢笔工具，即便是<strong>更复杂的插画</strong>，也可以使用钢笔工具<strong>全部画出来</strong>。</li>
+<li><strong>学习建议：</strong> 掌握钢笔工具需要<strong>大量的练习</strong>。建议通过<strong>临摹不同的案例</strong>，包括插画、字体、和图标的案例，来完全掌握它。</li>
+</ul>
+
+
+  
+    
+      <a href="http://localhost:1313//tags/figma%E5%AD%A6%E4%B9%A0%E6%8C%87%E5%8D%97/">#Figma学习指南</a>
+    
+      <a href="http://localhost:1313//tags/%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/">#学习笔记</a>
+    
+  
+
+<p style="color:#777;">最后一次修改于 2025-11-18</p>
+</div>
+<a href="#top"><i class="fa fa-chevron-up" style="font-size: 30px; color: black;"></i></a>
+
+</main>
+
+<footer class="footer">
+  <div class="content">
+
+<script src="https://giscus.app/client.js"
+        data-repo="finderaha/myblog"
+        data-repo-id="R_kgDOLxcP2A"
+        data-category="Announcements"
+        data-category-id="DIC_kwDOLxcP2M4Ce2as"
+        data-mapping="pathname"
+        data-strict="0"
+        data-reactions-enabled="1"
+        data-emit-metadata="0"
+        data-input-position="top"
+        data-theme="preferred_color_scheme"
+        data-lang="zh-CN"
+        data-loading="lazy"
+        crossorigin="anonymous"
+        async>
+</script>
+</br>
+ 
+</div>
+
+  <script type="text/javascript" src="/js/math-code.js"></script>
+<script async src="//mathjax.rstudio.com/latest/MathJax.js?config=TeX-MML-AM_CHTML"></script>
+<script type="text/javascript" src="/js/center-img.js"></script>
+
+
+
+     <ul class="footer-links">
+      
+       
+       
+       
+       <li><a href="/cn/posts/index.xml" type="application/rss+xml" title="RSS feed">
+       订阅 </a>
+       </li>
+       
+       
+       <li>
+       
+       <a href="http://creativecommons.org/licenses/by-nc-sa/4.0/deed.zh" target="_blank">
+       
+        版权
+        <i class="fa fa-cc" aria-hidden="true" title="Attribution-NonCommercial-ShareAlike 4.0 International"></i> 
+        </a>
+       </li>
+       
+     </ul>
+     <div class="copyright-text">
+            
+            ©
+            
+            郝志杰
+            
+            2024
+            
+     </div>
+
+</footer>
+
+
+
+
+

@@ -1,0 +1,220 @@
+<script src="/livereload.js?mindelay=10&amp;v=2&amp;port=1313&amp;path=livereload" data-no-instant defer></script><a name="top"></a>
+<!DOCTYPE html>
+<html lang="en-us">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Finder</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+
+    <link rel="stylesheet" href="/css/style.css" />
+    <link rel="stylesheet" href="/css/fonts.css" />
+     
+  </head>
+  
+  <body>
+    <div class="wrapper">
+      <header class="header">
+        <nav class="nav" >
+      <a href="/" class="nav-logo">
+        <img src="/media/hugo-logo.png"
+         width="50"
+         height="50"
+         alt="Hugo-ht">
+      </a>
+
+      <ul class="nav-links" >
+        
+        
+           <li><a href="/">主页</a></li>
+       
+           <li><a href="/cn/posts/">日志</a></li>
+       
+           <li><a href="/cn/about/">关于</a></li>
+       
+       
+      </ul>
+</nav>
+
+      </header>
+
+<main class = "content" role="main">
+<div style="text-align: center">
+
+<h1>Figma图片和蒙版</h1>
+
+<p>Finder 
+ / 2025-11-18 </p>
+
+<hr/>
+</div>
+
+<span class="article-toolbar">
+  
+  
+  
+  
+  
+  
+  
+  <a href='https://github.com/UFinderaha/myblog/edit/main/content/cn%5cposts%5c2025-11-18-Figma%e5%9b%be%e7%89%87%e5%92%8c%e8%92%99%e7%89%88.md'style="font-size: 24px; color: black;" target="_blank"><i class="fa fa-edit" aria-hidden="true" title="编辑本页"></i>
+  </a>
+  
+  
+  
+</span>
+
+
+
+<div class="body-text list-text">
+<h2 id="一-figma-中图片位图的应用逻辑">一、 Figma 中图片（位图）的应用逻辑<a href="#一-figma-中图片位图的应用逻辑" class="header-anchor" ariaLabel="Anchor"> # </a></h2>
+<h3 id="1-位图本质与矢量填充">1. 位图本质与矢量填充<a href="#1-位图本质与矢量填充" class="header-anchor" ariaLabel="Anchor"> # </a></h3>
+<ul>
+<li>Figma 本质上是一个<strong>矢量软件</strong>，它本身不产生位图（Bitmap），而是充当**“位图的搬运工”**。</li>
+<li>Figma 实现图片置入的逻辑是：<strong>使用一个矢量图形的轮廓</strong>（如一个矩形），然后通过<strong>填充</strong>（Fill）的方式将图片置入到该轮廓中。</li>
+<li>因此，一个图片图层本质上与一个普通的纯色填充的矩形图层<strong>一模一样</strong>。唯一的区别在于右侧属性面板中的“填充”模式被设置为**“图片填充”**。</li>
+<li>正因为其本质是矢量图形，用户可以对该图层进行相应的设置，比如拖拽形成<strong>圆角</strong>。</li>
+</ul>
+<h3 id="2-图片的四种置入方法">2. 图片的四种置入方法<a href="#2-图片的四种置入方法" class="header-anchor" ariaLabel="Anchor"> # </a></h3>
+<p>四种将图片置入 Figma 的方法：</p>
+<ol>
+<li><strong>填充导入（填充模式）：</strong> 在填充（Fill）面板中，选择图片填充模式，然后选择从本地文件导入。</li>
+<li><strong>复制粘贴（Clipboard）：</strong> 复制一个图像后，直接在 Figma 中粘贴。</li>
+<li><strong>截图粘贴（推荐方式）：</strong> 使用截图工具（如 QQ 截图）截取区域后，将图像置入<strong>剪贴板</strong>，然后粘贴。
+<ul>
+<li><strong>优势：</strong> 这种方式建议使用，因为它有助于<strong>缩小图像的质量和尺寸</strong>。在 99% 的情况下，UI 设计中不需要使用超大尺寸的原图。</li>
+</ul>
+</li>
+<li><strong>直接拖拽：</strong> 直接将本地存储的图片文件<strong>拖拽</strong>到 Figma 页面中。</li>
+</ol>
+<h3 id="3-粘贴到特定图形的逻辑">3. 粘贴到特定图形的逻辑<a href="#3-粘贴到特定图形的逻辑" class="header-anchor" ariaLabel="Anchor"> # </a></h3>
+<ul>
+<li>当用户复制一张图片，并在 Figma 中粘贴（<code>Cmd + V</code>）时：
+<ul>
+<li>如果页面上已经创建了一个<strong>空的矢量图形区域</strong>，图片会<strong>自动填充</strong>到这个矢量图形中。</li>
+<li>如果用户选中了一个 <code>Selection</code>（如编组 Group 或 Frame），图片将<strong>不会填充</strong>，而是作为一个<strong>独立的元素</strong>置入到该编组的下方。</li>
+</ul>
+</li>
+</ul>
+<h2 id="二-图片的二次调整与填充模式">二、 图片的二次调整与填充模式<a href="#二-图片的二次调整与填充模式" class="header-anchor" ariaLabel="Anchor"> # </a></h2>
+<p>图片置入后通常需要进行<strong>二次调整</strong>，以确保其在容器内的显示效果。</p>
+<p>用户可以通过调整右侧<strong>填充面板</strong>中的<strong>填充模式</strong>来控制图像在容器内的显示方式：</p>
+<ol>
+<li><strong>Fill（完全填充）：</strong> 图像会被拉伸，完全填满容器。</li>
+<li><strong>Fit（适应）：</strong> 图像会按<strong>原比例</strong>缩放，使其全部适应并显示在容器内。</li>
+<li><strong>Crop（裁切）：</strong> 允许用户进入<strong>编辑模式</strong>，手动放大或缩小图像，并调整其位置，从而裁切出需要的区域。</li>
+<li><strong>Tile（平铺）：</strong> 以原图尺寸进行平铺。</li>
+</ol>
+<ul>
+<li><strong>注意：</strong> 直接使用 <strong>Crop（裁切）</strong> 模式进行二次调整<strong>不够自由</strong>，操作起来不够顺手，因此通常建议使用<strong>蒙版</strong>来实现更精细和灵活的裁切。</li>
+</ul>
+<h2 id="三-蒙版mask功能详解">三、 蒙版（Mask）功能详解<a href="#三-蒙版mask功能详解" class="header-anchor" ariaLabel="Anchor"> # </a></h2>
+<p>蒙版是 Figma 中实现自由裁切和隐藏内容的<strong>核心功能</strong>，它比 Crop 模式更常用。</p>
+<h3 id="1-蒙版的原理和作用">1. 蒙版的原理和作用<a href="#1-蒙版的原理和作用" class="header-anchor" ariaLabel="Anchor"> # </a></h3>
+<ul>
+<li><strong>原理：</strong> 蒙版通过一个<strong>底部的矢量图形</strong>作为<strong>视窗窗口</strong>（Window）。所有位于该矢量图形上方的、被包含的图层，将<strong>只能显示</strong>在这个矢量图形的轮廓区域内。</li>
+<li><strong>作用：</strong> 它能够通过特定的方法，将下级的内容（如图片、其他元素）进行<strong>隐藏</strong>或<strong>遮挡</strong>。</li>
+</ul>
+<h3 id="2-蒙版的创建和操作">2. 蒙版的创建和操作<a href="#2-蒙版的创建和操作" class="header-anchor" ariaLabel="Anchor"> # </a></h3>
+<ul>
+<li><strong>创建步骤：</strong>
+<ol>
+<li>选择一个矢量图形（作为蒙版窗口）和需要被遮挡或包含的元素（如图片、文本等）。</li>
+<li>右键点击选择 <strong>“Use as a mask”（创建蒙版）</strong>。</li>
+<li>快捷键为 <code>Cmd / Ctrl + M</code>。</li>
+</ol>
+</li>
+<li><strong>结构变化：</strong> 蒙版创建后，Figma 会自动生成一个<strong>编组/文件夹</strong>。
+<ul>
+<li>作为蒙版的<strong>矢量图形</strong>会处于这个编组的<strong>最底部</strong>，并且该图层会变成**“蒙版图层”**。</li>
+<li>被蒙版包含的图层会位于其上方，并在图层列表中显示一个<strong>向上的箭头</strong>，表示它们是蒙版内部的<strong>子图层</strong>。</li>
+</ul>
+</li>
+</ul>
+<h3 id="3-蒙版使用的关键管理技巧">3. 蒙版使用的关键管理技巧<a href="#3-蒙版使用的关键管理技巧" class="header-anchor" ariaLabel="Anchor"> # </a></h3>
+<ul>
+<li><strong>创建编组的重要性：</strong> 在创建蒙版时，务必记得将作为蒙版的图形和所有被包含的元素<strong>一起创建为一个新的编组</strong>。</li>
+<li><strong>避免全局影响：</strong> 如果不创建编组，蒙版图层可能会将<strong>上面所有的图层</strong>都视为需要被蒙版作用的子图层。这将导致整个文件中的上方内容被意外隐藏。</li>
+<li><strong>优势：</strong> 使用蒙版可以在保持蒙版形状不变的情况下，自由地调整<strong>被包含元素</strong>（如图片）的位置，使其编辑操作更加灵活和方便。</li>
+</ul>
+
+
+  
+    
+      <a href="http://localhost:1313//tags/figma%E5%AD%A6%E4%B9%A0%E6%8C%87%E5%8D%97/">#Figma学习指南</a>
+    
+      <a href="http://localhost:1313//tags/%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/">#学习笔记</a>
+    
+  
+
+<p style="color:#777;">最后一次修改于 2025-11-18</p>
+</div>
+<a href="#top"><i class="fa fa-chevron-up" style="font-size: 30px; color: black;"></i></a>
+
+</main>
+
+<footer class="footer">
+  <div class="content">
+
+<script src="https://giscus.app/client.js"
+        data-repo="finderaha/myblog"
+        data-repo-id="R_kgDOLxcP2A"
+        data-category="Announcements"
+        data-category-id="DIC_kwDOLxcP2M4Ce2as"
+        data-mapping="pathname"
+        data-strict="0"
+        data-reactions-enabled="1"
+        data-emit-metadata="0"
+        data-input-position="top"
+        data-theme="preferred_color_scheme"
+        data-lang="zh-CN"
+        data-loading="lazy"
+        crossorigin="anonymous"
+        async>
+</script>
+</br>
+ 
+</div>
+
+  <script type="text/javascript" src="/js/math-code.js"></script>
+<script async src="//mathjax.rstudio.com/latest/MathJax.js?config=TeX-MML-AM_CHTML"></script>
+<script type="text/javascript" src="/js/center-img.js"></script>
+
+
+
+     <ul class="footer-links">
+      
+       
+       
+       
+       <li><a href="/cn/posts/index.xml" type="application/rss+xml" title="RSS feed">
+       订阅 </a>
+       </li>
+       
+       
+       <li>
+       
+       <a href="http://creativecommons.org/licenses/by-nc-sa/4.0/deed.zh" target="_blank">
+       
+        版权
+        <i class="fa fa-cc" aria-hidden="true" title="Attribution-NonCommercial-ShareAlike 4.0 International"></i> 
+        </a>
+       </li>
+       
+     </ul>
+     <div class="copyright-text">
+            
+            ©
+            
+            郝志杰
+            
+            2024
+            
+     </div>
+
+</footer>
+
+
+
+
+

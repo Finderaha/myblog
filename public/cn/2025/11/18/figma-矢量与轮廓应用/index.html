@@ -1,0 +1,216 @@
+<script src="/livereload.js?mindelay=10&amp;v=2&amp;port=1313&amp;path=livereload" data-no-instant defer></script><a name="top"></a>
+<!DOCTYPE html>
+<html lang="en-us">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Finder</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+
+    <link rel="stylesheet" href="/css/style.css" />
+    <link rel="stylesheet" href="/css/fonts.css" />
+     
+  </head>
+  
+  <body>
+    <div class="wrapper">
+      <header class="header">
+        <nav class="nav" >
+      <a href="/" class="nav-logo">
+        <img src="/media/hugo-logo.png"
+         width="50"
+         height="50"
+         alt="Hugo-ht">
+      </a>
+
+      <ul class="nav-links" >
+        
+        
+           <li><a href="/">主页</a></li>
+       
+           <li><a href="/cn/posts/">日志</a></li>
+       
+           <li><a href="/cn/about/">关于</a></li>
+       
+       
+      </ul>
+</nav>
+
+      </header>
+
+<main class = "content" role="main">
+<div style="text-align: center">
+
+<h1>Figma 矢量与轮廓应用</h1>
+
+<p>Finder 
+ / 2025-11-18 </p>
+
+<hr/>
+</div>
+
+<span class="article-toolbar">
+  
+  
+  
+  
+  
+  
+  
+  <a href='https://github.com/UFinderaha/myblog/edit/main/content/cn%5cposts%5c2025-11-18-Figma%20%e7%9f%a2%e9%87%8f%e4%b8%8e%e8%bd%ae%e5%bb%93%e5%ba%94%e7%94%a8.md'style="font-size: 24px; color: black;" target="_blank"><i class="fa fa-edit" aria-hidden="true" title="编辑本页"></i>
+  </a>
+  
+  
+  
+</span>
+
+
+
+<div class="body-text list-text">
+<h2 id="一-位图与失量图的本质区别">一、 位图与失量图的本质区别<a href="#一-位图与失量图的本质区别" class="header-anchor" ariaLabel="Anchor"> # </a></h2>
+<p>学习 Figma 必须理解失量图形的原理，包括图标设计和导出切图等操作都需应用相关知识。</p>
+<h3 id="1-位图bitmap--点阵图">1. 位图（Bitmap / 点阵图）<a href="#1-位图bitmap--点阵图" class="header-anchor" ariaLabel="Anchor"> # </a></h3>
+<ul>
+<li><strong>记录原理：</strong> 位图记录<strong>像素点</strong>的色彩，并通过拼凑这些像素点来呈现最终图形。</li>
+<li><strong>图像特性：</strong> 位图的边缘不可能过渡得特别平缓，显示内容时会产生强烈的<strong>锯齿性（句齿性）</strong>。</li>
+<li><strong>局限性：</strong> 位图存在<strong>数据量固定</strong>的局限性。如果图像以 100x100 像素记录，放大到 1000x1000 时无法正常显示（像素感很强），因为原始数据量只有那么多。</li>
+</ul>
+<h3 id="2-失量图vector-graphics">2. 失量图（Vector Graphics）<a href="#2-失量图vector-graphics" class="header-anchor" ariaLabel="Anchor"> # </a></h3>
+<ul>
+<li><strong>记录原理：</strong> 失量图形使用<strong>数学公式</strong>的方法去描述图像，例如告知系统某处有一个圆、一个正方形或一个三角形。</li>
+<li><strong>渲染优势：</strong> 系统在渲染失量图形时，会按照指定画部和比例进行渲染，显示出最适用于当前屏幕和分辨率的图形。</li>
+<li><strong>核心优势：</strong> 失量图形可以进行<strong>无损放大和缩小</strong>（无损放大跟缩小），因为它们都是基于公式和失量的数字内容。</li>
+<li><strong>应用范围：</strong> 失量图形一般适用于显示<strong>相对简单</strong>的图像，例如插画或图标。它<strong>无法</strong>应用于真正的摄影图或非常复杂的其他图形。</li>
+</ul>
+<h2 id="二-figma-对位图的处理逻辑与性能影响">二、 Figma 对位图的处理逻辑与性能影响<a href="#二-figma-对位图的处理逻辑与性能影响" class="header-anchor" ariaLabel="Anchor"> # </a></h2>
+<ul>
+<li><strong>Figma 的定位：</strong> Figma 是一个<strong>失量绘图工具</strong>。</li>
+<li><strong>位图导入：</strong> Figma 可以导入位图，但<strong>不能</strong>在位图中进行一些复杂的编辑。</li>
+<li><strong>性能警示：</strong> 从外部导入的图片数据量是固定的，并且会被<strong>融入到 Figma 本身的文件的内部里面去</strong>。
+<ul>
+<li>如果引入大量大图（如摄影源图），文件体积可能会高达几百兆以上。</li>
+<li>加载包含位图的页面会<strong>非常慢</strong>，因为系统加载的是位图，而非简单的失量代码。</li>
+<li>位图会<strong>不断增大</strong>电脑的整体负荷。</li>
+</ul>
+</li>
+</ul>
+<h2 id="三-失量图形的构成点线面">三、 失量图形的构成：点、线、面<a href="#三-失量图形的构成点线面" class="header-anchor" ariaLabel="Anchor"> # </a></h2>
+<p>失量图形是由<strong>点、线、面</strong>三者混合构成的。</p>
+<ul>
+<li><strong>点（Points/毛点）：</strong> 矩形的角是点。线段由<strong>毛点</strong>之间形成。</li>
+<li><strong>线段（Lines）：</strong> 点和点之间的区域是线段。</li>
+<li><strong>面（Faces）：</strong> 中间被填充的区域是面。</li>
+<li><strong>贝塞尔曲线（Bézier Curve）：</strong> 通过控制毛点的<strong>控制杆</strong>来调节曲线。线段是直线还是弧线，正是由毛点的控制杆决定的。</li>
+</ul>
+<h3 id="1-路经类型">1. 路经类型<a href="#1-路经类型" class="header-anchor" ariaLabel="Anchor"> # </a></h3>
+<p>失量图形会形成两种类型的路径：</p>
+<ul>
+<li><strong>闭合路径（Closed Path）：</strong> 路径的<strong>首尾必须相连</strong>，形成一个完整的闭环。</li>
+<li><strong>非闭合路径（Unclosed Path）：</strong> 即线段。只要首尾没有相连，它就不是一个闭合路径。</li>
+</ul>
+<h2 id="四-失量图形的属性与系统认知">四、 失量图形的属性与系统认知<a href="#四-失量图形的属性与系统认知" class="header-anchor" ariaLabel="Anchor"> # </a></h2>
+<h3 id="1-属性与图形本身">1. 属性与图形本身<a href="#1-属性与图形本身" class="header-anchor" ariaLabel="Anchor"> # </a></h3>
+<ul>
+<li><strong>边缘是核心：</strong> 对于系统来说，失量图形的<strong>边缘/轮廓</strong>才是<strong>真正的失量图形</strong>。</li>
+<li><strong>填充与描边：</strong> 中间的<strong>填充</strong>（面）和<strong>描边</strong>（线段的控制）是额外的<strong>属性效果</strong>或<strong>装饰</strong>。它们<strong>不是</strong>图形本身。</li>
+</ul>
+<h3 id="2-轮廓化描边操作outline-stroke">2. 轮廓化描边操作（Outline Stroke）<a href="#2-轮廓化描边操作outline-stroke" class="header-anchor" ariaLabel="Anchor"> # </a></h3>
+<ul>
+<li><strong>操作目的：</strong> 如果用户添加了一个很粗的描边，可以使用右键操作 <strong>Outline Stroke</strong> (outlinest)。</li>
+<li><strong>功能：</strong> 该操作会把这个描边<strong>创建成一个独立的失量图形</strong>。</li>
+<li><strong>应用重要性：</strong> 在进行图标绘制等特定操作时，理解填充和描边只是属性效果而非真实图形的概念，非常重要，可以避免很多错误。</li>
+</ul>
+<h2 id="五-失量图形的编辑模式与显示工具">五、 失量图形的编辑模式与显示工具<a href="#五-失量图形的编辑模式与显示工具" class="header-anchor" ariaLabel="Anchor"> # </a></h2>
+<h3 id="1-编辑模式的切换">1. 编辑模式的切换<a href="#1-编辑模式的切换" class="header-anchor" ariaLabel="Anchor"> # </a></h3>
+<ul>
+<li><strong>进入编辑模式：</strong> 要修改失量图形，必须<strong>双击</strong>进入<strong>失量编辑模式</strong>。</li>
+<li><strong>退出模式：</strong> 按 <strong>Esc</strong> 键可以退出编辑状态。通常需要按两次 Esc 才能完全退出到外部的排版模式。</li>
+</ul>
+<h3 id="2-像素级别的显示工具">2. 像素级别的显示工具<a href="#2-像素级别的显示工具" class="header-anchor" ariaLabel="Anchor"> # </a></h3>
+<p>Figma 提供了用于观察像素和渲染状态的工具：</p>
+<ul>
+<li><strong>Pixel Preview (像素预览)：</strong> 开启后，在放大时，会将边<strong>缘以像素点正常渲染模式</strong>显示出来，让用户看到边缘的虚化（锯齿）。这有助于设计师在绘制精细的图标时，观察它在真实显示环境中的状态。</li>
+<li><strong>Pixel Grid (像素网格)：</strong> 开启后，画布上会显示代表像素点的网格（点正）。所有的颜色都是基于这些像素点进行着色。</li>
+<li><strong>边缘平滑：</strong> 边缘的圆滑过渡是通过**指向素渲染（sle pixel）**技术实现的。该技术在边缘填入不同但相似的颜色，让用户感觉过渡比较圆滑。</li>
+</ul>
+
+
+  
+    
+      <a href="http://localhost:1313//tags/figma%E5%AD%A6%E4%B9%A0%E6%8C%87%E5%8D%97/">#Figma学习指南</a>
+    
+      <a href="http://localhost:1313//tags/%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/">#学习笔记</a>
+    
+  
+
+<p style="color:#777;">最后一次修改于 2025-11-18</p>
+</div>
+<a href="#top"><i class="fa fa-chevron-up" style="font-size: 30px; color: black;"></i></a>
+
+</main>
+
+<footer class="footer">
+  <div class="content">
+
+<script src="https://giscus.app/client.js"
+        data-repo="finderaha/myblog"
+        data-repo-id="R_kgDOLxcP2A"
+        data-category="Announcements"
+        data-category-id="DIC_kwDOLxcP2M4Ce2as"
+        data-mapping="pathname"
+        data-strict="0"
+        data-reactions-enabled="1"
+        data-emit-metadata="0"
+        data-input-position="top"
+        data-theme="preferred_color_scheme"
+        data-lang="zh-CN"
+        data-loading="lazy"
+        crossorigin="anonymous"
+        async>
+</script>
+</br>
+ 
+</div>
+
+  <script type="text/javascript" src="/js/math-code.js"></script>
+<script async src="//mathjax.rstudio.com/latest/MathJax.js?config=TeX-MML-AM_CHTML"></script>
+<script type="text/javascript" src="/js/center-img.js"></script>
+
+
+
+     <ul class="footer-links">
+      
+       
+       
+       
+       <li><a href="/cn/posts/index.xml" type="application/rss+xml" title="RSS feed">
+       订阅 </a>
+       </li>
+       
+       
+       <li>
+       
+       <a href="http://creativecommons.org/licenses/by-nc-sa/4.0/deed.zh" target="_blank">
+       
+        版权
+        <i class="fa fa-cc" aria-hidden="true" title="Attribution-NonCommercial-ShareAlike 4.0 International"></i> 
+        </a>
+       </li>
+       
+     </ul>
+     <div class="copyright-text">
+            
+            ©
+            
+            郝志杰
+            
+            2024
+            
+     </div>
+
+</footer>
+
+
+
+
+

@@ -1,9 +1,184 @@
-<a name=top></a><!doctype html><html lang=en-us><head><meta charset=utf-8><meta name=viewport content="width=device-width,initial-scale=1"><title>Finder</title>
-<link rel=stylesheet href=https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css><link rel=stylesheet href=/css/style.css><link rel=stylesheet href=/css/fonts.css></head><body><div class=wrapper><header class=header><nav class=nav><a href=/ class=nav-logo><img src=/media/hugo-logo.png width=50 height=50 alt=Hugo-ht></a><ul class=nav-links><li><a href=/>主页</a></li><li><a href=/cn/posts/>日志</a></li><li><a href=/cn/about/>关于</a></li><li><a href=/en/posts/>English</a></li></ul></nav></header><main class=content role=main><div style=text-align:center><h1>02-监督学习</h1><p>Finder
-/ 2025-04-01</p><hr></div><span class=article-toolbar><a href=https://github.com/UFinderaha/myblog/edit/main/content/cn%5cposts%5c2025-04-01-02-%e7%9b%91%e7%9d%a3%e5%ad%a6%e4%b9%a0.md style=font-size:24px;color:#000 target=_blank><i class="fa fa-edit" aria-hidden=true title=编辑本页></i></a></span><div class="body-text list-text"><h2 id=监督学习>监督学习<a href=#监督学习 class=header-anchor arialabel=Anchor> #</a></h2><p>监督学习（Supervised Learning）是机器学习中一种重要的<strong>学习范式</strong>，其核心思想是通过已知的输入-输出对（训练数据）来训练模型，使其能够对新的、未见过的输入进行准确的预测或分类。</p><p>这种学习方式的特点在于训练数据中每个样本都包含明确的标签或期望输出值，这些标签被称为“监督信号”，用于指导模型的学习过程。</p><h2 id=监督学习定义>监督学习定义<a href=#监督学习定义 class=header-anchor arialabel=Anchor> #</a></h2><p><strong>定义</strong>：监督学习是一种通过已知输入-输出对训练模型的方法，目标是找到一个映射函数f:X→Y，使得模型能够根据输入X 预测出相应的输出Y。</p><p><strong>输入与输出</strong>：输入通常是一个向量（特征），而输出是一个标签或期望值。例如，在分类任务中，输出是一个离散的类别标签；在回归任务中，输出是一个连续的数值。</p><h2 id=训练过程>训练过程<a href=#训练过程 class=header-anchor arialabel=Anchor> #</a></h2><ol><li><strong>数据准备</strong>：收集并标注训练数据，这些数据通常由人工标注或实际观测得到。</li><li><strong>模型训练</strong>：通过调整模型参数，使模型能够拟合训练数据中的输入-输出关系。常见的优化目标是最小化预测值与实际值之间的误差。</li><li><strong>模型评估</strong>：使用测试数据评估模型的性能，确保模型在未见过的数据上也能表现良好</li></ol><p><img src=/images/ml/training_workflow.svg alt=监督学习训练流程></p><p><em>监督学习模型训练流程示意图，展示了从输入数据到模型训练的完整过程</em></p><h2 id=监督学习分类>监督学习分类<a href=#监督学习分类 class=header-anchor arialabel=Anchor> #</a></h2><p>监督学习广泛应用于各种实际问题中，包括但不限于：</p><h3 id=分类任务>分类任务<a href=#分类任务 class=header-anchor arialabel=Anchor> #</a></h3><p>垃圾邮件检测、图像分类、语音识别等。这些任务的目标是将输入数据映射到离散的类别标签。</p><h3 id=结构化输出>结构化输出<a href=#结构化输出 class=header-anchor arialabel=Anchor> #</a></h3><p>预测复杂的结构化输出，如序列标注。</p><h3 id=回归任务><strong>回归任务</strong><a href=#回归任务 class=header-anchor arialabel=Anchor> #</a></h3><p>如房价预测、股票价格预测等。这些任务的目标是预测一个连续的数值输出</p><h3 id=异常检测><strong>异常检测</strong><a href=#异常检测 class=header-anchor arialabel=Anchor> #</a></h3><p>如信用卡欺诈检测、设备故障预测等。这些任务的目标是识别不符合正常模式的数据</p><h2 id=监督学习的挑战与局限性>监督学习的挑战与局限性<a href=#监督学习的挑战与局限性 class=header-anchor arialabel=Anchor> #</a></h2><ul><li><strong>数据标注成本高</strong>：标注数据需要大量的人力和时间投入，尤其是在复杂任务中</li><li><strong>过拟合风险</strong>：如果模型过于复杂，可能会在训练数据上表现很好，但在新数据上表现不佳</li><li><strong>对噪声敏感</strong>：训练数据中的噪声可能会影响模型的性能</li></ul><a href=https://finderaha.com//tags/llm/>#LLM</a>
-<a href=https://finderaha.com//tags/%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0/>#机器学习</a>
-<a href=https://finderaha.com//tags/machine-learning/>#Machine Learning</a>
-<a href=https://finderaha.com//tags/%E7%AE%97%E6%B3%95/>#算法</a><p style=color:#777>最后一次修改于 2025-04-01</p></div><a href=#top><i class="fa fa-chevron-up" style=font-size:30px;color:#000></i></a></main><footer class=footer><div class=content><script src=https://giscus.app/client.js data-repo=finderaha/myblog data-repo-id=R_kgDOLxcP2A data-category=Announcements data-category-id=DIC_kwDOLxcP2M4Ce2as data-mapping=pathname data-strict=0 data-reactions-enabled=1 data-emit-metadata=0 data-input-position=top data-theme=preferred_color_scheme data-lang=zh-CN data-loading=lazy crossorigin=anonymous async></script></br></div><script type=text/javascript src=/js/math-code.js></script><script async src="//mathjax.rstudio.com/latest/MathJax.js?config=TeX-MML-AM_CHTML"></script><script type=text/javascript src=/js/center-img.js></script><ul class=footer-links><li><a href=/cn/posts/index.xml type=application/rss+xml title="RSS feed">订阅</a></li><li><a href=http://creativecommons.org/licenses/by-nc-sa/4.0/deed.zh target=_blank>版权
-<i class="fa fa-cc" aria-hidden=true title="Attribution-NonCommercial-ShareAlike 4.0 International"></i></a></li></ul><div class=copyright-text>©
-郝志杰
-2024</div></footer>
+<script src="/livereload.js?mindelay=10&amp;v=2&amp;port=1313&amp;path=livereload" data-no-instant defer></script><a name="top"></a>
+<!DOCTYPE html>
+<html lang="en-us">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Finder</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+
+    <link rel="stylesheet" href="/css/style.css" />
+    <link rel="stylesheet" href="/css/fonts.css" />
+     
+  </head>
+  
+  <body>
+    <div class="wrapper">
+      <header class="header">
+        <nav class="nav" >
+      <a href="/" class="nav-logo">
+        <img src="/media/hugo-logo.png"
+         width="50"
+         height="50"
+         alt="Hugo-ht">
+      </a>
+
+      <ul class="nav-links" >
+        
+        
+           <li><a href="/">主页</a></li>
+       
+           <li><a href="/cn/posts/">日志</a></li>
+       
+           <li><a href="/cn/about/">关于</a></li>
+       
+       
+      </ul>
+</nav>
+
+      </header>
+
+<main class = "content" role="main">
+<div style="text-align: center">
+
+<h1>02-监督学习</h1>
+
+<p>Finder 
+ / 2025-04-01 </p>
+
+<hr/>
+</div>
+
+<span class="article-toolbar">
+  
+  
+  
+  
+  
+  
+  
+  <a href='https://github.com/UFinderaha/myblog/edit/main/content/cn%5cposts%5c2025-04-01-02-%e7%9b%91%e7%9d%a3%e5%ad%a6%e4%b9%a0.md'style="font-size: 24px; color: black;" target="_blank"><i class="fa fa-edit" aria-hidden="true" title="编辑本页"></i>
+  </a>
+  
+  
+  
+</span>
+
+
+
+<div class="body-text list-text">
+<h2 id="监督学习">监督学习<a href="#监督学习" class="header-anchor" ariaLabel="Anchor"> # </a></h2>
+<p>监督学习（Supervised Learning）是机器学习中一种重要的<strong>学习范式</strong>，其核心思想是通过已知的输入-输出对（训练数据）来训练模型，使其能够对新的、未见过的输入进行准确的预测或分类。</p>
+<p>这种学习方式的特点在于训练数据中每个样本都包含明确的标签或期望输出值，这些标签被称为“监督信号”，用于指导模型的学习过程。</p>
+<h2 id="监督学习定义">监督学习定义<a href="#监督学习定义" class="header-anchor" ariaLabel="Anchor"> # </a></h2>
+<p><strong>定义</strong>：监督学习是一种通过已知输入-输出对训练模型的方法，目标是找到一个映射函数f:X→Y，使得模型能够根据输入X 预测出相应的输出Y。</p>
+<p><strong>输入与输出</strong>：输入通常是一个向量（特征），而输出是一个标签或期望值。例如，在分类任务中，输出是一个离散的类别标签；在回归任务中，输出是一个连续的数值。</p>
+<h2 id="训练过程">训练过程<a href="#训练过程" class="header-anchor" ariaLabel="Anchor"> # </a></h2>
+<ol>
+<li><strong>数据准备</strong>：收集并标注训练数据，这些数据通常由人工标注或实际观测得到。</li>
+<li><strong>模型训练</strong>：通过调整模型参数，使模型能够拟合训练数据中的输入-输出关系。常见的优化目标是最小化预测值与实际值之间的误差。</li>
+<li><strong>模型评估</strong>：使用测试数据评估模型的性能，确保模型在未见过的数据上也能表现良好</li>
+</ol>
+<p><img src="/images/ml/training_workflow.svg" alt="监督学习训练流程"></p>
+<p><em>监督学习模型训练流程示意图，展示了从输入数据到模型训练的完整过程</em></p>
+<h2 id="监督学习分类">监督学习分类<a href="#监督学习分类" class="header-anchor" ariaLabel="Anchor"> # </a></h2>
+<p>监督学习广泛应用于各种实际问题中，包括但不限于：</p>
+<h3 id="分类任务">分类任务<a href="#分类任务" class="header-anchor" ariaLabel="Anchor"> # </a></h3>
+<p>垃圾邮件检测、图像分类、语音识别等。这些任务的目标是将输入数据映射到离散的类别标签。</p>
+<h3 id="结构化输出">结构化输出<a href="#结构化输出" class="header-anchor" ariaLabel="Anchor"> # </a></h3>
+<p>预测复杂的结构化输出，如序列标注。</p>
+<h3 id="回归任务"><strong>回归任务</strong><a href="#回归任务" class="header-anchor" ariaLabel="Anchor"> # </a></h3>
+<p>如房价预测、股票价格预测等。这些任务的目标是预测一个连续的数值输出</p>
+<h3 id="异常检测"><strong>异常检测</strong><a href="#异常检测" class="header-anchor" ariaLabel="Anchor"> # </a></h3>
+<p>如信用卡欺诈检测、设备故障预测等。这些任务的目标是识别不符合正常模式的数据</p>
+<h2 id="监督学习的挑战与局限性">监督学习的挑战与局限性<a href="#监督学习的挑战与局限性" class="header-anchor" ariaLabel="Anchor"> # </a></h2>
+<ul>
+<li><strong>数据标注成本高</strong>：标注数据需要大量的人力和时间投入，尤其是在复杂任务中</li>
+<li><strong>过拟合风险</strong>：如果模型过于复杂，可能会在训练数据上表现很好，但在新数据上表现不佳</li>
+<li><strong>对噪声敏感</strong>：训练数据中的噪声可能会影响模型的性能</li>
+</ul>
+
+
+  
+    
+      <a href="http://localhost:1313//tags/llm/">#LLM</a>
+    
+      <a href="http://localhost:1313//tags/%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0/">#机器学习</a>
+    
+      <a href="http://localhost:1313//tags/machine-learning/">#Machine Learning</a>
+    
+      <a href="http://localhost:1313//tags/%E7%AE%97%E6%B3%95/">#算法</a>
+    
+  
+
+<p style="color:#777;">最后一次修改于 2025-04-01</p>
+</div>
+<a href="#top"><i class="fa fa-chevron-up" style="font-size: 30px; color: black;"></i></a>
+
+</main>
+
+<footer class="footer">
+  <div class="content">
+
+<script src="https://giscus.app/client.js"
+        data-repo="finderaha/myblog"
+        data-repo-id="R_kgDOLxcP2A"
+        data-category="Announcements"
+        data-category-id="DIC_kwDOLxcP2M4Ce2as"
+        data-mapping="pathname"
+        data-strict="0"
+        data-reactions-enabled="1"
+        data-emit-metadata="0"
+        data-input-position="top"
+        data-theme="preferred_color_scheme"
+        data-lang="zh-CN"
+        data-loading="lazy"
+        crossorigin="anonymous"
+        async>
+</script>
+</br>
+ 
+</div>
+
+  <script type="text/javascript" src="/js/math-code.js"></script>
+<script async src="//mathjax.rstudio.com/latest/MathJax.js?config=TeX-MML-AM_CHTML"></script>
+<script type="text/javascript" src="/js/center-img.js"></script>
+
+
+
+     <ul class="footer-links">
+      
+       
+       
+       
+       <li><a href="/cn/posts/index.xml" type="application/rss+xml" title="RSS feed">
+       订阅 </a>
+       </li>
+       
+       
+       <li>
+       
+       <a href="http://creativecommons.org/licenses/by-nc-sa/4.0/deed.zh" target="_blank">
+       
+        版权
+        <i class="fa fa-cc" aria-hidden="true" title="Attribution-NonCommercial-ShareAlike 4.0 International"></i> 
+        </a>
+       </li>
+       
+     </ul>
+     <div class="copyright-text">
+            
+            ©
+            
+            郝志杰
+            
+            2024
+            
+     </div>
+
+</footer>
+
+
+
+
+

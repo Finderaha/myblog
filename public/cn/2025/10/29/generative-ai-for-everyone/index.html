@@ -1,0 +1,182 @@
+<script src="/livereload.js?mindelay=10&amp;v=2&amp;port=1313&amp;path=livereload" data-no-instant defer></script><a name="top"></a>
+<!DOCTYPE html>
+<html lang="en-us">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Finder</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+
+    <link rel="stylesheet" href="/css/style.css" />
+    <link rel="stylesheet" href="/css/fonts.css" />
+     
+  </head>
+  
+  <body>
+    <div class="wrapper">
+      <header class="header">
+        <nav class="nav" >
+      <a href="/" class="nav-logo">
+        <img src="/media/hugo-logo.png"
+         width="50"
+         height="50"
+         alt="Hugo-ht">
+      </a>
+
+      <ul class="nav-links" >
+        
+        
+           <li><a href="/">主页</a></li>
+       
+           <li><a href="/cn/posts/">日志</a></li>
+       
+           <li><a href="/cn/about/">关于</a></li>
+       
+       
+      </ul>
+</nav>
+
+      </header>
+
+<main class = "content" role="main">
+<div style="text-align: center">
+
+<h1>生成式AI：原理、影响和应用</h1>
+
+<p>Finder 
+ / 2025-10-29 </p>
+
+<hr/>
+</div>
+
+<span class="article-toolbar">
+  
+  
+  
+  
+  
+  
+  
+  <a href='https://github.com/UFinderaha/myblog/edit/main/content/cn%5cposts%5c2025-10-29-Generative%20AI%20for%20Everyone%e5%ad%a6%e4%b9%a0%e7%ac%94%e8%ae%b0-1.md'style="font-size: 24px; color: black;" target="_blank"><i class="fa fa-edit" aria-hidden="true" title="编辑本页"></i>
+  </a>
+  
+  
+  
+</span>
+
+
+
+<div class="body-text list-text">
+<p>该系列是我学习<a href="https://www.deeplearning.ai/generative-ai-for-everyone/" target="_blank" rel="noreferrer noopener">Generative AI for Everyone</a>
+
+课程的笔记，也是系统学习AI课程的第一站。</p>
+<h2 id="概论">概论<a href="#概论" class="header-anchor" ariaLabel="Anchor"> # </a></h2>
+<p>自从2022年11月OpenAI发布ChatGPT以来，**生成式AI (Gen AI)**已成为一股强大的颠覆性技术，正改变许多人的学习和工作方式。它被认为将赋能许多人，提高生产力，并可能为全球经济增长做出重大贡献。据麦肯锡估计，Gen AI每年可为经济增加2.6万亿至4.4万亿美元。然而，该技术也引发了对自动化导致失业的担忧。</p>
+<p>生成式AI指的是能够生成<strong>高质量内容</strong>的AI系统，主要内容类型包括<strong>文本、图像和音频</strong>。尽管目前最大的影响体现在文本生成领域（如ChatGPT、Bard、Bing Chat），但它也能够生成精美或超逼真的图像，以及进行音频（声音克隆）甚至视频克隆。</p>
+<p>Gen AI的出现，使得许多AI应用的构建<strong>比以往更容易、更便宜</strong>，促使AI产品和服务数量激增。除了面向消费者的应用外，它作为<strong>开发者工具</strong>的潜力在长期来看可能更具影响力。</p>
+<p>根据您提供的新视频片段“W1 2 how generative ai work”的文字稿，以下是该视频内容的总结：</p>
+<h2 id="一-生成式ai在ai格局中的定位">一、 生成式AI在AI格局中的定位<a href="#一-生成式ai在ai格局中的定位" class="header-anchor" ariaLabel="Anchor"> # </a></h2>
+<p>生成式AI（Generative AI）的能力，例如ChatGPT和Bard等系统生成文本的能力，看似具有魔力，代表了AI技术的一大进步。AI可以被视为一系列工具的集合。在当今最重要的AI工具中，包括<strong>监督学习（Supervised Learning, SL）<strong>和</strong>生成式AI</strong>。</p>
+<h2 id="二-监督学习的工作机制">二、 监督学习的工作机制<a href="#二-监督学习的工作机制" class="header-anchor" ariaLabel="Anchor"> # </a></h2>
+<p>监督学习是一种技术，擅长于“贴标签”（labeling things），它在给定输入A时，能够生成相应的输出B。</p>
+<p><strong>监督学习的典型应用示例包括：</strong></p>
+<ul>
+<li><strong>垃圾邮件过滤：</strong> 输入A为一封电子邮件，输出B为判断它是否为垃圾邮件（0或1）。</li>
+<li><strong>在线广告：</strong> 根据广告和用户信息（A），预测用户是否可能点击该广告（B）。</li>
+<li><strong>自动驾驶：</strong> 接收汽车前方的图像和雷达信息（A），标记出其他车辆的位置（B）。</li>
+<li><strong>医疗诊断：</strong> 输入医疗X光片（A），输出医疗诊断（B）。</li>
+<li><strong>缺陷检测：</strong> 拍摄组装线上手机的图片（A），检查是否有划痕或其他缺陷（B）。</li>
+<li><strong>语音识别：</strong> 输入音频（A），输出文本转录（B）。</li>
+<li><strong>情绪分析：</strong> 阅读业务或产品的评论（A），标记其是积极还是消极的情绪（B），这对声誉监控很有用。</li>
+</ul>
+<h2 id="三-大规模监督学习奠定基础">三、 大规模监督学习奠定基础<a href="#三-大规模监督学习奠定基础" class="header-anchor" ariaLabel="Anchor"> # </a></h2>
+<p>大约2010年至2020年是<strong>大规模监督学习</strong>发展的十年。研究人员发现，对于许多应用而言，即使输入更多数据，如果模型较小，性能提升也有限。然而，如果训练<strong>非常大的AI模型</strong>，即使用非常快、非常强大的计算机和大量内存，并且输入更多数据，那么性能就会<strong>持续提升</strong>。正是这种<strong>用于贴标签的超大型模型</strong>的理念，为现代生成式AI奠定了基础。</p>
+<h2 id="四-大型语言模型llms如何生成文本">四、 大型语言模型（LLMs）如何生成文本<a href="#四-大型语言模型llms如何生成文本" class="header-anchor" ariaLabel="Anchor"> # </a></h2>
+<p><strong>大型语言模型（LLMs）<strong>是生成式AI生成文本的技术。LLMs的工作原理是通过使用监督学习技术</strong>反复预测下一个词</strong>。</p>
+<ol>
+<li><strong>训练数据：</strong> LLMs通过阅读互联网上数千亿甚至数万亿个词语来学习。</li>
+<li><strong>预测机制：</strong> 训练过程将句子转化为大量数据点（输入A和输出B）。例如，系统学习到“我最喜欢的食物是” (A) 之后的下一个词可能是“百吉饼” (B)。</li>
+<li><strong>文本生成：</strong> 当系统在海量数据上训练成一个非常大的AI系统时，就形成了像ChatGPT这样的LLM。给定一个被称为**“提示”（prompt）**的输入，LLM就擅长于生成额外的词语作为响应。</li>
+<li><strong>应用：</strong> 尽管LLMs的核心是预测下一个词，但它们已被许多人发现在日常工作中有用，能够帮助<strong>写作、查找基本信息或充当思维伙伴</strong>来思考问题。</li>
+</ol>
+
+
+  
+    
+      <a href="http://localhost:1313//tags/llm/">#LLM</a>
+    
+      <a href="http://localhost:1313//tags/generative-ai-for-everyone/">#Generative AI for Everyone</a>
+    
+  
+
+<p style="color:#777;">最后一次修改于 2025-10-29</p>
+</div>
+<a href="#top"><i class="fa fa-chevron-up" style="font-size: 30px; color: black;"></i></a>
+
+</main>
+
+<footer class="footer">
+  <div class="content">
+
+<script src="https://giscus.app/client.js"
+        data-repo="finderaha/myblog"
+        data-repo-id="R_kgDOLxcP2A"
+        data-category="Announcements"
+        data-category-id="DIC_kwDOLxcP2M4Ce2as"
+        data-mapping="pathname"
+        data-strict="0"
+        data-reactions-enabled="1"
+        data-emit-metadata="0"
+        data-input-position="top"
+        data-theme="preferred_color_scheme"
+        data-lang="zh-CN"
+        data-loading="lazy"
+        crossorigin="anonymous"
+        async>
+</script>
+</br>
+ 
+</div>
+
+  <script type="text/javascript" src="/js/math-code.js"></script>
+<script async src="//mathjax.rstudio.com/latest/MathJax.js?config=TeX-MML-AM_CHTML"></script>
+<script type="text/javascript" src="/js/center-img.js"></script>
+
+
+
+     <ul class="footer-links">
+      
+       
+       
+       
+       <li><a href="/cn/posts/index.xml" type="application/rss+xml" title="RSS feed">
+       订阅 </a>
+       </li>
+       
+       
+       <li>
+       
+       <a href="http://creativecommons.org/licenses/by-nc-sa/4.0/deed.zh" target="_blank">
+       
+        版权
+        <i class="fa fa-cc" aria-hidden="true" title="Attribution-NonCommercial-ShareAlike 4.0 International"></i> 
+        </a>
+       </li>
+       
+     </ul>
+     <div class="copyright-text">
+            
+            ©
+            
+            郝志杰
+            
+            2024
+            
+     </div>
+
+</footer>
+
+
+
+
+

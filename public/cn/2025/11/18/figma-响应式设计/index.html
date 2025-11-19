@@ -1,0 +1,262 @@
+<script src="/livereload.js?mindelay=10&amp;v=2&amp;port=1313&amp;path=livereload" data-no-instant defer></script><a name="top"></a>
+<!DOCTYPE html>
+<html lang="en-us">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Finder</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+
+    <link rel="stylesheet" href="/css/style.css" />
+    <link rel="stylesheet" href="/css/fonts.css" />
+     
+  </head>
+  
+  <body>
+    <div class="wrapper">
+      <header class="header">
+        <nav class="nav" >
+      <a href="/" class="nav-logo">
+        <img src="/media/hugo-logo.png"
+         width="50"
+         height="50"
+         alt="Hugo-ht">
+      </a>
+
+      <ul class="nav-links" >
+        
+        
+           <li><a href="/">主页</a></li>
+       
+           <li><a href="/cn/posts/">日志</a></li>
+       
+           <li><a href="/cn/about/">关于</a></li>
+       
+       
+      </ul>
+</nav>
+
+      </header>
+
+<main class = "content" role="main">
+<div style="text-align: center">
+
+<h1>Figma 响应式设计</h1>
+
+<p>Finder 
+ / 2025-11-18 </p>
+
+<hr/>
+</div>
+
+<span class="article-toolbar">
+  
+  
+  
+  
+  
+  
+  
+  <a href='https://github.com/UFinderaha/myblog/edit/main/content/cn%5cposts%5c2025-11-19-Figma%20%e5%93%8d%e5%ba%94%e5%bc%8f%e8%ae%be%e8%ae%a1.md'style="font-size: 24px; color: black;" target="_blank"><i class="fa fa-edit" aria-hidden="true" title="编辑本页"></i>
+  </a>
+  
+  
+  
+</span>
+
+
+
+<div class="body-text list-text">
+<h2 id="一-适配与响应逻辑的底层基础">一、 适配与响应逻辑的底层基础<a href="#一-适配与响应逻辑的底层基础" class="header-anchor" ariaLabel="Anchor"> # </a></h2>
+<p>Figma 的相关功能（约束和自动布局）是根据真实的适配方案和开发方法制定出来的。因此，设计师需要理解这些底层逻辑才能高效使用这些功能。</p>
+<h2 id="二-app-中的屏幕适配adaptation">二、 APP 中的屏幕适配（Adaptation）<a href="#二-app-中的屏幕适配adaptation" class="header-anchor" ariaLabel="Anchor"> # </a></h2>
+<h3 id="1-适配的定义与目的">1. 适配的定义与目的<a href="#1-适配的定义与目的" class="header-anchor" ariaLabel="Anchor"> # </a></h3>
+<p><img src="https://cdn.jsdelivr.net/gh/Finderaha/pictures@master/blog20251119101126.png" alt=""></p>
+<ul>
+<li><strong>定义：</strong> 适配是指软件需要在不同大小和分辨率的手机屏幕上<strong>正常运行</strong>和<strong>正常显示</strong>出来。</li>
+<li><strong>核心目标：</strong> 屏幕变大的目标是<strong>让显示的内容变多</strong>，而不是单纯地把里面的东西<strong>等比例放大</strong>。
+<ul>
+<li>例如，当区域变大后，可以显示更多的文本量。</li>
+<li>在更大的屏幕上，本可能显示一行的内容可以显示两行，甚至两行半的状态，并且右边有更多空间显示其他内容。</li>
+</ul>
+</li>
+</ul>
+<h3 id="2-适配逻辑的制定设计师的职责">2. 适配逻辑的制定（设计师的职责）<a href="#2-适配逻辑的制定设计师的职责" class="header-anchor" ariaLabel="Anchor"> # </a></h3>
+<ul>
+<li><strong>实现方式：</strong> 适配是通过单独设置画板中<strong>每个元素</strong>基于其父级元素的<strong>适配逻辑</strong>来实现的。</li>
+<li><strong>制定者：</strong> 真正的适配方案是<strong>设计师</strong>出的，<strong>绝不是前端</strong>出的。设计师需要保证界面在落地后，在不同环境中能呈现<strong>预期的效果</strong>。</li>
+<li><strong>沟通：</strong> 设计师需要和前端商讨适配方案的<strong>合理性</strong>和<strong>开发的可行性</strong>。</li>
+</ul>
+<h3 id="3-实际适配案例分析">3. 实际适配案例分析<a href="#3-实际适配案例分析" class="header-anchor" ariaLabel="Anchor"> # </a></h3>
+<p><img src="https://cdn.jsdelivr.net/gh/Finderaha/pictures@master/blog20251119101246.png" alt=""></p>
+<p>借助上图，说明一下元素如何响应画板尺寸的变化：</p>
+<ul>
+<li>
+<p><strong>顶栏（Top Bar）：</strong> 在适配过程中，顶栏的高度不变。左边的图标基于左对齐，右边的内容基于右对齐，它们之间的间距保持一致。<strong>只有搜索框的长度</strong>（即中间的空白空间）在<strong>不停地变大和变长</strong>。
+<img src="https://cdn.jsdelivr.net/gh/Finderaha/pictures@master/blog20251119101452.png" alt=""></p>
+</li>
+<li>
+<p><strong>快速入口（两个大按钮）：</strong>
+<img src="https://cdn.jsdelivr.net/gh/Finderaha/pictures@master/blog20251119101544.png" alt=""></p>
+<ul>
+<li>页边距和元素之间的间距（例如 16 和 12 像素）保持<strong>固定不变</strong>。</li>
+<li><strong>元素本身的宽度</strong>自动分配，随着屏幕变大而变宽。</li>
+<li>内部的文字左对齐，图片右对齐，它们之间的间隙变大，但<strong>没有</strong>做比例缩放。</li>
+</ul>
+</li>
+<li>
+<p><strong>快速入口（小图标组）：</strong> 保持<strong>元素的大小不变</strong>，但让<strong>元素之间的间距变大</strong>。</p>
+<ul>
+<li>这表明<strong>每个元素</strong>可以根据画板变动定义<strong>单独的适配逻辑</strong>，而不是用一个逻辑套用到界面的所有元素上。
+<img src="https://cdn.jsdelivr.net/gh/Finderaha/pictures@master/blog20251119101750.png" alt=""></li>
+</ul>
+</li>
+<li>
+<p><strong>外部模块（如新课预约模块）：</strong> 左右页边距保持一致。外部大模块变大，但模块内部的<strong>封面图形</strong>保持<strong>固定大小不变</strong>。右侧的文本选项则跟着外部模块一起变大，空间越来越大。</p>
+</li>
+<li>
+<p><strong>知识库大模块：</strong> 整体变宽。内部右侧的“学习”元素尺寸保持一致并右对齐。<strong>左侧的文本</strong>会随着区域变宽而<strong>显示更多的内容</strong>，而不是只显示点点点省略号。</p>
+</li>
+<li>
+<p><strong>底部导航栏：</strong> 通常是<strong>均分</strong>，按比例进行位移。</p>
+</li>
+</ul>
+<h2 id="三-网页设计中的响应式responsive-design">三、 网页设计中的响应式（Responsive Design）<a href="#三-网页设计中的响应式responsive-design" class="header-anchor" ariaLabel="Anchor"> # </a></h2>
+<h3 id="1-移动端适配与网页响应式的区别">1. 移动端适配与网页响应式的区别<a href="#1-移动端适配与网页响应式的区别" class="header-anchor" ariaLabel="Anchor"> # </a></h3>
+<ul>
+<li><strong>移动端适配（Adaptation）：</strong> 屏幕大小差异相对较小，比例变化不大。</li>
+<li><strong>网页响应式（Responsive）：</strong> 跨度非常大，可以从手机尺寸放大到 4K 屏或 5K 屏（如 34 寸），跨度可达七八倍、十几倍甚至二十倍。</li>
+</ul>
+<h4 id="2-两种主要的适配解决方案">2. 两种主要的适配解决方案<a href="#2-两种主要的适配解决方案" class="header-anchor" ariaLabel="Anchor"> # </a></h4>
+<table>
+<thead>
+<tr>
+<th style="text-align:left">解决方案</th>
+<th style="text-align:left">定义</th>
+<th style="text-align:left">核心特点</th>
+<th style="text-align:left">适用场景</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:left"><strong>自适应（Adaptive）</strong></td>
+<td style="text-align:left"><strong>开发出多套网页（多套代码）</strong>，以适配不同的设备和屏幕。</td>
+<td style="text-align:left">每套代码都是为特定设备（如移动端、电脑端）单独准备的。</td>
+<td style="text-align:left">大型、复杂的网站（如京东、淘宝），因为响应式开发成本过高。</td>
+</tr>
+<tr>
+<td style="text-align:left"><strong>响应式（Responsive）</strong></td>
+<td style="text-align:left"><strong>用一套代码</strong>去适配不同的视口区域。</td>
+<td style="text-align:left">当用户拖动浏览器窗口到不同宽度时，会展示出不同的结果。</td>
+<td style="text-align:left">简单、展示类的网站，如企业官网或广告营销网站。</td>
+</tr>
+</tbody>
+</table>
+<h3 id="3-响应式的两个关键要点">3. 响应式的两个关键要点<a href="#3-响应式的两个关键要点" class="header-anchor" ariaLabel="Anchor"> # </a></h3>
+<p>响应式设计包含两个关键要点：<strong>栅格（Grid）<strong>和</strong>断点（Breakpoint）</strong>。</p>
+<ul>
+<li><strong>栅格（Grid）：</strong>
+<img src="https://cdn.jsdelivr.net/gh/Finderaha/pictures@master/blog20251119102308.png" alt="">
+<ul>
+<li>将页面的可视区域分成若干个列。</li>
+<li>在响应式环境中，栅格中的<strong>每一列</strong>可以作为<strong>宽度单位</strong>进行设置。</li>
+<li>元素的大小缩放是<strong>跟着栅格一起变动</strong>的，而不是元素自己变动。</li>
+</ul>
+</li>
+<li><strong>断点（Breakpoint）：</strong>
+<img src="https://cdn.jsdelivr.net/gh/Finderaha/pictures@master/blog20251119102424.png" alt="">
+<ul>
+<li>指在<strong>不同的宽度环境</strong>里，可以去<strong>指定不同的卡片宽度值</strong>。</li>
+<li>通过断点，可以将浏览器宽度定成不同的区间，每个区间应用一套单独的元素罗列规则。</li>
+<li>例如，在小屏幕下（小于 1200 像素），一个组件可能占据 6 栅格列，一行只能显示 2 个；而在更大空间（1200 到 1400 之间），可以将其宽度定义为 4 列，一行显示 3 个。</li>
+</ul>
+</li>
+</ul>
+<h2 id="四-figma-对适配和响应逻辑的模拟">四、 Figma 对适配和响应逻辑的模拟<a href="#四-figma-对适配和响应逻辑的模拟" class="header-anchor" ariaLabel="Anchor"> # </a></h2>
+<ul>
+<li>Figma 提供了接近前端适配逻辑的功能，如<strong>布局约束功能（Layout Constraints）<strong>和</strong>自动布局功能（Auto Layout）</strong>。</li>
+<li><strong>自动布局</strong>被认为是 Figma 真正的“利器”。</li>
+<li><strong>局限性：</strong> Figma 提供的功能是<strong>固定</strong>且<strong>定死</strong>的方法，它<strong>永不如编程灵活</strong>。Figma 只能在框架内实现功能，<strong>无法完美复现</strong>真实的、复杂的适配场景。</li>
+<li><strong>定位：</strong> Figma 只是进行一些<strong>简单的模拟</strong>，这种模拟是有<strong>上限</strong>的。</li>
+</ul>
+
+
+  
+    
+      <a href="http://localhost:1313//tags/figma%E5%AD%A6%E4%B9%A0%E6%8C%87%E5%8D%97/">#Figma学习指南</a>
+    
+      <a href="http://localhost:1313//tags/%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/">#学习笔记</a>
+    
+  
+
+<p style="color:#777;">最后一次修改于 2025-11-18</p>
+</div>
+<a href="#top"><i class="fa fa-chevron-up" style="font-size: 30px; color: black;"></i></a>
+
+</main>
+
+<footer class="footer">
+  <div class="content">
+
+<script src="https://giscus.app/client.js"
+        data-repo="finderaha/myblog"
+        data-repo-id="R_kgDOLxcP2A"
+        data-category="Announcements"
+        data-category-id="DIC_kwDOLxcP2M4Ce2as"
+        data-mapping="pathname"
+        data-strict="0"
+        data-reactions-enabled="1"
+        data-emit-metadata="0"
+        data-input-position="top"
+        data-theme="preferred_color_scheme"
+        data-lang="zh-CN"
+        data-loading="lazy"
+        crossorigin="anonymous"
+        async>
+</script>
+</br>
+ 
+</div>
+
+  <script type="text/javascript" src="/js/math-code.js"></script>
+<script async src="//mathjax.rstudio.com/latest/MathJax.js?config=TeX-MML-AM_CHTML"></script>
+<script type="text/javascript" src="/js/center-img.js"></script>
+
+
+
+     <ul class="footer-links">
+      
+       
+       
+       
+       <li><a href="/cn/posts/index.xml" type="application/rss+xml" title="RSS feed">
+       订阅 </a>
+       </li>
+       
+       
+       <li>
+       
+       <a href="http://creativecommons.org/licenses/by-nc-sa/4.0/deed.zh" target="_blank">
+       
+        版权
+        <i class="fa fa-cc" aria-hidden="true" title="Attribution-NonCommercial-ShareAlike 4.0 International"></i> 
+        </a>
+       </li>
+       
+     </ul>
+     <div class="copyright-text">
+            
+            ©
+            
+            郝志杰
+            
+            2024
+            
+     </div>
+
+</footer>
+
+
+
+
+

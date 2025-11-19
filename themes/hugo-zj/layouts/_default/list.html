@@ -5,9 +5,9 @@
 <h1>#{{ .Title | markdownify }}</h1>
 {{ end }}
 
-<main class = "content">
+<main class = "content {{ if .IsHome }}home-page{{ end }}">
 
-<div class="list-page">
+<div class="list-page {{ if .IsHome }}home-content{{ end }}">
 {{ .Content }}
 
 

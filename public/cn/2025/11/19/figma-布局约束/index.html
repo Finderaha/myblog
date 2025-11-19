@@ -1,0 +1,213 @@
+<script src="/livereload.js?mindelay=10&amp;v=2&amp;port=1313&amp;path=livereload" data-no-instant defer></script><a name="top"></a>
+<!DOCTYPE html>
+<html lang="en-us">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Finder</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+
+    <link rel="stylesheet" href="/css/style.css" />
+    <link rel="stylesheet" href="/css/fonts.css" />
+     
+  </head>
+  
+  <body>
+    <div class="wrapper">
+      <header class="header">
+        <nav class="nav" >
+      <a href="/" class="nav-logo">
+        <img src="/media/hugo-logo.png"
+         width="50"
+         height="50"
+         alt="Hugo-ht">
+      </a>
+
+      <ul class="nav-links" >
+        
+        
+           <li><a href="/">主页</a></li>
+       
+           <li><a href="/cn/posts/">日志</a></li>
+       
+           <li><a href="/cn/about/">关于</a></li>
+       
+       
+      </ul>
+</nav>
+
+      </header>
+
+<main class = "content" role="main">
+<div style="text-align: center">
+
+<h1>Figma 布局约束</h1>
+
+<p>Finder 
+ / 2025-11-19 </p>
+
+<hr/>
+</div>
+
+<span class="article-toolbar">
+  
+  
+  
+  
+  
+  
+  
+  <a href='https://github.com/UFinderaha/myblog/edit/main/content/cn%5cposts%5c2025-11-19-Figma%20%e5%b8%83%e5%b1%80%e7%ba%a6%e6%9d%9f.md'style="font-size: 24px; color: black;" target="_blank"><i class="fa fa-edit" aria-hidden="true" title="编辑本页"></i>
+  </a>
+  
+  
+  
+</span>
+
+
+
+<div class="body-text list-text">
+<h2 id="一-布局约束功能的基础概念">一、 布局约束功能的基础概念<a href="#一-布局约束功能的基础概念" class="header-anchor" ariaLabel="Anchor"> # </a></h2>
+<h3 id="1-定义与作用">1. 定义与作用<a href="#1-定义与作用" class="header-anchor" ariaLabel="Anchor"> # </a></h3>
+<ul>
+<li><strong>定义：</strong> 布局约束（Constraints）用于设置元素在<strong>水平（Horizontal）<strong>或</strong>垂直（Vertical）<strong>方向上，与其</strong>上级 Frame</strong> 的关系。</li>
+<li><strong>前提条件（重点）：</strong> 元素<strong>必须</strong>置入于一个 <strong>Frame</strong>（画板）中，才能启用该功能。如果元素没有 Frame，就无法进行约束设置。</li>
+</ul>
+<h3 id="2-设置面板">2. 设置面板<a href="#2-设置面板" class="header-anchor" ariaLabel="Anchor"> # </a></h3>
+<ul>
+<li>在右侧属性面板中，约束功能面板（Constraints）专门用于设置<strong>水平方向</strong>和<strong>垂直方向</strong>的对齐约束。</li>
+<li>该面板还提供了一个<strong>直观的图例</strong>（通常是一个四周带有线的矩形）来示意用户已设置的对齐宽度。</li>
+</ul>
+<h2 id="二-约束的四种类型">二、 约束的四种类型<a href="#二-约束的四种类型" class="header-anchor" ariaLabel="Anchor"> # </a></h2>
+<p>布局约束功能包含四种主要类型，用于应对不同的适配需求：</p>
+<h3 id="1-单侧约束single-side-constraint">1. 单侧约束（Single-Side Constraint）<a href="#1-单侧约束single-side-constraint" class="header-anchor" ariaLabel="Anchor"> # </a></h3>
+<p><img src="https://cdn.jsdelivr.net/gh/Finderaha/pictures@master/blog%E5%8D%95%E4%BE%A7%E7%BA%A6%E6%9D%9F.gif" alt=""></p>
+<ul>
+<li><strong>特点：</strong> 元素只基于上级 Frame 的<strong>一侧</strong>进行对齐（如左、右、上、下对齐）。</li>
+<li><strong>默认设置：</strong> 默认情况下，约束是基于<strong>左上角</strong>对齐，即保持元素与左上角的间距一致。</li>
+<li><strong>结果：</strong> 拖动 Frame 改变大小时，元素会<strong>保持其自身的尺寸不变</strong>，仅按照选定的对齐方向保持间距。
+<ul>
+<li><strong>水平方向：</strong> 可设置 <strong>Left</strong>（左对齐）或 <strong>Right</strong>（右对齐）。</li>
+<li><strong>垂直方向：</strong> 可设置 <strong>Top</strong>（上对齐）或 <strong>Bottom</strong>（下对齐），常用于底部的导航栏等元素。</li>
+</ul>
+</li>
+</ul>
+<h3 id="2-反向约束left-and-right--top-and-bottom">2. 反向约束（Left and Right / Top and Bottom）<a href="#2-反向约束left-and-right--top-and-bottom" class="header-anchor" ariaLabel="Anchor"> # </a></h3>
+<ul>
+<li><strong>特点：</strong> 元素同时基于<strong>相对的两侧</strong>（如左右两侧或上下两侧）进行对齐。</li>
+<li><strong>实现方式：</strong> 在水平或垂直方向上，选择 <strong>Left + Right</strong> 或 <strong>Top + Bottom</strong>。</li>
+<li><strong>结果：</strong> 当 Frame 尺寸发生变化时，元素本身的<strong>大小会发生改动</strong>，会被<strong>拉扯变大</strong>，以满足其与两侧间距的一致性。</li>
+<li><strong>应用场景：</strong> 常用于需要随着屏幕拉伸的元素，如<strong>搜索框</strong>或<strong>全屏按钮</strong>。</li>
+</ul>
+<h3 id="3-中心约束center">3. 中心约束（Center）<a href="#3-中心约束center" class="header-anchor" ariaLabel="Anchor"> # </a></h3>
+<ul>
+<li><strong>特点：</strong> 元素根据其与父级 Frame 的<strong>中线位置</strong>进行对齐。</li>
+<li><strong>实现方式：</strong> 选择 <strong>Center</strong> 选项。</li>
+<li><strong>结果：</strong> 元素会保持在<strong>原来的比例位置</strong>上。当 Frame 尺寸变化时，元素<strong>自身的大小不会改动</strong>，但其位置会基于中线比例发生变动。</li>
+<li><strong>应用场景：</strong> 常用于设计<strong>固定大小</strong>且需要始终位于屏幕中央的元素，如<strong>弹窗</strong>。</li>
+</ul>
+<h3 id="4-比例约束缩放scale">4. 比例约束/缩放（Scale）<a href="#4-比例约束缩放scale" class="header-anchor" ariaLabel="Anchor"> # </a></h3>
+<ul>
+<li><strong>特点：</strong> 元素会<strong>按比例</strong>进行缩放。</li>
+<li><strong>实现方式：</strong> 选择 <strong>Scale</strong> 选项。</li>
+<li><strong>结果：</strong> 元素和其与 Frame 的<strong>间距</strong>都会按比例进行放大或缩小。</li>
+<li><strong>应用场景：</strong> 相对较少，但可用于需要等比缩放的场景，如<strong>背景图片</strong>或<strong>视频区域</strong>，以确保宽高比不变。但来源指出，在 Figma 中直接使用此功能的应用场景<strong>非常少</strong>，并且<strong>不如手动调节灵活</strong>。</li>
+</ul>
+<h2 id="三-约束功能的高级逻辑与层级关系">三、 约束功能的高级逻辑与层级关系<a href="#三-约束功能的高级逻辑与层级关系" class="header-anchor" ariaLabel="Anchor"> # </a></h2>
+<h3 id="1-约束只针对上级-frame-生效重点">1. 约束只针对上级 Frame 生效（重点）<a href="#1-约束只针对上级-frame-生效重点" class="header-anchor" ariaLabel="Anchor"> # </a></h3>
+<ul>
+<li><strong>层级限制：</strong> 约束功能<strong>只针对其直接上级 Frame 生效</strong>。</li>
+<li><strong>多层 Frame：</strong> 即使存在多层 Frame 嵌套，子元素也只根据<strong>上一个层级</strong>的 Frame 进行对齐和运动。</li>
+</ul>
+<h3 id="2-普通编组group与约束">2. 普通编组（Group）与约束<a href="#2-普通编组group与约束" class="header-anchor" ariaLabel="Anchor"> # </a></h3>
+<ul>
+<li><strong>Group 的特性：</strong> <strong>普通编组（Group）本身没有对齐属性</strong>。</li>
+<li><strong>批量操作：</strong> 虽然可以对 Group 设置约束，但这只是对<strong>组内的子元素</strong>进行<strong>批量操作</strong>。Group 会将约束逻辑<strong>穿透</strong>给下级的子元素。</li>
+<li><strong>结果：</strong> 如果组内的子元素拥有<strong>不同</strong>的约束设置，那么 Group 的约束设置会显示为 <code>Mix</code>（混合），表明其本身没有固定的对齐逻辑。</li>
+</ul>
+<h3 id="3-自动布局auto-layout与约束">3. 自动布局（Auto Layout）与约束<a href="#3-自动布局auto-layout与约束" class="header-anchor" ariaLabel="Anchor"> # </a></h3>
+<ul>
+<li><strong>子元素限制：</strong> 自动布局的<strong>子元素</strong>是<strong>没有约束设置</strong>的。因为子元素的布局设置由<strong>自动布局的属性</strong>决定。</li>
+<li><strong>自身可设置：</strong> <strong>自动布局的父级容器本身</strong>可以设置约束。例如，可以对自动布局容器设置左右约束，使其宽度随外部 Frame 改变而变化。</li>
+</ul>
+
+
+  
+    
+      <a href="http://localhost:1313//tags/figma%E5%AD%A6%E4%B9%A0%E6%8C%87%E5%8D%97/">#Figma学习指南</a>
+    
+      <a href="http://localhost:1313//tags/%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/">#学习笔记</a>
+    
+  
+
+<p style="color:#777;">最后一次修改于 2025-11-19</p>
+</div>
+<a href="#top"><i class="fa fa-chevron-up" style="font-size: 30px; color: black;"></i></a>
+
+</main>
+
+<footer class="footer">
+  <div class="content">
+
+<script src="https://giscus.app/client.js"
+        data-repo="finderaha/myblog"
+        data-repo-id="R_kgDOLxcP2A"
+        data-category="Announcements"
+        data-category-id="DIC_kwDOLxcP2M4Ce2as"
+        data-mapping="pathname"
+        data-strict="0"
+        data-reactions-enabled="1"
+        data-emit-metadata="0"
+        data-input-position="top"
+        data-theme="preferred_color_scheme"
+        data-lang="zh-CN"
+        data-loading="lazy"
+        crossorigin="anonymous"
+        async>
+</script>
+</br>
+ 
+</div>
+
+  <script type="text/javascript" src="/js/math-code.js"></script>
+<script async src="//mathjax.rstudio.com/latest/MathJax.js?config=TeX-MML-AM_CHTML"></script>
+<script type="text/javascript" src="/js/center-img.js"></script>
+
+
+
+     <ul class="footer-links">
+      
+       
+       
+       
+       <li><a href="/cn/posts/index.xml" type="application/rss+xml" title="RSS feed">
+       订阅 </a>
+       </li>
+       
+       
+       <li>
+       
+       <a href="http://creativecommons.org/licenses/by-nc-sa/4.0/deed.zh" target="_blank">
+       
+        版权
+        <i class="fa fa-cc" aria-hidden="true" title="Attribution-NonCommercial-ShareAlike 4.0 International"></i> 
+        </a>
+       </li>
+       
+     </ul>
+     <div class="copyright-text">
+            
+            ©
+            
+            郝志杰
+            
+            2024
+            
+     </div>
+
+</footer>
+
+
+
+
+

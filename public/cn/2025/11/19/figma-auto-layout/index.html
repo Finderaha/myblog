@@ -1,0 +1,240 @@
+<script src="/livereload.js?mindelay=10&amp;v=2&amp;port=1313&amp;path=livereload" data-no-instant defer></script><a name="top"></a>
+<!DOCTYPE html>
+<html lang="en-us">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Finder</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+
+    <link rel="stylesheet" href="/css/style.css" />
+    <link rel="stylesheet" href="/css/fonts.css" />
+     
+  </head>
+  
+  <body>
+    <div class="wrapper">
+      <header class="header">
+        <nav class="nav" >
+      <a href="/" class="nav-logo">
+        <img src="/media/hugo-logo.png"
+         width="50"
+         height="50"
+         alt="Hugo-ht">
+      </a>
+
+      <ul class="nav-links" >
+        
+        
+           <li><a href="/">主页</a></li>
+       
+           <li><a href="/cn/posts/">日志</a></li>
+       
+           <li><a href="/cn/about/">关于</a></li>
+       
+       
+      </ul>
+</nav>
+
+      </header>
+
+<main class = "content" role="main">
+<div style="text-align: center">
+
+<h1>Figma 自动布局（Auto Layout）</h1>
+
+<p>Finder 
+ / 2025-11-19 </p>
+
+<hr/>
+</div>
+
+<span class="article-toolbar">
+  
+  
+  
+  
+  
+  
+  
+  <a href='https://github.com/UFinderaha/myblog/edit/main/content/cn%5cposts%5c2025-11-19-Figma%20%e8%87%aa%e5%8a%a8%e5%b8%83%e5%b1%80%ef%bc%88Auto%20Layout%ef%bc%89.md'style="font-size: 24px; color: black;" target="_blank"><i class="fa fa-edit" aria-hidden="true" title="编辑本页"></i>
+  </a>
+  
+  
+  
+</span>
+
+
+
+<div class="body-text list-text">
+<h2 id="一-自动布局auto-layout的定义与核心特征">一、 自动布局（Auto Layout）的定义与核心特征<a href="#一-自动布局auto-layout的定义与核心特征" class="header-anchor" ariaLabel="Anchor"> # </a></h2>
+<h3 id="1-定义">1. 定义<a href="#1-定义" class="header-anchor" ariaLabel="Anchor"> # </a></h3>
+<ul>
+<li><strong>自动布局</strong>（Auto Layout）是用于定义并设置<strong>多个元素</strong>之间<strong>布局关系</strong>的功能。</li>
+<li>它是一种<strong>综合的反应</strong>，是多种功能的合集，用于统一处理布局操作。</li>
+<li><strong>创建前提：</strong> 自动布局需要用到<strong>多个元素</strong>，因为单个元素无法产生布局关系，必须是两个以上。</li>
+</ul>
+<h3 id="2-自动布局编组的特殊性">2. 自动布局编组的特殊性<a href="#2-自动布局编组的特殊性" class="header-anchor" ariaLabel="Anchor"> # </a></h3>
+<ul>
+<li>自动布局创建后会生成一个<strong>布局编组</strong>和<strong>子元素</strong>。</li>
+<li>与普通编组不同，自动布局编组是<strong>实打实存在</strong>的元素，本质上是一个<strong>矩形</strong>，它被放置在所有内容的<strong>背景图层</strong>中。</li>
+<li>设计师可以对这个背景层进行<strong>颜色和内容</strong>的修改和设置。</li>
+<li>普通编组本身是一个<strong>虚的</strong>东西，无法设置填充，修改的只是内部所有元素的共同颜色。</li>
+</ul>
+<h2 id="二-自动布局的两种创建模式">二、 自动布局的两种创建模式<a href="#二-自动布局的两种创建模式" class="header-anchor" ariaLabel="Anchor"> # </a></h2>
+<p>自动布局的创建有两种主要模式：<strong>包含模式（Containment）<strong>和</strong>并列模式（Parallel）</strong>。</p>
+<table>
+<thead>
+<tr>
+<th style="text-align:left">模式</th>
+<th style="text-align:left">描述</th>
+<th style="text-align:left">自动生成结果</th>
+<th style="text-align:left">强行要求</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:left"><strong>包含模式</strong></td>
+<td style="text-align:left">用于创建具有背景的组件，例如矩形框中有一个按钮。</td>
+<td style="text-align:left"><strong>自动</strong>将背景矩形<strong>转化</strong>成自动布局编组（即背景层）。</td>
+<td style="text-align:left">包含关系必须<strong>非常明确</strong>，不能只是视觉上的相似。</td>
+</tr>
+<tr>
+<td style="text-align:left"><strong>并列模式</strong></td>
+<td style="text-align:left">用于创建多个并列的元素，例如头像列表。</td>
+<td style="text-align:left">不会强制生成背景图层，但背景色等设置依然可以<strong>手动添加</strong>。</td>
+<td style="text-align:left">多个并列元素被选中并创建自动布局。</td>
+</tr>
+</tbody>
+</table>
+<h2 id="三-核心设置与适配逻辑">三、 核心设置与适配逻辑<a href="#三-核心设置与适配逻辑" class="header-anchor" ariaLabel="Anchor"> # </a></h2>
+<p>自动布局的核心逻辑是围绕元素与父级容器的尺寸关系以及元素之间的间距进行设置。</p>
+<h3 id="1-宽度的适配设置size-settings">1. 宽度的适配设置（Size Settings）<a href="#1-宽度的适配设置size-settings" class="header-anchor" ariaLabel="Anchor"> # </a></h3>
+<p>自动布局编组的宽度和高度不是固定的，可以根据内容进行适配：</p>
+<ul>
+<li><strong>Hug Content（自适应内容）：</strong> 编组的宽度（或高度）会<strong>随内部文字或内容的变化而自动增减</strong>。这是创建响应式按钮的第一逻辑，避免每次手动修改宽度。</li>
+<li><strong>Fixed Width/Height（固定值）：</strong> 编组的宽/高是固定的。在固定值的情况下，可以对<strong>内部元素</strong>进行<strong>左、中、右或上下对齐</strong>的布局操作，以及设置<strong>内边距</strong>。</li>
+<li><strong>Fill Container（填充容器）：</strong> 这是一个<strong>下级子元素</strong>对<strong>上级自动布局容器</strong>的适配逻辑。子元素将<strong>填满</strong>上级容器流出来的缝隙（除去间距和边距）。</li>
+</ul>
+<h3 id="2-布局方向与间距控制">2. 布局方向与间距控制<a href="#2-布局方向与间距控制" class="header-anchor" ariaLabel="Anchor"> # </a></h3>
+<ul>
+<li><strong>排列方式：</strong> 可以控制子元素的**横向（向右）<strong>或</strong>纵向（向下）**排列。</li>
+<li><strong>元素间距：</strong> 可以通过拖动红线或在右侧面板中设置<strong>具体的像素值</strong>来控制子元素之间的间距。</li>
+<li><strong>Auto（自动均分）：</strong> 自动布局中的一个特殊功能。点击后，它会<strong>自动均分</strong>每一个子元素所在的位置，常用于底部导航栏等需要均分的场景。</li>
+<li><strong>Wrap（自动换行）：</strong> 当容器的宽度<strong>不够用</strong>时，元素会自动向<strong>下一行排列</strong>。</li>
+</ul>
+<h2 id="四-自动布局的实战应用与操作技巧">四、 自动布局的实战应用与操作技巧<a href="#四-自动布局的实战应用与操作技巧" class="header-anchor" ariaLabel="Anchor"> # </a></h2>
+<h3 id="1-制作按钮button">1. 制作按钮（Button）<a href="#1-制作按钮button" class="header-anchor" ariaLabel="Anchor"> # </a></h3>
+<ul>
+<li>创建自动布局后，必须将外部边框的宽度设置为 <strong>Hug Content</strong>，才能实现内容变多时，按钮宽度自动增大的效果。</li>
+</ul>
+<h3 id="2-制作头像列表标签列表">2. 制作头像列表/标签列表<a href="#2-制作头像列表标签列表" class="header-anchor" ariaLabel="Anchor"> # </a></h3>
+<ul>
+<li>通过自动布局来控制多个并列元素的<strong>方向</strong>和<strong>间距</strong>。</li>
+<li>通过设置<strong>负值间距</strong>，可以使头像列表中的元素相互<strong>重叠</strong>，实现特殊的视觉效果。</li>
+<li><strong>标签列表</strong>可以实现<strong>自动套娃</strong>（Auto Layout of Auto Layout），即在多个自动布局的标签上再添加一个自动布局编组，统一管理它们之间的间距。</li>
+</ul>
+<h3 id="3-搜索栏等复杂组件套娃逻辑">3. 搜索栏等复杂组件（套娃逻辑）<a href="#3-搜索栏等复杂组件套娃逻辑" class="header-anchor" ariaLabel="Anchor"> # </a></h3>
+<ul>
+<li><strong>多层级嵌套：</strong> 复杂组件（如搜索栏）通常需要使用 <strong>Auto Layout 套 Auto Layout</strong> 的形式来实现。
+<ul>
+<li>例如，搜索框内部的“图标”和“文本输入区”可以先设为一个自动布局编组。</li>
+<li>然后，将整个自动布局编组的宽度设置为 <strong>Fill Container</strong>，使其宽度随着外部搜索栏的拖动而变化。</li>
+</ul>
+</li>
+<li><strong>图层关系：</strong> 在自动布局中，子元素必须处于<strong>同一级图层</strong>内，才能被父级自动布局控制。出现布局问题时，应优先检查图层关系。</li>
+<li><strong>键盘移动：</strong> 自动布局中的元素可以用键盘上的<strong>上下左右键</strong>进行移动和排序。</li>
+</ul>
+<h3 id="4-避免吸附技巧">4. 避免吸附技巧<a href="#4-避免吸附技巧" class="header-anchor" ariaLabel="Anchor"> # </a></h3>
+<ul>
+<li>在拖动元素到画布上时，如果<strong>不想让它被周围的自动布局吸附进去</strong>，应<strong>按住空格键（Spacebar）</strong>。这样元素会保持原有的图层关系，不会被丢进新的自动布局编组中。</li>
+</ul>
+<h2 id="五-自动布局与约束constraints的区别">五、 自动布局与约束（Constraints）的区别<a href="#五-自动布局与约束constraints的区别" class="header-anchor" ariaLabel="Anchor"> # </a></h2>
+<ul>
+<li><strong>应用场景差异：</strong> 虽然自动布局和约束（Constraints）在某些功能上相似，但它们的应用场景不同。</li>
+<li><strong>约束：</strong> 通常用在<strong>一级组件</strong>上，用于控制一个元素对<strong>最上层 Frame</strong> 的约束关系。</li>
+<li><strong>自动布局：</strong> 通常用于<strong>组件本身的内部</strong>布局和关系控制。在一个使用了自动布局的组件内部，通常不会再使用约束功能。</li>
+</ul>
+<p><strong>总结比喻：</strong></p>
+<p>如果说<strong>约束</strong>（Constraints）功能像是规定了房子的<strong>外墙与地基</strong>的相对关系（如左对齐或居中），那么<strong>自动布局</strong>（Auto Layout）则像是房子的<strong>内部装修承包商</strong>。它定义了房间里的所有家具（子元素）如何相互排列（横向或纵向）、保持多远的距离（间距），以及当房间（父级容器）变大时，这些家具是应该自己等比例放大（Fill Container），还是保持原样并自动向下一排堆叠（Wrap），从而实现内部结构灵活且稳定的自动化管理。</p>
+
+
+  
+    
+      <a href="http://localhost:1313//tags/figma%E5%AD%A6%E4%B9%A0%E6%8C%87%E5%8D%97/">#Figma学习指南</a>
+    
+      <a href="http://localhost:1313//tags/%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/">#学习笔记</a>
+    
+  
+
+<p style="color:#777;">最后一次修改于 2025-11-19</p>
+</div>
+<a href="#top"><i class="fa fa-chevron-up" style="font-size: 30px; color: black;"></i></a>
+
+</main>
+
+<footer class="footer">
+  <div class="content">
+
+<script src="https://giscus.app/client.js"
+        data-repo="finderaha/myblog"
+        data-repo-id="R_kgDOLxcP2A"
+        data-category="Announcements"
+        data-category-id="DIC_kwDOLxcP2M4Ce2as"
+        data-mapping="pathname"
+        data-strict="0"
+        data-reactions-enabled="1"
+        data-emit-metadata="0"
+        data-input-position="top"
+        data-theme="preferred_color_scheme"
+        data-lang="zh-CN"
+        data-loading="lazy"
+        crossorigin="anonymous"
+        async>
+</script>
+</br>
+ 
+</div>
+
+  <script type="text/javascript" src="/js/math-code.js"></script>
+<script async src="//mathjax.rstudio.com/latest/MathJax.js?config=TeX-MML-AM_CHTML"></script>
+<script type="text/javascript" src="/js/center-img.js"></script>
+
+
+
+     <ul class="footer-links">
+      
+       
+       
+       
+       <li><a href="/cn/posts/index.xml" type="application/rss+xml" title="RSS feed">
+       订阅 </a>
+       </li>
+       
+       
+       <li>
+       
+       <a href="http://creativecommons.org/licenses/by-nc-sa/4.0/deed.zh" target="_blank">
+       
+        版权
+        <i class="fa fa-cc" aria-hidden="true" title="Attribution-NonCommercial-ShareAlike 4.0 International"></i> 
+        </a>
+       </li>
+       
+     </ul>
+     <div class="copyright-text">
+            
+            ©
+            
+            郝志杰
+            
+            2024
+            
+     </div>
+
+</footer>
+
+
+
+
+

@@ -1,0 +1,261 @@
+<script src="/livereload.js?mindelay=10&amp;v=2&amp;port=1313&amp;path=livereload" data-no-instant defer></script><a name="top"></a>
+<!DOCTYPE html>
+<html lang="en-us">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Finder</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+
+    <link rel="stylesheet" href="/css/style.css" />
+    <link rel="stylesheet" href="/css/fonts.css" />
+     
+  </head>
+  
+  <body>
+    <div class="wrapper">
+      <header class="header">
+        <nav class="nav" >
+      <a href="/" class="nav-logo">
+        <img src="/media/hugo-logo.png"
+         width="50"
+         height="50"
+         alt="Hugo-ht">
+      </a>
+
+      <ul class="nav-links" >
+        
+        
+           <li><a href="/">主页</a></li>
+       
+           <li><a href="/cn/posts/">日志</a></li>
+       
+           <li><a href="/cn/about/">关于</a></li>
+       
+       
+      </ul>
+</nav>
+
+      </header>
+
+<main class = "content" role="main">
+<div style="text-align: center">
+
+<h1>Figma字体设置</h1>
+
+<p>Finder 
+ / 2025-11-18 </p>
+
+<hr/>
+</div>
+
+<span class="article-toolbar">
+  
+  
+  
+  
+  
+  
+  
+  <a href='https://github.com/UFinderaha/myblog/edit/main/content/cn%5cposts%5c2025-11-18-Figma%e5%ad%97%e4%bd%93%e8%ae%be%e7%bd%ae.md'style="font-size: 24px; color: black;" target="_blank"><i class="fa fa-edit" aria-hidden="true" title="编辑本页"></i>
+  </a>
+  
+  
+  
+</span>
+
+
+
+<div class="body-text list-text">
+<h2 id="一-figma-字体设置的底层逻辑">一、 Figma 字体设置的底层逻辑<a href="#一-figma-字体设置的底层逻辑" class="header-anchor" ariaLabel="Anchor"> # </a></h2>
+<p>Figma 这类 UI 软件中的字体属性设置逻辑，<strong>与传统打印排版软件（如 Office、WPS）存在很大差异</strong>。</p>
+<ul>
+<li><strong>设计目标差异：</strong> Figma 的字体设置是面向数字界面和代码实现的规范化设置，而传统软件则更关注文档和打印效果。</li>
+<li><strong>一致性要求：</strong> 这是因为在 Figma 中定义的字体参数，在最终前端开发时必须<strong>保持一致</strong>，这样设计才有意义。</li>
+</ul>
+<h2 id="二-figma-字体设置的五大核心参数">二、 Figma 字体设置的五大核心参数<a href="#二-figma-字体设置的五大核心参数" class="header-anchor" ariaLabel="Anchor"> # </a></h2>
+<p>Figma 中字体设置关注以下几个核心参数：</p>
+<h3 id="1-字族font-family">1. 字族（Font Family）<a href="#1-字族font-family" class="header-anchor" ariaLabel="Anchor"> # </a></h3>
+<ul>
+<li><strong>定义：</strong> 指的是文字的<strong>图形风格</strong>。不同的字体有不同的样式。</li>
+<li><strong>加载逻辑：</strong> 字体保存在<strong>字体文件</strong>内。系统安装字体文件后，会加载这些文件来渲染对应的图形。字体文件本身是<strong>图形的合辑</strong>，每个矢量图形代表一个文字，并被赋予一个独立编码。</li>
+<li><strong>跨平台显示：</strong> 如果系统没有安装该字体，用户将无法看到该文字。
+<ul>
+<li><strong>主流系统默认字体：</strong> iOS 使用<strong>平方</strong>；安卓使用<strong>思源</strong>；小米是 <strong>Mi Sans</strong>；华为是 <strong>HarmonyOS Sans</strong>；Windows 是<strong>微软雅黑</strong>。</li>
+<li><strong>设计标准：</strong> 整体上，UI 设计通常以<strong>平方</strong>作为标准进行设计。</li>
+</ul>
+</li>
+<li><strong>Figma 字体选择：</strong> Figma 内置了一部分英文字体。同时，用户可以加载<strong>本地字库文件</strong>。
+<ul>
+<li><strong>本地字体加载：</strong> 网页端用户如果需要使用本地字体，必须安装对应的<strong>网页字库插件</strong>。</li>
+<li><strong>专业建议：</strong> 专业角度而言，建议<strong>限制字体安装数量</strong>，只安装会用到的字体类型。</li>
+</ul>
+</li>
+</ul>
+<h3 id="2-字号font-size">2. 字号（Font Size）<a href="#2-字号font-size" class="header-anchor" ariaLabel="Anchor"> # </a></h3>
+<ul>
+<li><strong>定义：</strong> 用于控制<strong>文字图形大小</strong>的数字。</li>
+<li><strong>实际尺寸：</strong> 字号（例如 100 像素）实际控制的是<strong>文字区域（字行）的维度</strong>。</li>
+<li><strong>与行高的关系：</strong> 文案选中区域外部多出来的区域是<strong>行高</strong>（Line Height）。</li>
+<li><strong>设置建议：</strong> 在 UI 设计环境中，<strong>不需要关注</strong>字体本身是否是偶数的问题。</li>
+<li><strong>中文常用字号范围（经验值）：</strong>
+<ul>
+<li><strong>标题：</strong> 16 到 30 号之间。</li>
+<li><strong>正文：</strong> 13 到 16 号之间。</li>
+<li><strong>注释：</strong> 10 到 12 号之间。</li>
+</ul>
+</li>
+</ul>
+<h3 id="3-字重font-weight">3. 字重（Font Weight）<a href="#3-字重font-weight" class="header-anchor" ariaLabel="Anchor"> # </a></h3>
+<ul>
+<li><strong>定义：</strong> 也叫 <code>font-weight</code>，本质是文字的<strong>粗细</strong>。</li>
+<li><strong>依赖性：</strong> 字重来源于<strong>字体文件本身</strong>。如果字体只带有一个字重（如 regular），用户就无法进行粗细调节。</li>
+<li><strong>与传统软件的区别：</strong> 在 UI 设计中，不能像 PS 或 WPS 那样点击“B”键<strong>强行加粗</strong>。必须在右侧属性面板中选择<strong>字体自带</strong>的字重选项。</li>
+<li><strong>中文字重：</strong> 如果输入的是中文，必须使用<strong>中文的字重</strong>才能显示正确的加粗效果。</li>
+<li><strong>特殊格式：</strong>
+<ul>
+<li><strong>可变字体（Variable Font）：</strong> 是一种新的字体文件格式。它允许用户进行<strong>无极选项</strong>调节，对字宽、字重等参数进行非常精细的控制（例如 1、2、3、4、5、6&hellip; 递进）。这种格式在未来可能解决传统字体文件中字重文件过多、体积大的问题。</li>
+</ul>
+</li>
+</ul>
+<h3 id="4-行高line-height">4. 行高（Line Height）<a href="#4-行高line-height" class="header-anchor" ariaLabel="Anchor"> # </a></h3>
+<ul>
+<li><strong>定义：</strong> 行高是<strong>文字单行占据高度的设置</strong>。它控制的是文本行之间的<strong>垂直间距</strong>，而不是字间距。</li>
+<li><strong>核心逻辑：</strong> 单行文本的高度<strong>一定要大于</strong>文字本身的大小。如果两者一样大，则中间没有缝隙（即为 0）。</li>
+<li><strong>默认设置：</strong> 默认是<strong>自动（Auto）</strong>，Figma 会预留上下空间，这是<strong>非常正常</strong>的排版形式。</li>
+<li><strong>设置风险：</strong>
+<ul>
+<li><strong>不建议减少：</strong> <strong>强烈不建议随意减少</strong>默认行高。</li>
+<li>如果将行高设置得过小，会导致多行文本<strong>崩塌</strong>、文字<strong>重叠</strong>，甚至特殊符号（如句号、&lsquo;j&rsquo;）<strong>外溢</strong>出文本区域，造成严重的显示问题。</li>
+</ul>
+</li>
+<li><strong>控制多行间距：</strong> 如果需要设置多行内容的间距，是通过<strong>行高</strong>来控制的。</li>
+</ul>
+<h3 id="5-字间距letter-spacing">5. 字间距（Letter Spacing）<a href="#5-字间距letter-spacing" class="header-anchor" ariaLabel="Anchor"> # </a></h3>
+<ul>
+<li><strong>定义：</strong> 控制文字<strong>左右间隙</strong>的大小。</li>
+<li><strong>单位：</strong> 字间距的调节是以<strong>百分比</strong>形式进行的。这个百分比是基于<strong>字号</strong>大小计算的。</li>
+<li><strong>应用场景差异：</strong>
+<ul>
+<li><strong>中文环境：</strong> 中文是<strong>填字格</strong>式的矩形排列模式，<strong>不需要</strong>去设置字间距。</li>
+<li><strong>英文环境（拉丁文）：</strong> 英文是拉丁文排列模式，每个字母的字宽不一样，需要控制节奏。苹果等官方规范会给出不同字号对应的建议字间距点。<strong>字间距主要用于英文字符的排版</strong>。</li>
+</ul>
+</li>
+</ul>
+<h2 id="三-文本区域与排版模式">三、 文本区域与排版模式<a href="#三-文本区域与排版模式" class="header-anchor" ariaLabel="Anchor"> # </a></h2>
+<p>Figma 提供了三种文本区域模式，以及多种对齐方式：</p>
+<h3 id="1-文本区域模式text-box-sizing">1. 文本区域模式（Text Box Sizing）<a href="#1-文本区域模式text-box-sizing" class="header-anchor" ariaLabel="Anchor"> # </a></h3>
+<p>这些设置位于属性面板的 <code>Layout</code>（布局）区域：</p>
+<ol>
+<li><strong>自动宽度（Auto Width / Autoest）：</strong> 文本的宽度会随着输入内容的增加而<strong>不停延伸</strong>。</li>
+<li><strong>固定宽度/自动高（Fixed Width / Auto to High）：</strong> <strong>固定文本区域的宽度</strong>。当文本内容超出固定宽度时，<strong>高度会自动扩展</strong>。</li>
+<li><strong>固定尺寸（Fixed Size）：</strong> 文本的<strong>高和宽都被固定</strong>。如果文本超出区域，可能会导致内容被裁剪或隐藏。</li>
+</ol>
+<ul>
+<li><strong>创建方式：</strong> 点击 <code>T</code> 键后直接点击画布是创建<strong>自动宽度</strong>文本。点击 <code>T</code> 键后<strong>拖拽</strong>一个区域，是创建一个<strong>固定尺寸</strong>的文本区域。</li>
+</ul>
+<h3 id="2-对齐方式">2. 对齐方式<a href="#2-对齐方式" class="header-anchor" ariaLabel="Anchor"> # </a></h3>
+<ul>
+<li><strong>基本对齐：</strong> 包括左对齐、居中、右对齐。</li>
+<li><strong>垂直对齐：</strong> 包括上对齐、居中对齐、下对齐。
+<ul>
+<li><strong>使用条件：</strong> 垂直对齐必须在文本框处于<strong>固定尺寸</strong>且<strong>高度超出</strong>文本内容的情况下才能生效。</li>
+</ul>
+</li>
+</ul>
+<h3 id="3-更多排版细节more-settings">3. 更多排版细节（More Settings）<a href="#3-更多排版细节more-settings" class="header-anchor" ariaLabel="Anchor"> # </a></h3>
+<ul>
+<li><strong>两端对齐（Justified）：</strong> 用于文本的左右均匀分布布局。
+<ul>
+<li><strong>使用建议：</strong> 在<strong>中文设置中绝对不会使用</strong>。在正常的英文排版中也<strong>基本不用</strong>。因为两端对齐会破坏文字的节奏和间距，严重影响阅读可用性。</li>
+</ul>
+</li>
+<li><strong>特殊样式：</strong> 包括<strong>下划线</strong>、<strong>删除线</strong>。</li>
+<li><strong>大小写：</strong> 可以直接进行大写和小写转换。</li>
+<li><strong>列表样式（List Style）：</strong> 支持输入一个横线后按空格，自动变成列表（圆点或数字列表）。</li>
+<li><strong>段间距（Paragraph Spacing）：</strong> 在“更多面板”（More Panel）中，可以<strong>添加段落之间的垂直间距</strong>。这对于提高多段文本的阅读性非常重要，避免段落和段落之间过于接近。</li>
+<li><strong>文本隐藏：</strong> 可以将超出的文字<strong>隐藏</strong>，并显示为省略号（点点点）。</li>
+</ul>
+<p><strong>总结：</strong></p>
+<p>Figma 的字体设置就像是为一栋建筑物（设计稿）定义<strong>结构参数</strong>。传统的排版软件只关心这栋楼<strong>打印出来</strong>的样子；而 Figma 不仅要关心样子，更要关心它未来在网络上“被搭建”时（前端开发）的<strong>工程规格</strong>。每一个参数（字号、行高、字重）都必须精确，因为它将直接决定文字这个“建筑材料”在各种设备容器（Frame）中如何响应和展示。</p>
+
+
+  
+    
+      <a href="http://localhost:1313//tags/figma%E5%AD%A6%E4%B9%A0%E6%8C%87%E5%8D%97/">#Figma学习指南</a>
+    
+      <a href="http://localhost:1313//tags/%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/">#学习笔记</a>
+    
+  
+
+<p style="color:#777;">最后一次修改于 2025-11-18</p>
+</div>
+<a href="#top"><i class="fa fa-chevron-up" style="font-size: 30px; color: black;"></i></a>
+
+</main>
+
+<footer class="footer">
+  <div class="content">
+
+<script src="https://giscus.app/client.js"
+        data-repo="finderaha/myblog"
+        data-repo-id="R_kgDOLxcP2A"
+        data-category="Announcements"
+        data-category-id="DIC_kwDOLxcP2M4Ce2as"
+        data-mapping="pathname"
+        data-strict="0"
+        data-reactions-enabled="1"
+        data-emit-metadata="0"
+        data-input-position="top"
+        data-theme="preferred_color_scheme"
+        data-lang="zh-CN"
+        data-loading="lazy"
+        crossorigin="anonymous"
+        async>
+</script>
+</br>
+ 
+</div>
+
+  <script type="text/javascript" src="/js/math-code.js"></script>
+<script async src="//mathjax.rstudio.com/latest/MathJax.js?config=TeX-MML-AM_CHTML"></script>
+<script type="text/javascript" src="/js/center-img.js"></script>
+
+
+
+     <ul class="footer-links">
+      
+       
+       
+       
+       <li><a href="/cn/posts/index.xml" type="application/rss+xml" title="RSS feed">
+       订阅 </a>
+       </li>
+       
+       
+       <li>
+       
+       <a href="http://creativecommons.org/licenses/by-nc-sa/4.0/deed.zh" target="_blank">
+       
+        版权
+        <i class="fa fa-cc" aria-hidden="true" title="Attribution-NonCommercial-ShareAlike 4.0 International"></i> 
+        </a>
+       </li>
+       
+     </ul>
+     <div class="copyright-text">
+            
+            ©
+            
+            郝志杰
+            
+            2024
+            
+     </div>
+
+</footer>
+
+
+
+
+

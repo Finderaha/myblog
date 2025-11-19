@@ -1,13 +1,329 @@
-<a name=top></a><!doctype html><html lang=en-us><head><meta charset=utf-8><meta name=viewport content="width=device-width,initial-scale=1"><title>Finder</title>
-<link rel=stylesheet href=https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css><link rel=stylesheet href=/css/style.css><link rel=stylesheet href=/css/fonts.css></head><body><div class=wrapper><header class=header><nav class=nav><a href=/ class=nav-logo><img src=/media/hugo-logo.png width=50 height=50 alt=Hugo-ht></a><ul class=nav-links><li><a href=/>主页</a></li><li><a href=/cn/posts/>日志</a></li><li><a href=/cn/about/>关于</a></li><li><a href=/en/posts/>English</a></li></ul></nav></header><main class=content role=main><div style=text-align:center><h1>文生图工作流程</h1><p>Finder
-/ 2024-10-16</p><hr></div><span class=article-toolbar><a href=https://github.com/UFinderaha/myblog/edit/main/content/cn%5cposts%5c2024-10-16-%e6%96%87%e7%94%9f%e5%9b%be%e5%b7%a5%e4%bd%9c%e6%b5%81%e7%a8%8b.md style=font-size:24px;color:#000 target=_blank><i class="fa fa-edit" aria-hidden=true title=编辑本页></i></a></span><aside class=toc>Table of Contents:<nav id=TableOfContents></nav></aside><div class="body-text list-text"><p>大家好，今天我来教大家如何搭建文生图工作流。听完上节课的SD原理后，相信大家会更容易理解这节课的内容。</p><p>首先，我们来打开启动器。如果你安装了康复UI，在根目录下会有一个启动器，双击打开它。</p><p>进入页面后，养成这样的习惯：</p><ul><li>先到版本管理</li><li>更新内核</li><li>更新扩展</li><li>回到第一个页面，点击一键启动</li></ul><p>启动后，你可能会看到全是英文的界面，不要害怕！我来教你如何把它改成中文：</p><ul><li>点击右上角的设置（齿轮图标）</li><li>往下拉，找到"text auto complete"，点击启用</li><li>找到"AGL translation language"，选择"Chinese simplified"</li><li>点击确定，界面就会变成中文了</li></ul><p>现在，让我们看看主页面。你会看到很多长方形框，我们称为"节点"。主页面上有7个节点，组成了基本的文生图工作流。</p><p>虽然可以直接使用这个工作流，但自己动手搭建会让你学到更多，也会让后面的学习更轻松。所以，让我们一起来搭建自己的工作流吧！</p><p>这个工作流对应上节课讲的SD原理。先教大家一个选择多个节点的小技巧：按住Control键，用鼠标左键在空白处框选，然后按DELETE删除。我们现在来自己搭建。</p><p>SD的核心是什么？是大模型。它就像SD的心脏和大脑，没有它，再好的工作流也出不了图。这就是为什么上节课强调至少要有一个大模型。大模型的作用是定义图片风格，比如写实或动漫风格。</p><p>添加节点有两种常用方法：</p><ol><li>在空白处右键点击"新建节点"。</li><li>双击页面空白处，直接搜索节点名称。</li></ol><p>我们先添加一个大模型加载器节点。搜索"checkpoint"，选择"checkpoint加载器（简易）"。</p><p>接下来，我们需要添加文本编码器节点。这是用来输入关键词的地方。我们需要两个：一个用于正向关键词，一个用于负向关键词。</p><p>添加完节点后，我们需要把它们连接起来。节点的左边叫"首部"，右边叫"尾部"。只能把一个节点的尾部连到另一个节点的首部。</p><p>然后，我们需要添加采样器节点。右键新建节点，找到"采样"，选择"K采样器"。这里有几个重要设置：</p><ul><li>随机种子：控制生成图片的随机性。</li><li>步数：决定降噪的次数，通常设为30-40。</li><li>CFG Scale：控制关键词和图片的相关性，建议设为7-8。</li><li>采样器：推荐使用Euler a或DPM++ 2M SDE。</li><li>调度器：通常选择normal或Karras。</li></ul><p>最后，我们需要添加一个空latent节点来设置图片尺寸。尺寸选择取决于你使用的模型版本：</p><ul><li>SD 1.5版本：建议512x512或512x768</li><li>SD 2.1版本：可以用768x768</li><li>SD XL或更新版本：建议1024x1024</li></ul><p>记住，越新的模型通常支持更高的分辨率，因为它们使用更高质量的训练图片。</p><p>这样，我们就完成了基本工作流的搭建。后面的课程我们会学习如何使用这个工作流来生成图片。</p><p>打开启动器。如果你安装了康复UI，在根目录下有一个启动器，双击打开它。</p><p>进入页面后，请养成以下习惯：</p><ul><li>先去版本管理</li><li>更新内核</li><li>更新扩展</li><li>回到第一个页面，点击一键启动</li></ul><p>启动后，你可能会看到全是英文的界面，不用担心！我来教你如何改成中文：</p><ul><li>点击右上角的设置（齿轮图标）</li><li>往下滑，找到"text auto complete"，点击启用</li><li>找到"AGL translation language"，选择"Chinese simplified"</li><li>点击确定，界面就会变成中文了</li></ul><p>现主页面有很多长方形的框，我们称为"节点"。默认会有7个节点，组成了基本的文生图工作流。</p><p>这套工作流程对应上节课讲的SD原理。</p><aside>💡
-按住Control键，用鼠标左键在空白处框选，然后按DELETE键删除选中的节点。</aside><h1 id=大模型节点>大模型节点<a href=#大模型节点 class=header-anchor arialabel=Anchor> #</a></h1><p>首先，SD的核心是大模型。它就像SD的心脏和大脑，没有它就无法生成图片。大模型的作用是定义图片风格，比如写实或动漫风格。</p><p>如何添加大模型流程如下：</p><ol><li>打开节点添加入口，有两种常用方法：<ol><li>在空白处右键点击"新建节点"。这里会显示所有可用的节点。</li><li>双击页面空白处，直接搜索节点名称。这种方法更快捷，特别是当你熟悉节点名称时。</li></ol></li><li>搜索"checkpoint"，你会看到"checkpoint加载器（简易）&ldquo;和"checkpoint加载器&rdquo;。选择第一个简易版本就可以了，两者功能差不多。</li></ol><p>当你添加节点时，最好记住它们的名称。大模型在SD中英文叫做"checkpoint"，简称为"CKPT"。加载器的英文是"checkpoint loader"。</p><p>如果页面是中文，你可以输入"加载器"来搜索。但如果切换到英文界面，就只能用英文搜索了。</p><aside>💡
-快速切换语言的方法是点击界面上的"切换语言"按钮（英文叫"Switch Language"）。</aside><p>添加节点后，选择你喜欢的大模型就好。</p><p>现在我们来看看如何选择大模型。你可以点击节点中间来显示所有可用的大模型，或者使用左右箭头逐个浏览。右上角的数字（比如#10）是编号，现在不用关注它。</p><p>右边有三个重要选项：模型、CLIP和VAE。CLIP是文本编码器的一种，它能将我们的语言转换成AI可以理解的形式。VAE则是我们提到过的解码器。这些选项会连接到其他节点上。</p><p>让我们回顾一下SD的工作原理。我们用文字（也就是关键词）告诉AI我们想要什么样的图片。为了让AI理解这些关键词，我们需要使用CLIP文本编码器节点。它的作用是将人类的语言转换成计算机可以理解的语言。</p><h1 id=clip文本编码器>CLIP文本编码器<a href=#clip文本编码器 class=header-anchor arialabel=Anchor> #</a></h1><p>接下来，我们来添加文本编码器节点。这个节点用于输入关键词。我们需要两个文本编码器：一个用于正向关键词，另一个用于负向关键词。</p><p>添加方法如下：</p><ol><li>右键点击空白处，选择"新建节点"。</li><li>在<strong>条件</strong>类别下找到"CLIP文本编码器"。</li><li>添加后，复制这个节点，这样我们就有了两个编码器。</li></ol><p>关键词分为两种：正向关键词和负向关键词。</p><ul><li>正向关键词：你想在图片中看到的元素</li><li>负向关键词：你不想在图片中看到的元素</li></ul><p>例如，如果你想生成"一个女孩在沙滩上走路吃冰淇淋"的图片，你可以这样写关键词：
+<script src="/livereload.js?mindelay=10&amp;v=2&amp;port=1313&amp;path=livereload" data-no-instant defer></script><a name="top"></a>
+<!DOCTYPE html>
+<html lang="en-us">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Finder</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+
+    <link rel="stylesheet" href="/css/style.css" />
+    <link rel="stylesheet" href="/css/fonts.css" />
+     
+  </head>
+  
+  <body>
+    <div class="wrapper">
+      <header class="header">
+        <nav class="nav" >
+      <a href="/" class="nav-logo">
+        <img src="/media/hugo-logo.png"
+         width="50"
+         height="50"
+         alt="Hugo-ht">
+      </a>
+
+      <ul class="nav-links" >
+        
+        
+           <li><a href="/">主页</a></li>
+       
+           <li><a href="/cn/posts/">日志</a></li>
+       
+           <li><a href="/cn/about/">关于</a></li>
+       
+       
+      </ul>
+</nav>
+
+      </header>
+
+<main class = "content" role="main">
+<div style="text-align: center">
+
+<h1>文生图工作流程</h1>
+
+<p>Finder 
+ / 2024-10-16 </p>
+
+<hr/>
+</div>
+
+<span class="article-toolbar">
+  
+  
+  
+  
+  
+  
+  
+  <a href='https://github.com/UFinderaha/myblog/edit/main/content/cn%5cposts%5c2024-10-16-%e6%96%87%e7%94%9f%e5%9b%be%e5%b7%a5%e4%bd%9c%e6%b5%81%e7%a8%8b.md'style="font-size: 24px; color: black;" target="_blank"><i class="fa fa-edit" aria-hidden="true" title="编辑本页"></i>
+  </a>
+  
+  
+  
+</span>
+
+
+<aside class="toc">
+Table of Contents:
+<nav id="TableOfContents"></nav>
+</aside>
+
+
+<div class="body-text list-text">
+<p>大家好，今天我来教大家如何搭建文生图工作流。听完上节课的SD原理后，相信大家会更容易理解这节课的内容。</p>
+<p>首先，我们来打开启动器。如果你安装了康复UI，在根目录下会有一个启动器，双击打开它。</p>
+<p>进入页面后，养成这样的习惯：</p>
+<ul>
+<li>先到版本管理</li>
+<li>更新内核</li>
+<li>更新扩展</li>
+<li>回到第一个页面，点击一键启动</li>
+</ul>
+<p>启动后，你可能会看到全是英文的界面，不要害怕！我来教你如何把它改成中文：</p>
+<ul>
+<li>点击右上角的设置（齿轮图标）</li>
+<li>往下拉，找到&quot;text auto complete&quot;，点击启用</li>
+<li>找到&quot;AGL translation language&quot;，选择&quot;Chinese simplified&quot;</li>
+<li>点击确定，界面就会变成中文了</li>
+</ul>
+<p>现在，让我们看看主页面。你会看到很多长方形框，我们称为&quot;节点&quot;。主页面上有7个节点，组成了基本的文生图工作流。</p>
+<p>虽然可以直接使用这个工作流，但自己动手搭建会让你学到更多，也会让后面的学习更轻松。所以，让我们一起来搭建自己的工作流吧！</p>
+<p>这个工作流对应上节课讲的SD原理。先教大家一个选择多个节点的小技巧：按住Control键，用鼠标左键在空白处框选，然后按DELETE删除。我们现在来自己搭建。</p>
+<p>SD的核心是什么？是大模型。它就像SD的心脏和大脑，没有它，再好的工作流也出不了图。这就是为什么上节课强调至少要有一个大模型。大模型的作用是定义图片风格，比如写实或动漫风格。</p>
+<p>添加节点有两种常用方法：</p>
+<ol>
+<li>在空白处右键点击&quot;新建节点&quot;。</li>
+<li>双击页面空白处，直接搜索节点名称。</li>
+</ol>
+<p>我们先添加一个大模型加载器节点。搜索&quot;checkpoint&quot;，选择&quot;checkpoint加载器（简易）&quot;。</p>
+<p>接下来，我们需要添加文本编码器节点。这是用来输入关键词的地方。我们需要两个：一个用于正向关键词，一个用于负向关键词。</p>
+<p>添加完节点后，我们需要把它们连接起来。节点的左边叫&quot;首部&quot;，右边叫&quot;尾部&quot;。只能把一个节点的尾部连到另一个节点的首部。</p>
+<p>然后，我们需要添加采样器节点。右键新建节点，找到&quot;采样&quot;，选择&quot;K采样器&quot;。这里有几个重要设置：</p>
+<ul>
+<li>随机种子：控制生成图片的随机性。</li>
+<li>步数：决定降噪的次数，通常设为30-40。</li>
+<li>CFG Scale：控制关键词和图片的相关性，建议设为7-8。</li>
+<li>采样器：推荐使用Euler a或DPM++ 2M SDE。</li>
+<li>调度器：通常选择normal或Karras。</li>
+</ul>
+<p>最后，我们需要添加一个空latent节点来设置图片尺寸。尺寸选择取决于你使用的模型版本：</p>
+<ul>
+<li>SD 1.5版本：建议512x512或512x768</li>
+<li>SD 2.1版本：可以用768x768</li>
+<li>SD XL或更新版本：建议1024x1024</li>
+</ul>
+<p>记住，越新的模型通常支持更高的分辨率，因为它们使用更高质量的训练图片。</p>
+<p>这样，我们就完成了基本工作流的搭建。后面的课程我们会学习如何使用这个工作流来生成图片。</p>
+<p>打开启动器。如果你安装了康复UI，在根目录下有一个启动器，双击打开它。</p>
+<p>进入页面后，请养成以下习惯：</p>
+<ul>
+<li>先去版本管理</li>
+<li>更新内核</li>
+<li>更新扩展</li>
+<li>回到第一个页面，点击一键启动</li>
+</ul>
+<p>启动后，你可能会看到全是英文的界面，不用担心！我来教你如何改成中文：</p>
+<ul>
+<li>点击右上角的设置（齿轮图标）</li>
+<li>往下滑，找到&quot;text auto complete&quot;，点击启用</li>
+<li>找到&quot;AGL translation language&quot;，选择&quot;Chinese simplified&quot;</li>
+<li>点击确定，界面就会变成中文了</li>
+</ul>
+<p>现主页面有很多长方形的框，我们称为&quot;节点&quot;。默认会有7个节点，组成了基本的文生图工作流。</p>
+<p>这套工作流程对应上节课讲的SD原理。</p>
+<aside>
+💡
+按住Control键，用鼠标左键在空白处框选，然后按DELETE键删除选中的节点。
+</aside>
+<h1 id="大模型节点">大模型节点<a href="#大模型节点" class="header-anchor" ariaLabel="Anchor"> # </a></h1>
+<p>首先，SD的核心是大模型。它就像SD的心脏和大脑，没有它就无法生成图片。大模型的作用是定义图片风格，比如写实或动漫风格。</p>
+<p>如何添加大模型流程如下：</p>
+<ol>
+<li>打开节点添加入口，有两种常用方法：
+<ol>
+<li>在空白处右键点击&quot;新建节点&quot;。这里会显示所有可用的节点。</li>
+<li>双击页面空白处，直接搜索节点名称。这种方法更快捷，特别是当你熟悉节点名称时。</li>
+</ol>
+</li>
+<li>搜索&quot;checkpoint&quot;，你会看到&quot;checkpoint加载器（简易）&ldquo;和&quot;checkpoint加载器&rdquo;。选择第一个简易版本就可以了，两者功能差不多。</li>
+</ol>
+<p>当你添加节点时，最好记住它们的名称。大模型在SD中英文叫做&quot;checkpoint&quot;，简称为&quot;CKPT&quot;。加载器的英文是&quot;checkpoint loader&quot;。</p>
+<p>如果页面是中文，你可以输入&quot;加载器&quot;来搜索。但如果切换到英文界面，就只能用英文搜索了。</p>
+<aside>
+💡
+快速切换语言的方法是点击界面上的"切换语言"按钮（英文叫"Switch Language"）。
+</aside>
+<p>添加节点后，选择你喜欢的大模型就好。</p>
+<p>现在我们来看看如何选择大模型。你可以点击节点中间来显示所有可用的大模型，或者使用左右箭头逐个浏览。右上角的数字（比如#10）是编号，现在不用关注它。</p>
+<p>右边有三个重要选项：模型、CLIP和VAE。CLIP是文本编码器的一种，它能将我们的语言转换成AI可以理解的形式。VAE则是我们提到过的解码器。这些选项会连接到其他节点上。</p>
+<p>让我们回顾一下SD的工作原理。我们用文字（也就是关键词）告诉AI我们想要什么样的图片。为了让AI理解这些关键词，我们需要使用CLIP文本编码器节点。它的作用是将人类的语言转换成计算机可以理解的语言。</p>
+<h1 id="clip文本编码器">CLIP文本编码器<a href="#clip文本编码器" class="header-anchor" ariaLabel="Anchor"> # </a></h1>
+<p>接下来，我们来添加文本编码器节点。这个节点用于输入关键词。我们需要两个文本编码器：一个用于正向关键词，另一个用于负向关键词。</p>
+<p>添加方法如下：</p>
+<ol>
+<li>右键点击空白处，选择&quot;新建节点&quot;。</li>
+<li>在<strong>条件</strong>类别下找到&quot;CLIP文本编码器&quot;。</li>
+<li>添加后，复制这个节点，这样我们就有了两个编码器。</li>
+</ol>
+<p>关键词分为两种：正向关键词和负向关键词。</p>
+<ul>
+<li>正向关键词：你想在图片中看到的元素</li>
+<li>负向关键词：你不想在图片中看到的元素</li>
+</ul>
+<p>例如，如果你想生成&quot;一个女孩在沙滩上走路吃冰淇淋&quot;的图片，你可以这样写关键词：
 正向关键词：one girl eating ice cream while walking on the beach
-负向关键词：对于负向关键词，你可以使用"embedding easy negative"，这是一个常用的负向关键词集合，可以帮助避免一些常见的图片生成问题。</p><aside>💡
-如何连接这些节点：<ol><li>CLIP文本编码器的左侧有一个黄色连接点。</li><li>大模型（Checkpoint加载器）右侧也有一个黄色的CLIP连接点。</li><li>将鼠标放在CLIP文本编码器的黄点上，拖动到大模型的黄点，就能连接它们。</li><li>对另一个编码器也做同样的操作。</li></ol><p>记住，节点的左侧连接点叫做"首部"，右侧叫做"尾部"。节点之间只能尾部连接首部。一个尾部可以连接多个其他节点，但首部只能连接一个节点。</p></aside><h1 id=k采样器>K采样器<a href=#k采样器 class=header-anchor arialabel=Anchor> #</a></h1><p>接下来，我们需要添加采样器节点：</p><ol><li>右键新建节点，找到"采样"类别。</li><li>选择"K采样器"。</li><li>这个节点有几个重要设置：<ul><li>随机种子：控制生成的随机性。设为0表示完全随机。</li><li>运动后操作：指代的是随机种子的行为。固定，指的的每次生成图使用一样的随机种子值；增加是每次生成后随机种子值+1；减少是每次生成后随机种子-1；随机是每次生成时随机一个值。默认为随机。</li><li>步数：决定降噪的次数。通常设置在25-40之间较好。</li><li>CFG Scale：控制生成图像与关键词的相关性。建议设置在2-9之间，7是个不错的选择。</li><li>采样器：推荐使用"Euler a"或"DPM++ 2M SDE"。</li><li>调度器：图片生成时的降噪曲线，&ldquo;Normal"是匀速降噪；&ldquo;Karras"是曲线降噪，经历慢快慢的降噪过程； “exponential“是慢块的降噪过程。通常选择"Normal"或"Karras"即可。</li><li>降噪：图生图的重绘幅度，文生图时默认是 1 即可，图生图是值越高，和原图越不一样。</li></ul></li></ol><p>最后，我们需要设置图片的大小。为此，我们要添加一个"Latent"节点：</p><ol><li>右键新建节点，找到"Latent"类别。</li><li>选择"空Latent&rdquo;。</li><li>这个节点用来设置图片的尺寸和分辨率。</li></ol><p>记得将所有节点正确连接。K采样器的左侧有多个连接点，需要分别连接到大模型、两个文本编码器和Latent节点。正确的连接是让工作流顺利运行的关键。</p><h1 id=空latent>空Latent<a href=#空latent class=header-anchor arialabel=Anchor> #</a></h1><p>接下来，我们需要设置图片的大小。K采样器在潜在空间中工作，它会把你输入的尺寸压缩到显卡能处理的大小。为此，我们要添加一个"空Latent"节点，这个很重要，因为如果不确定尺寸，图片就无法生成。</p><ol><li>右键新建节点，找到"Latent"类别。</li><li>选择"空Latent&rdquo;。</li><li>这个节点用来设置图片的尺寸。</li></ol><p>在Latent节点中，你需要输入图片的宽度和高度，单位是像素。选择合适的尺寸很重要：</p><ul><li>对于1.5版本的模型，尽量保持在512到768之间。例如，512×512（正方形）或512×768（长方形）。</li><li>对于2.1版本的模型，可以用到768×768。</li><li>对于XL模型或新的SD3模型，尽量保持在1024×1024左右。</li></ul><p>为什么新模型需要更高的分辨率？因为AI在不断进步，新模型使用的训练图片分辨率更高，所以生成的图片也更清晰。如果用高版本模型生成低分辨率图片，虽然不会报错，但图片质量会很差。</p><p>记得将Latent节点正确连接到其他节点上。</p><h1 id=vae解码器>VAE解码器<a href=#vae解码器 class=header-anchor arialabel=Anchor> #</a></h1><p>到这一步，图片已经生成了，但是这是计算机能理解的格式，我们还看不到。我们需要解码这个图片，把它转换成我们能看到的格式。这就是VAE解码器的作用。</p><p>接下来，我们需要添加VAE解码器：</p><ol><li>右键点击，选择"新建节点"</li><li>在"latent"类别中找到"VAE解码"</li><li>将VAE解码器连接到之前的节点上</li></ol><p>解码后，图片就生成了，但我们还需要一个节点来显示或保存图片：</p><ol><li>再次右键新建节点，选择"图像"类别</li><li>你可以选择"保存图像"或"预览图像"</li></ol><p>&ldquo;保存图像"会把所有生成的图片保存到你的电脑上，可能会占用很多空间。&ldquo;预览图像"只在当前页面显示图片，不会保存。选择哪个取决于你的需求。</p><h1 id=生图操作>生图操作<a href=#生图操作 class=header-anchor arialabel=Anchor> #</a></h1><ol><li>视图右侧的”添加提示词队列“按钮</li><li>ctrl+enter</li></ol><a href=https://finderaha.com//tags/stable-diffusion-%E7%B3%BB%E7%BB%9F%E8%AF%BE/>#Stable Diffusion 系统课</a>
-<a href=https://finderaha.com//tags/comfyui/>#ComfyUI</a>
-<a href=https://finderaha.com//tags/ai/>#AI</a><p style=color:#777>最后一次修改于 2024-10-16</p></div><a href=#top><i class="fa fa-chevron-up" style=font-size:30px;color:#000></i></a></main><footer class=footer><div class=content><script src=https://giscus.app/client.js data-repo=finderaha/myblog data-repo-id=R_kgDOLxcP2A data-category=Announcements data-category-id=DIC_kwDOLxcP2M4Ce2as data-mapping=pathname data-strict=0 data-reactions-enabled=1 data-emit-metadata=0 data-input-position=top data-theme=preferred_color_scheme data-lang=zh-CN data-loading=lazy crossorigin=anonymous async></script></br></div><script type=text/javascript src=/js/math-code.js></script><script async src="//mathjax.rstudio.com/latest/MathJax.js?config=TeX-MML-AM_CHTML"></script><script type=text/javascript src=/js/center-img.js></script><ul class=footer-links><li><a href=/cn/posts/index.xml type=application/rss+xml title="RSS feed">订阅</a></li><li><a href=http://creativecommons.org/licenses/by-nc-sa/4.0/deed.zh target=_blank>版权
-<i class="fa fa-cc" aria-hidden=true title="Attribution-NonCommercial-ShareAlike 4.0 International"></i></a></li></ul><div class=copyright-text>©
-郝志杰
-2024</div></footer>
+负向关键词：对于负向关键词，你可以使用&quot;embedding easy negative&quot;，这是一个常用的负向关键词集合，可以帮助避免一些常见的图片生成问题。</p>
+<aside>
+💡
+如何连接这些节点：
+<ol>
+<li>CLIP文本编码器的左侧有一个黄色连接点。</li>
+<li>大模型（Checkpoint加载器）右侧也有一个黄色的CLIP连接点。</li>
+<li>将鼠标放在CLIP文本编码器的黄点上，拖动到大模型的黄点，就能连接它们。</li>
+<li>对另一个编码器也做同样的操作。</li>
+</ol>
+<p>记住，节点的左侧连接点叫做&quot;首部&quot;，右侧叫做&quot;尾部&quot;。节点之间只能尾部连接首部。一个尾部可以连接多个其他节点，但首部只能连接一个节点。</p>
+</aside>
+<h1 id="k采样器">K采样器<a href="#k采样器" class="header-anchor" ariaLabel="Anchor"> # </a></h1>
+<p>接下来，我们需要添加采样器节点：</p>
+<ol>
+<li>右键新建节点，找到&quot;采样&quot;类别。</li>
+<li>选择&quot;K采样器&quot;。</li>
+<li>这个节点有几个重要设置：
+<ul>
+<li>随机种子：控制生成的随机性。设为0表示完全随机。</li>
+<li>运动后操作：指代的是随机种子的行为。固定，指的的每次生成图使用一样的随机种子值；增加是每次生成后随机种子值+1；减少是每次生成后随机种子-1；随机是每次生成时随机一个值。默认为随机。</li>
+<li>步数：决定降噪的次数。通常设置在25-40之间较好。</li>
+<li>CFG Scale：控制生成图像与关键词的相关性。建议设置在2-9之间，7是个不错的选择。</li>
+<li>采样器：推荐使用&quot;Euler a&quot;或&quot;DPM++ 2M SDE&quot;。</li>
+<li>调度器：图片生成时的降噪曲线，&ldquo;Normal&quot;是匀速降噪；&ldquo;Karras&quot;是曲线降噪，经历慢快慢的降噪过程； “exponential“是慢块的降噪过程。通常选择&quot;Normal&quot;或&quot;Karras&quot;即可。</li>
+<li>降噪：图生图的重绘幅度，文生图时默认是 1 即可，图生图是值越高，和原图越不一样。</li>
+</ul>
+</li>
+</ol>
+<p>最后，我们需要设置图片的大小。为此，我们要添加一个&quot;Latent&quot;节点：</p>
+<ol>
+<li>右键新建节点，找到&quot;Latent&quot;类别。</li>
+<li>选择&quot;空Latent&rdquo;。</li>
+<li>这个节点用来设置图片的尺寸和分辨率。</li>
+</ol>
+<p>记得将所有节点正确连接。K采样器的左侧有多个连接点，需要分别连接到大模型、两个文本编码器和Latent节点。正确的连接是让工作流顺利运行的关键。</p>
+<h1 id="空latent">空Latent<a href="#空latent" class="header-anchor" ariaLabel="Anchor"> # </a></h1>
+<p>接下来，我们需要设置图片的大小。K采样器在潜在空间中工作，它会把你输入的尺寸压缩到显卡能处理的大小。为此，我们要添加一个&quot;空Latent&quot;节点，这个很重要，因为如果不确定尺寸，图片就无法生成。</p>
+<ol>
+<li>右键新建节点，找到&quot;Latent&quot;类别。</li>
+<li>选择&quot;空Latent&rdquo;。</li>
+<li>这个节点用来设置图片的尺寸。</li>
+</ol>
+<p>在Latent节点中，你需要输入图片的宽度和高度，单位是像素。选择合适的尺寸很重要：</p>
+<ul>
+<li>对于1.5版本的模型，尽量保持在512到768之间。例如，512×512（正方形）或512×768（长方形）。</li>
+<li>对于2.1版本的模型，可以用到768×768。</li>
+<li>对于XL模型或新的SD3模型，尽量保持在1024×1024左右。</li>
+</ul>
+<p>为什么新模型需要更高的分辨率？因为AI在不断进步，新模型使用的训练图片分辨率更高，所以生成的图片也更清晰。如果用高版本模型生成低分辨率图片，虽然不会报错，但图片质量会很差。</p>
+<p>记得将Latent节点正确连接到其他节点上。</p>
+<h1 id="vae解码器">VAE解码器<a href="#vae解码器" class="header-anchor" ariaLabel="Anchor"> # </a></h1>
+<p>到这一步，图片已经生成了，但是这是计算机能理解的格式，我们还看不到。我们需要解码这个图片，把它转换成我们能看到的格式。这就是VAE解码器的作用。</p>
+<p>接下来，我们需要添加VAE解码器：</p>
+<ol>
+<li>右键点击，选择&quot;新建节点&quot;</li>
+<li>在&quot;latent&quot;类别中找到&quot;VAE解码&quot;</li>
+<li>将VAE解码器连接到之前的节点上</li>
+</ol>
+<p>解码后，图片就生成了，但我们还需要一个节点来显示或保存图片：</p>
+<ol>
+<li>再次右键新建节点，选择&quot;图像&quot;类别</li>
+<li>你可以选择&quot;保存图像&quot;或&quot;预览图像&quot;</li>
+</ol>
+<p>&ldquo;保存图像&quot;会把所有生成的图片保存到你的电脑上，可能会占用很多空间。&ldquo;预览图像&quot;只在当前页面显示图片，不会保存。选择哪个取决于你的需求。</p>
+<h1 id="生图操作">生图操作<a href="#生图操作" class="header-anchor" ariaLabel="Anchor"> # </a></h1>
+<ol>
+<li>视图右侧的”添加提示词队列“按钮</li>
+<li>ctrl+enter</li>
+</ol>
+
+
+  
+    
+      <a href="http://localhost:1313//tags/stable-diffusion-%E7%B3%BB%E7%BB%9F%E8%AF%BE/">#Stable Diffusion 系统课</a>
+    
+      <a href="http://localhost:1313//tags/comfyui/">#ComfyUI</a>
+    
+      <a href="http://localhost:1313//tags/ai/">#AI</a>
+    
+  
+
+<p style="color:#777;">最后一次修改于 2024-10-16</p>
+</div>
+<a href="#top"><i class="fa fa-chevron-up" style="font-size: 30px; color: black;"></i></a>
+
+</main>
+
+<footer class="footer">
+  <div class="content">
+
+<script src="https://giscus.app/client.js"
+        data-repo="finderaha/myblog"
+        data-repo-id="R_kgDOLxcP2A"
+        data-category="Announcements"
+        data-category-id="DIC_kwDOLxcP2M4Ce2as"
+        data-mapping="pathname"
+        data-strict="0"
+        data-reactions-enabled="1"
+        data-emit-metadata="0"
+        data-input-position="top"
+        data-theme="preferred_color_scheme"
+        data-lang="zh-CN"
+        data-loading="lazy"
+        crossorigin="anonymous"
+        async>
+</script>
+</br>
+ 
+</div>
+
+  <script type="text/javascript" src="/js/math-code.js"></script>
+<script async src="//mathjax.rstudio.com/latest/MathJax.js?config=TeX-MML-AM_CHTML"></script>
+<script type="text/javascript" src="/js/center-img.js"></script>
+
+
+
+     <ul class="footer-links">
+      
+       
+       
+       
+       <li><a href="/cn/posts/index.xml" type="application/rss+xml" title="RSS feed">
+       订阅 </a>
+       </li>
+       
+       
+       <li>
+       
+       <a href="http://creativecommons.org/licenses/by-nc-sa/4.0/deed.zh" target="_blank">
+       
+        版权
+        <i class="fa fa-cc" aria-hidden="true" title="Attribution-NonCommercial-ShareAlike 4.0 International"></i> 
+        </a>
+       </li>
+       
+     </ul>
+     <div class="copyright-text">
+            
+            ©
+            
+            郝志杰
+            
+            2024
+            
+     </div>
+
+</footer>
+
+
+
+
+

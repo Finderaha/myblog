@@ -1,6 +1,19 @@
-<?xml version="1.0" encoding="utf-8" standalone="yes"?><rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>Article on Finder</title><link>https://finderaha.com/tags/article/</link><description>Recent content in Article on Finder</description><generator>Hugo -- gohugo.io</generator><language>en-us</language><lastBuildDate>Thu, 07 Jan 2021 13:37:57 -0500</lastBuildDate><atom:link href="https://finderaha.com/tags/article/index.xml" rel="self" type="application/rss+xml"/><item><title>Markdown Testing</title><link>https://finderaha.com/en/2021/01/07/second-post/</link><pubDate>Thu, 07 Jan 2021 13:37:57 -0500</pubDate><guid>https://finderaha.com/en/2021/01/07/second-post/</guid><description>H1 H2 H3 H4 H5 H6 List Water Water Water Water Water Water Water Water Water Water Water Water Table Water Water Water Water Water Water Water Water1 Water Water Water Water Quotes What I cannot create, I do not understand2. — Richard Feynman
-Math For example,
-$1 + 1 = 3$
-You can add Tags &amp;amp; References:
-$$p(x) = \frac{1}{\sigma \sqrt{2 \pi}} exp \left(-\frac{1}{2}\left[\frac{x-\mu}{\sigma}\right]^2\right)\tag{1.1}\label{eq1.1}$$
-Aligning equations3 are also possible,</description></item></channel></rss>
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Article on Finder</title>
+    <link>http://localhost:1313/tags/article/</link>
+    <description>Recent content in Article on Finder</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en-us</language>
+    <lastBuildDate>Thu, 07 Jan 2021 13:37:57 -0500</lastBuildDate>
+    <atom:link href="http://localhost:1313/tags/article/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Markdown Testing</title>
+      <link>http://localhost:1313/en/2021/01/07/second-post/</link>
+      <pubDate>Thu, 07 Jan 2021 13:37:57 -0500</pubDate>
+      <guid>http://localhost:1313/en/2021/01/07/second-post/</guid>
+      <description>H1 H2 H3 H4 H5 H6 List Water Water Water Water Water Water Water Water Water Water Water Water Table Water Water Water Water Water Water Water Water1 Water Water Water Water Quotes What I cannot create, I do not understand2. — Richard Feynman&#xA;Math For example,&#xA;$1 + 1 = 3$&#xA;You can add Tags &amp;amp; References:&#xA;$$p(x) = \frac{1}{\sigma \sqrt{2 \pi}} exp \left(-\frac{1}{2}\left[\frac{x-\mu}{\sigma}\right]^2\right)\tag{1.1}\label{eq1.1}$$&#xA;Aligning equations3 are also possible,</description>
+    </item>
+  </channel>
+</rss>

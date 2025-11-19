@@ -176,6 +176,18 @@ Customize as you prefer*/
   line-height: 1.7;
 }
 
+/* 主页内容居中对齐 */
+.home-content {
+  text-align: center;
+}
+
+.home-content p,
+.home-content figure,
+.home-content figcaption,
+.home-content figcaption h4 {
+  text-align: center !important;
+}
+
 .wrapper {
   overflow: hidden;
   position: relative;
@@ -340,7 +352,6 @@ h6 {
   /* 标题应该更贴紧内容，并与其他块区分，margin 值要相应做优化 */
   margin-bottom: 25px;
   line-height: 1.25;
-  text-align: center;
 }
 
 h1 {
@@ -358,6 +369,7 @@ h2 {
 h3 {
   font-size: 24px;
   font-weight: normal;
+  text-align: left;
 }
 
 h4,
@@ -365,6 +377,7 @@ h5,
 h6 {
   font-size: 20px;
   color: grey;
+  text-align: left;
 }
 
 ul,
