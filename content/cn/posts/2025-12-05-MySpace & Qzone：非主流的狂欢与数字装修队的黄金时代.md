@@ -1,6 +1,7 @@
 ---
 title: "No. 06 MySpace & Qzone：非主流的狂欢与数字装修队的黄金时代"
 date: 2025-12-05
+weight: 3
 author: Finder
 slug: myspace
 draft: false

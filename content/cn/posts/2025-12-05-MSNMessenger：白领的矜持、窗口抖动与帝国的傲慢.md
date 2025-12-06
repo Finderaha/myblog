@@ -1,6 +1,7 @@
 ---
 title: "No.05 MSN Messenger：白领的矜持、窗口抖动与帝国的傲慢"
 date: 2025-12-05
+weight: 4
 author: Finder
 slug: MSN
 draft: false
