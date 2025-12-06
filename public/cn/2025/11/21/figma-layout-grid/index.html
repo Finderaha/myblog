@@ -1,0 +1,229 @@
+<script src="/livereload.js?mindelay=10&amp;v=2&amp;port=1313&amp;path=livereload" data-no-instant defer></script><a name="top"></a>
+<!DOCTYPE html>
+<html lang="en-us">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Finder</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+
+    <link rel="stylesheet" href="/css/style.css" />
+    <link rel="stylesheet" href="/css/fonts.css" />
+     
+  </head>
+  
+  <body>
+    <div class="wrapper">
+      <header class="header">
+        <nav class="nav" >
+      <a href="/" class="nav-logo">
+        <img src="/media/hugo-logo.png"
+         width="50"
+         height="50"
+         alt="Hugo-ht">
+      </a>
+
+      <ul class="nav-links" >
+        
+        
+           <li><a href="/">主页</a></li>
+       
+           <li><a href="/cn/posts/">日志</a></li>
+       
+           <li><a href="/cn/about/">关于</a></li>
+       
+       
+      </ul>
+</nav>
+
+      </header>
+
+<main class = "content" role="main">
+<div style="text-align: center">
+
+<h1>Figma  栅格系统（Layout Grid）</h1>
+
+<p>Finder 
+ / 2025-11-21 </p>
+
+<hr/>
+</div>
+
+<span class="article-toolbar">
+  
+  
+  
+  
+  
+  
+  
+  <a href='https://github.com/UFinderaha/myblog/edit/main/content/cn/posts/2025-11-21-Figma%20%20%e6%a0%85%e6%a0%bc%e7%b3%bb%e7%bb%9f%ef%bc%88Layout%20Grid%ef%bc%89.md'style="font-size: 24px; color: black;" target="_blank"><i class="fa fa-edit" aria-hidden="true" title="编辑本页"></i>
+  </a>
+  
+  
+  
+</span>
+
+
+
+<div class="body-text list-text">
+<h2 id="一-栅格系统的作用与创建前提">一、 栅格系统的作用与创建前提<a href="#一-栅格系统的作用与创建前提" class="header-anchor" ariaLabel="Anchor"> # </a></h2>
+<h3 id="1-栅格系统的价值">1. 栅格系统的价值<a href="#1-栅格系统的价值" class="header-anchor" ariaLabel="Anchor"> # </a></h3>
+<ul>
+<li><strong>网页设计核心：</strong> 栅格系统（格线系统）在<strong>网页设计</strong>过程中非常有用。</li>
+<li><strong>作用：</strong> 它可以作为元素的<strong>参考线</strong>，用于排版和布局。</li>
+<li><strong>益处：</strong> 使用栅格系统可以<strong>提高最终的设计质量</strong>，并<strong>加快设计效率</strong>。</li>
+</ul>
+<h3 id="2-创建前提重点">2. 创建前提（重点）<a href="#2-创建前提重点" class="header-anchor" ariaLabel="Anchor"> # </a></h3>
+<ul>
+<li><strong>Frame 限制：</strong> 在 Figma 中，**只有 Frame（画板/框架）**可以创建栅格系统。</li>
+<li><strong>图层限制：</strong> 其他图层（如矩形）无法设置栅格系统。用户可以在创建 Frame 后，在右下角找到 <code>Layout Grid</code> 设置。</li>
+</ul>
+<h2 id="二-栅格系统的三种类型">二、 栅格系统的三种类型<a href="#二-栅格系统的三种类型" class="header-anchor" ariaLabel="Anchor"> # </a></h2>
+<p>Figma 的栅格系统本质上创建有三种类型：</p>
+<h3 id="1-grid-网格">1. Grid (网格)<a href="#1-grid-网格" class="header-anchor" ariaLabel="Anchor"> # </a></h3>
+<ul>
+<li><strong>定义：</strong> 创建一个<strong>固定尺寸大小</strong>、<strong>固定间距</strong>的网格系统，有横向也有纵向。</li>
+<li><strong>设置：</strong> <code>Size</code> 字段控制横线和竖线之间的间距。</li>
+<li><strong>应用：</strong> 以前的设计方法会强调使用 8x8 的网格（用 8 的倍数来设置元素大小），但今天这种方法<strong>基本被淘汰了</strong>。Grid 功能的使用频率<strong>非常少</strong>，可能只在特定的图表绘制中会用到。</li>
+</ul>
+<h3 id="2-columns-垂直栅格列">2. Columns (垂直栅格/列)<a href="#2-columns-垂直栅格列" class="header-anchor" ariaLabel="Anchor"> # </a></h3>
+<ul>
+<li><strong>定义：</strong> <strong>垂直的格线</strong>，是网页栅格应用的主要方式。</li>
+<li><strong>设置复杂性：</strong> 垂直栅格的设置比 Grid <strong>复杂得多</strong>。</li>
+<li><strong>核心设置项：</strong>
+<ul>
+<li><strong>Count (数量)：</strong> 栅格的列数。常用的数字是 <strong>12 或 24</strong>，因为它们可以被 2、3、4、6 整除，非常方便。</li>
+<li><strong>Type (类型)：</strong> 定义栅格在 Frame 中的排列方式。</li>
+</ul>
+</li>
+</ul>
+<h3 id="3-rows-水平栅格行">3. Rows (水平栅格/行)<a href="#3-rows-水平栅格行" class="header-anchor" ariaLabel="Anchor"> # </a></h3>
+<ul>
+<li><strong>定义：</strong> <strong>水平方向的格线</strong>。</li>
+<li><strong>逻辑：</strong> 设置逻辑与垂直栅格<strong>一模一样</strong>，只是方向变成了上中下。</li>
+<li><strong>应用场景：</strong> 在网页设计或 UI 设计环境中，<strong>横向的栅格几乎不怎么会去用</strong>。它一般用于<strong>平面排版系统</strong>。</li>
+</ul>
+<h2 id="三-垂直栅格columns的关键设置与响应式逻辑">三、 垂直栅格（Columns）的关键设置与响应式逻辑<a href="#三-垂直栅格columns的关键设置与响应式逻辑" class="header-anchor" ariaLabel="Anchor"> # </a></h2>
+<p>在垂直栅格中，<code>Type</code> 选项的设置决定了栅格的适配逻辑，这是实现响应式设计的关键基础。</p>
+<h3 id="1-stretch-平铺均分">1. Stretch (平铺/均分)<a href="#1-stretch-平铺均分" class="header-anchor" ariaLabel="Anchor"> # </a></h3>
+<ul>
+<li><strong>特点：</strong> 属于<strong>平铺或均分</strong>模式。</li>
+<li><strong>结果：</strong> 启用此模式后，下方的 <code>Width</code>（列宽）选项<strong>不能设置</strong>。列宽根据frame的宽度动态变动。</li>
+</ul>
+<h3 id="2-center-left-right-居中左对齐右对齐">2. Center, Left, Right (居中、左对齐、右对齐)<a href="#2-center-left-right-居中左对齐右对齐" class="header-anchor" ariaLabel="Anchor"> # </a></h3>
+<ul>
+<li><strong>特点：</strong> 栅格不会自动均分，而是集中在特定位置。</li>
+<li><strong>手动设置宽度：</strong> 如果设置为 <code>Center</code>，系统不知道每列有多宽，因此<strong>必须手动设置 <code>Width</code></strong>。</li>
+<li><strong>左右页边距 (Margin) 和列间距 (Gutter)：</strong>
+<ul>
+<li><code>Margin</code> 是左右的页边距。</li>
+<li><code>Gutter</code> 是列和列之间的间距。</li>
+</ul>
+</li>
+</ul>
+<h3 id="3-响应式设计的底层逻辑重点">3. 响应式设计的底层逻辑（重点）<a href="#3-响应式设计的底层逻辑重点" class="header-anchor" ariaLabel="Anchor"> # </a></h3>
+<ul>
+<li><strong>逻辑原理：</strong> 当栅格设置为非 <code>Stretch</code> 模式时（如 <code>Center</code>），设置逻辑是：
+<ol>
+<li>先设置 <code>Margin</code>（左右页边距），从画布总宽度中减掉这部分宽度。</li>
+<li>再减掉 <code>Gutter</code>（列间距）的总和（例如，12 列就有 11 个间距）。</li>
+<li>最后，将<strong>剩下的宽度</strong>来<strong>均分</strong>给指定的列数。</li>
+</ol>
+</li>
+<li><strong>变动结果：</strong> 在这种设置下，当 Frame（画板）进行放大缩小时：
+<ul>
+<li><code>Count</code>（列数）、<code>Gutter</code>（列间距）和 <code>Margin</code>（左右页边距）的<strong>数值不会变</strong>。</li>
+<li>**每列的宽度（Width）**在发生变化。</li>
+</ul>
+</li>
+<li><strong>目的：</strong> 这就是<strong>响应式设计</strong>的基本逻辑，即在放大缩小的过程中，格线数量和间距不变，但每列的宽度会随画板大小进行调整，以适配栅格系统。</li>
+</ul>
+<h2 id="四-栅格系统的进阶应用">四、 栅格系统的进阶应用<a href="#四-栅格系统的进阶应用" class="header-anchor" ariaLabel="Anchor"> # </a></h2>
+<ul>
+<li><strong>多 Frame 应用：</strong> 栅格系统可以创建到下级环境里。</li>
+<li><strong>特殊 B 端界面：</strong> 在设计 B 端界面时，如果旁边有固定宽度的侧边栏（如 220 像素的导航栏），设计师通常不希望侧边栏受栅格影响。</li>
+<li><strong>建议操作：</strong> 今天的设置建议是<strong>单独</strong>在需要应用栅格的<strong>内容区域</strong>（如右侧主要内容区）<strong>创建一个 Frame</strong>。然后<strong>单独</strong>在这个新的 Frame 中创建 Columns，并设置 <code>Gutter</code>，但可以<strong>不用设置 <code>Margin</code></strong>，因为外部 Frame 已经预留了空间。通过这种套 Frame 的方式，可以更灵活地控制栅格系统。</li>
+</ul>
+<p>来源总结，栅格设置本身不难，难的是如何结合约束（Constraints）和自动布局（Auto Layout）功能来创建一个仿真的网页。</p>
+
+
+  
+    
+      <a href="http://localhost:1313//tags/figma%E5%AD%A6%E4%B9%A0%E6%8C%87%E5%8D%97/">#Figma学习指南</a>
+    
+      <a href="http://localhost:1313//tags/%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/">#学习笔记</a>
+    
+  
+
+<p style="color:#777;">最后一次修改于 2025-11-21</p>
+</div>
+<a href="#top"><i class="fa fa-chevron-up" style="font-size: 30px; color: black;"></i></a>
+
+</main>
+
+<footer class="footer">
+  <div class="content">
+
+<script src="https://giscus.app/client.js"
+        data-repo="finderaha/myblog"
+        data-repo-id="R_kgDOLxcP2A"
+        data-category="Announcements"
+        data-category-id="DIC_kwDOLxcP2M4Ce2as"
+        data-mapping="pathname"
+        data-strict="0"
+        data-reactions-enabled="1"
+        data-emit-metadata="0"
+        data-input-position="top"
+        data-theme="preferred_color_scheme"
+        data-lang="zh-CN"
+        data-loading="lazy"
+        crossorigin="anonymous"
+        async>
+</script>
+</br>
+ 
+</div>
+
+  <script type="text/javascript" src="/js/math-code.js"></script>
+<script async src="//mathjax.rstudio.com/latest/MathJax.js?config=TeX-MML-AM_CHTML"></script>
+<script type="text/javascript" src="/js/center-img.js"></script>
+
+
+
+     <ul class="footer-links">
+      
+       
+       
+       
+       <li><a href="/cn/posts/index.xml" type="application/rss+xml" title="RSS feed">
+       订阅 </a>
+       </li>
+       
+       
+       <li>
+       
+       <a href="http://creativecommons.org/licenses/by-nc-sa/4.0/deed.zh" target="_blank">
+       
+        版权
+        <i class="fa fa-cc" aria-hidden="true" title="Attribution-NonCommercial-ShareAlike 4.0 International"></i> 
+        </a>
+       </li>
+       
+     </ul>
+     <div class="copyright-text">
+            
+            ©
+            
+            郝志杰
+            
+            2024
+            
+     </div>
+
+</footer>
+
+
+
+
+

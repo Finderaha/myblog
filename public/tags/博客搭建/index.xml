@@ -13,7 +13,7 @@
       <link>http://localhost:1313/cn/2024/04/14/blog/</link>
       <pubDate>Sun, 14 Apr 2024 00:00:00 +0000</pubDate>
       <guid>http://localhost:1313/cn/2024/04/14/blog/</guid>
-      <description>本文基于郝鸿涛如何零基础免费搭建个人网站 (2024 更新版)&#xD;，将个人参考教程中遇到的问题进行详细记述。下面会根据原文流程中的步骤逐条记录。&#xA;网站主题 如何零基础免费搭建个人网站&#xD;中的这个步骤是可以不执行的，直接进入如何零基础免费搭建个人网站 (2024 更新版)&#xD;往下操作即可。但是如果你执行了这一步骤，有 2 点需要关注：&#xA;1. 为什么要执行下面这段代码 mkdir hugo-ht-new # create a new folder called hugo-ht-new&#xD;cp -r hugo-ht/* hugo-ht-new # copy everything in hugo-ht to hugo-ht-new&#xD;rm -rf hugo-ht # delete the folder of hugo-ht&#xD;mv hugo-ht-new hugo-ht # change folder name 这段代码看上去好像没有意义，但其实非常重要，需要特别关注。执行完&#xA;git clone https://github.com/hongtaoh/hugo-ht 将 hugo-ht 复制到本地，这里需要注意是，虽然本地有了 hugo-ht 的的文件，但是其实并不属于你自己的博客项目，而是一个外部引用。因为是一个外部引用，所以后面无论你改动 themes/hugo-ht 下的什么内容，都无法实际生效。执行上面的代码意义就是将其从引用，变为个人项目的一部分。&#xA;2. hugo server -D 报错 当你执行&#xA;hugo server -D # 这里的 D 是 draft 的意思 可能会遇到报错：page not found.</description>
+      <description>本文基于郝鸿涛如何零基础免费搭建个人网站 (2024 更新版) ，将个人参考教程中遇到的问题进行详细记述。下面会根据原文流程中的步骤逐条记录。&#xA;网站主题 如何零基础免费搭建个人网站 中的这个步骤是可以不执行的，直接进入如何零基础免费搭建个人网站 (2024 更新版) 往下操作即可。但是如果你执行了这一步骤，有 2 点需要关注：&#xA;1. 为什么要执行下面这段代码 mkdir hugo-ht-new # create a new folder called hugo-ht-new cp -r hugo-ht/* hugo-ht-new # copy everything in hugo-ht to hugo-ht-new rm -rf hugo-ht # delete the folder of hugo-ht mv hugo-ht-new hugo-ht # change folder name 这段代码看上去好像没有意义，但其实非常重要，需要特别关注。执行完&#xA;git clone https://github.com/hongtaoh/hugo-ht 将 hugo-ht 复制到本地，这里需要注意是，虽然本地有了 hugo-ht 的的文件，但是其实并不属于你自己的博客项目，而是一个外部引用。因为是一个外部引用，所以后面无论你改动 themes/hugo-ht 下的什么内容，都无法实际生效。执行上面的代码意义就是将其从引用，变为个人项目的一部分。&#xA;2. hugo server -D 报错 当你执行&#xA;hugo server -D # 这里的 D 是 draft 的意思 可能会遇到报错：page not found.</description>
     </item>
   </channel>
 </rss>

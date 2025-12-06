@@ -1,0 +1,222 @@
+<script src="/livereload.js?mindelay=10&amp;v=2&amp;port=1313&amp;path=livereload" data-no-instant defer></script><a name="top"></a>
+<!DOCTYPE html>
+<html lang="en-us">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Finder</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+
+    <link rel="stylesheet" href="/css/style.css" />
+    <link rel="stylesheet" href="/css/fonts.css" />
+     
+  </head>
+  
+  <body>
+    <div class="wrapper">
+      <header class="header">
+        <nav class="nav" >
+      <a href="/" class="nav-logo">
+        <img src="/media/hugo-logo.png"
+         width="50"
+         height="50"
+         alt="Hugo-ht">
+      </a>
+
+      <ul class="nav-links" >
+        
+        
+           <li><a href="/">主页</a></li>
+       
+           <li><a href="/cn/posts/">日志</a></li>
+       
+           <li><a href="/cn/about/">关于</a></li>
+       
+       
+      </ul>
+</nav>
+
+      </header>
+
+<main class = "content" role="main">
+<div style="text-align: center">
+
+<h1>Figma 项目设计规范</h1>
+
+<p>Finder 
+ / 2025-11-21 </p>
+
+<hr/>
+</div>
+
+<span class="article-toolbar">
+  
+  
+  
+  
+  
+  
+  
+  <a href='https://github.com/UFinderaha/myblog/edit/main/content/cn/posts/2025-11-21-Figma%20%e9%a1%b9%e7%9b%ae%e8%ae%be%e8%ae%a1%e8%a7%84%e8%8c%83.md'style="font-size: 24px; color: black;" target="_blank"><i class="fa fa-edit" aria-hidden="true" title="编辑本页"></i>
+  </a>
+  
+  
+  
+</span>
+
+
+
+<div class="body-text list-text">
+<h2 id="一-项目规范的创建与管理原则">一、 项目规范的创建与管理原则<a href="#一-项目规范的创建与管理原则" class="header-anchor" ariaLabel="Anchor"> # </a></h2>
+<h3 id="1-规范的构成">1. 规范的构成<a href="#1-规范的构成" class="header-anchor" ariaLabel="Anchor"> # </a></h3>
+<p>项目设计规范主要包括两个核心部分：<strong>设计样式（Style）<strong>和</strong>组件（Component）</strong>。</p>
+<h3 id="2-管理思路独立-page-管理">2. 管理思路：独立 Page 管理<a href="#2-管理思路独立-page-管理" class="header-anchor" ariaLabel="Anchor"> # </a></h3>
+<ul>
+<li>在 Figma 文件中，设计师<strong>不会</strong>将规范内容创建在实际的**页面（Page/配局）**中。</li>
+<li>正确的做法是<strong>单独创建一个 Page</strong>，专门用于存放和统一管理所有与规范相关的内容。</li>
+<li><strong>统一整理的必要性：</strong> 在真实的项目页面中，内容通常分散在各个模块（如模块一、模块二），因此需要一个统一的 Page 来收纳这些规范要素。</li>
+</ul>
+<h3 id="3-制作规范页面的流程先做页面后定规范">3. 制作规范页面的流程（先做页面后定规范）<a href="#3-制作规范页面的流程先做页面后定规范" class="header-anchor" ariaLabel="Anchor"> # </a></h3>
+<ul>
+<li><strong>正确的项目流程：</strong> 正式项目的早期阶段，设计师通常是<strong>先完成页面设计</strong>，<strong>再回过头来</strong>去整理和创建规范。</li>
+<li><strong>整理目标：</strong> 整理的目的是将页面中用到的<strong>字体、色彩</strong>等元素进行<strong>关联</strong>，并<strong>重新梳理一遍</strong>，然后<strong>删除多余的规范</strong>，确保所有样式都被应用。</li>
+</ul>
+<h2 id="二-样式规范style的创建与分类">二、 样式规范（Style）的创建与分类<a href="#二-样式规范style的创建与分类" class="header-anchor" ariaLabel="Anchor"> # </a></h2>
+<p>样式规范涉及整理色彩、字体和效果等相对抽象的视觉细节。</p>
+<h3 id="1-色彩规范">1. 色彩规范<a href="#1-色彩规范" class="header-anchor" ariaLabel="Anchor"> # </a></h3>
+<ul>
+<li>需要定义项目中的<strong>主色（Primary Color）、辅助色（Auxiliary Color）<strong>和</strong>中性色（Neutral Color）</strong>。</li>
+<li>通过 Figma 的样式功能（Style）创建这些颜色，并赋予它们对应的名称和作用。</li>
+</ul>
+<h3 id="2-字体规范">2. 字体规范<a href="#2-字体规范" class="header-anchor" ariaLabel="Anchor"> # </a></h3>
+<ul>
+<li>根据不同的角色（如<strong>大标题、中标题、小标题</strong>等）来创建字体样式。</li>
+<li>创建字体样式后，同理在 Style 环境中对它们进行创建和命名。</li>
+</ul>
+<h3 id="3-效果规范">3. 效果规范<a href="#3-效果规范" class="header-anchor" ariaLabel="Anchor"> # </a></h3>
+<ul>
+<li>可以创建**投影（Drop Shadow）**等效果的样式。</li>
+<li>设计师应将设计页面中使用过的<strong>所有</strong>内容提前定义出来，以便在后期进行关联。</li>
+</ul>
+<h3 id="4-样式页面的展示建议">4. 样式页面的展示（建议）<a href="#4-样式页面的展示建议" class="header-anchor" ariaLabel="Anchor"> # </a></h3>
+<ul>
+<li><strong>直观管理：</strong> 来源建议，在专门的规范 Page 中将这些用过的样式<strong>全部整理并具象化地展示</strong>（如色块、文本示例）。</li>
+<li><strong>优于右侧面板：</strong> 这种具象化的展示方式，比直接依赖右侧属性面板中的样式列表<strong>更直观、更舒服</strong>。</li>
+</ul>
+<h2 id="三-组件库component-library的创建与结构">三、 组件库（Component Library）的创建与结构<a href="#三-组件库component-library的创建与结构" class="header-anchor" ariaLabel="Anchor"> # </a></h2>
+<p>组件库是项目规范中内容非常多且复杂的部分，需要清晰的分类和结构。</p>
+<h3 id="1-组件的创建顺序先控件后组件">1. 组件的创建顺序：先控件后组件<a href="#1-组件的创建顺序先控件后组件" class="header-anchor" ariaLabel="Anchor"> # </a></h3>
+<ul>
+<li><strong>优先级：</strong> 应该<strong>优先</strong>把**控件（Controls）**定义好。</li>
+<li><strong>进阶组件：</strong> 控件做完后，再开始制作和定义<strong>复杂组件（Component）</strong>，因为进阶组件通常会包含或引用基础控件。</li>
+<li><strong>内容替换：</strong> 制作进阶组件时，应先在<strong>非组件状态</strong>下，将内部元素（如按钮、图标）替换成已经创建好的<strong>控件组件</strong>，然后<strong>再将整个父级元素创建为新的复杂组件</strong>。</li>
+</ul>
+<h3 id="2-组件的分类结构">2. 组件的分类结构<a href="#2-组件的分类结构" class="header-anchor" ariaLabel="Anchor"> # </a></h3>
+<p>组件分类应基于<strong>业务形式和功能点</strong>进行裁分：</p>
+<ul>
+<li><strong>控件分类：</strong> 应包含最基础的交互元素，如<strong>按钮（Button）</strong>、<strong>输入框（Input）</strong>、<strong>选择器（Selector）</strong>。</li>
+<li><strong>复杂组件分类：</strong> 应根据业务内容进行分类，例如<strong>卡片类（Card）</strong>（如课程卡片、优惠卡片）和<strong>动态类</strong>等。</li>
+</ul>
+<h3 id="3-组件状态的创建与变体variant">3. 组件状态的创建与变体（Variant）<a href="#3-组件状态的创建与变体variant" class="header-anchor" ariaLabel="Anchor"> # </a></h3>
+<ul>
+<li><strong>状态是必须的：</strong> 控件和组件通常具有多个<strong>状态</strong>（如默认、点击、悬浮等）。</li>
+<li><strong>创建流程：</strong> 正确的流程是：
+<ol>
+<li>先将组件的<strong>不同状态（样式）<strong>在外部</strong>独立设计并制作出来</strong>。</li>
+<li>然后将所有状态的组件<strong>一起选中</strong>，使用 <strong>Combine as Variant</strong> 功能，将它们合并成一个变体组件。</li>
+</ol>
+</li>
+</ul>
+<h3 id="4-组件的命名与-assets-归类重点">4. 组件的命名与 Assets 归类（重点）<a href="#4-组件的命名与-assets-归类重点" class="header-anchor" ariaLabel="Anchor"> # </a></h3>
+<ul>
+<li><strong>斜杠命名法：</strong> 在创建组件（Component）时，应通过在名称中添加<strong>斜杠（<code>/</code>）<strong>来创建</strong>层级结构</strong>。</li>
+<li><strong>自动归类：</strong> 使用斜杠命名后，Figma 会自动在 <strong>Assets（资源库）<strong>面板中帮助设计师进行</strong>文件夹式的归类</strong>。</li>
+<li><strong>命名建议：</strong> 命名应清晰且有目的性，例如使用前缀（如“控件/按钮/小”）来控制组件在 Assets 列表中的<strong>顺序和结构</strong>。</li>
+</ul>
+<h2 id="四-规范创建的最终目标">四、 规范创建的最终目标<a href="#四-规范创建的最终目标" class="header-anchor" ariaLabel="Anchor"> # </a></h2>
+<ul>
+<li><strong>目标：</strong> 统一性（一致性）和效率。</li>
+<li><strong>团队协作：</strong> 规范的创建能提升团队协作的速度。</li>
+<li><strong>警告：</strong> 设计师不应因为 Figma 的功能强大而<strong>强行使用</strong>所有功能，这可能会导致花费大量时间处理软件功能本身，最终反而使项目效率降低或组件库难以维护。</li>
+</ul>
+
+
+  
+    
+      <a href="http://localhost:1313//tags/figma%E5%AD%A6%E4%B9%A0%E6%8C%87%E5%8D%97/">#Figma学习指南</a>
+    
+      <a href="http://localhost:1313//tags/%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/">#学习笔记</a>
+    
+  
+
+<p style="color:#777;">最后一次修改于 2025-11-21</p>
+</div>
+<a href="#top"><i class="fa fa-chevron-up" style="font-size: 30px; color: black;"></i></a>
+
+</main>
+
+<footer class="footer">
+  <div class="content">
+
+<script src="https://giscus.app/client.js"
+        data-repo="finderaha/myblog"
+        data-repo-id="R_kgDOLxcP2A"
+        data-category="Announcements"
+        data-category-id="DIC_kwDOLxcP2M4Ce2as"
+        data-mapping="pathname"
+        data-strict="0"
+        data-reactions-enabled="1"
+        data-emit-metadata="0"
+        data-input-position="top"
+        data-theme="preferred_color_scheme"
+        data-lang="zh-CN"
+        data-loading="lazy"
+        crossorigin="anonymous"
+        async>
+</script>
+</br>
+ 
+</div>
+
+  <script type="text/javascript" src="/js/math-code.js"></script>
+<script async src="//mathjax.rstudio.com/latest/MathJax.js?config=TeX-MML-AM_CHTML"></script>
+<script type="text/javascript" src="/js/center-img.js"></script>
+
+
+
+     <ul class="footer-links">
+      
+       
+       
+       
+       <li><a href="/cn/posts/index.xml" type="application/rss+xml" title="RSS feed">
+       订阅 </a>
+       </li>
+       
+       
+       <li>
+       
+       <a href="http://creativecommons.org/licenses/by-nc-sa/4.0/deed.zh" target="_blank">
+       
+        版权
+        <i class="fa fa-cc" aria-hidden="true" title="Attribution-NonCommercial-ShareAlike 4.0 International"></i> 
+        </a>
+       </li>
+       
+     </ul>
+     <div class="copyright-text">
+            
+            ©
+            
+            郝志杰
+            
+            2024
+            
+     </div>
+
+</footer>
+
+
+
+
+

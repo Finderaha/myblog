@@ -1,0 +1,232 @@
+<script src="/livereload.js?mindelay=10&amp;v=2&amp;port=1313&amp;path=livereload" data-no-instant defer></script><a name="top"></a>
+<!DOCTYPE html>
+<html lang="en-us">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Finder</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+
+    <link rel="stylesheet" href="/css/style.css" />
+    <link rel="stylesheet" href="/css/fonts.css" />
+     
+  </head>
+  
+  <body>
+    <div class="wrapper">
+      <header class="header">
+        <nav class="nav" >
+      <a href="/" class="nav-logo">
+        <img src="/media/hugo-logo.png"
+         width="50"
+         height="50"
+         alt="Hugo-ht">
+      </a>
+
+      <ul class="nav-links" >
+        
+        
+           <li><a href="/">主页</a></li>
+       
+           <li><a href="/cn/posts/">日志</a></li>
+       
+           <li><a href="/cn/about/">关于</a></li>
+       
+       
+      </ul>
+</nav>
+
+      </header>
+
+<main class = "content" role="main">
+<div style="text-align: center">
+
+<h1>Figma  图层样式定义</h1>
+
+<p>Finder 
+ / 2025-11-21 </p>
+
+<hr/>
+</div>
+
+<span class="article-toolbar">
+  
+  
+  
+  
+  
+  
+  
+  <a href='https://github.com/UFinderaha/myblog/edit/main/content/cn/posts/2025-11-21-Figma%20%20%e5%9b%be%e5%b1%82%e6%a0%b7%e5%bc%8f%e5%ae%9a%e4%b9%89.md'style="font-size: 24px; color: black;" target="_blank"><i class="fa fa-edit" aria-hidden="true" title="编辑本页"></i>
+  </a>
+  
+  
+  
+</span>
+
+
+
+<div class="body-text list-text">
+<h2 id="一-样式style的定义与作用">一、 样式（Style）的定义与作用<a href="#一-样式style的定义与作用" class="header-anchor" ariaLabel="Anchor"> # </a></h2>
+<ul>
+<li><strong>定义：</strong> 样式是对 Figma 属性面板中<strong>不同功能模块的参数</strong>进行的一种定义。</li>
+<li><strong>核心作用：</strong>
+<ol>
+<li>实现样式的<strong>复用</strong>。</li>
+<li>实现<strong>批量修改</strong>的目的和作用。</li>
+<li>通过定义样式，给颜色赋予一个<strong>身份</strong>（例如“主色”），后续可以<strong>一次性修改所有引用该样式的元素</strong>的颜色。这有助于节省大量时间。</li>
+</ol>
+</li>
+</ul>
+<h2 id="二-哪些属性可以定义样式">二、 哪些属性可以定义样式<a href="#二-哪些属性可以定义样式" class="header-anchor" ariaLabel="Anchor"> # </a></h2>
+<p><img src="https://cdn.jsdelivr.net/gh/Finderaha/pictures@master/blog20251121114432.png" alt="">
+并非 Figma 属性面板中的所有功能模块都可以定义样式。可以进行样式定义的属性有以下五种：</p>
+<ol>
+<li><strong>填充（Fill）</strong>。</li>
+<li><strong>描边（Stroke）</strong>。</li>
+<li><strong>效果（Effect）</strong>。</li>
+<li><strong>字体（Text/Typography）</strong>。</li>
+<li><strong>格线（Grid）</strong>。</li>
+</ol>
+<p><strong>注意：</strong> 像圆角（Corner Radius）这类属性，在视频录制时，它<strong>没有加入</strong>样式定义的功能，这让设计师感到不便，因为圆角也经常需要复用。</p>
+<h2 id="三-样式的创建和应用流程">三、 样式的创建和应用流程<a href="#三-样式的创建和应用流程" class="header-anchor" ariaLabel="Anchor"> # </a></h2>
+<h3 id="1-样式创建入口">1. 样式创建入口<a href="#1-样式创建入口" class="header-anchor" ariaLabel="Anchor"> # </a></h3>
+<ul>
+<li>在填充、描边和效果等属性栏旁边，会有一个**“添加样式”的图标**（一个四个点组成的小方块）。</li>
+<li>只有当看到这个图标时，才能添加样式。</li>
+<li>点击图标后，选择 <code>Style</code> 选项（而非 <code>Variable</code>），进入创建面板。</li>
+</ul>
+<h3 id="2-创建步骤">2. 创建步骤<a href="#2-创建步骤" class="header-anchor" ariaLabel="Anchor"> # </a></h3>
+<ul>
+<li>在创建面板中，可以设置 <strong>Name（名称）</strong>，例如“主色”。</li>
+<li>可以设置 <strong>Description（描述）</strong>，用于描述颜色的作用或使用上的备注。</li>
+<li>点击 <code>Create Style</code> 完成创建。</li>
+<li>一旦创建，该元素就会与样式<strong>关联</strong>。此时，如果点击填充区域，它会显示为定义的名称（如“主色”），而非默认的 <code>Custom</code> 状态。</li>
+</ul>
+<h2 id="3-样式的复用与批量修改">3. 样式的复用与批量修改<a href="#3-样式的复用与批量修改" class="header-anchor" ariaLabel="Anchor"> # </a></h2>
+<ul>
+<li>创建样式后，它会出现在 <strong>Library</strong>（库）中。</li>
+<li>用户可以随意绘制其他元素（如矩形、圆形、文本内容），然后点击填充（Fill）区域，从 Library 中<strong>选择并应用</strong>已定义的主色样式。</li>
+<li>如果后续需要修改主色，只需进入该样式的编辑界面进行修改，所有引用该样式的元素（无论是填充还是描边颜色）都会<strong>一次性统一改变</strong>。</li>
+</ul>
+<h2 id="四-不同类型样式的独立性与特征">四、 不同类型样式的独立性与特征<a href="#四-不同类型样式的独立性与特征" class="header-anchor" ariaLabel="Anchor"> # </a></h2>
+<h3 id="1-颜色color-style">1. 颜色（Color Style）<a href="#1-颜色color-style" class="header-anchor" ariaLabel="Anchor"> # </a></h3>
+<ul>
+<li><strong>应用范围广：</strong> 定义的颜色样式不仅可以用于元素的<strong>填充（Fill）</strong>，也可以用于元素的<strong>描边（Stroke）</strong>，甚至可以用于**效果（Effect）**中的颜色设置。</li>
+</ul>
+<h3 id="2-效果effect-style">2. 效果（Effect Style）<a href="#2-效果effect-style" class="header-anchor" ariaLabel="Anchor"> # </a></h3>
+<ul>
+<li><strong>独立性：</strong> 效果（Effect）部分创建的样式是<strong>独立</strong>于颜色样式的。</li>
+<li><strong>混合效果：</strong> 一个效果样式可以<strong>混合</strong>多个效果，例如同时包含 <code>Drop Shadow</code>（投影）和 <code>Inner Shadow</code>（内阴影/高光）。创建样式后，它会将这些效果的<strong>所有属性</strong>都记录下来并置入。</li>
+</ul>
+<h3 id="3-字体text-style">3. 字体（Text Style）<a href="#3-字体text-style" class="header-anchor" ariaLabel="Anchor"> # </a></h3>
+<ul>
+<li><strong>功能分离：</strong> Figma 字体样式与早期 UI 软件（如 Sketch）不同，它将<strong>字体样式</strong>（字号、行高等）与<strong>颜色填充</strong>（色号）做了<strong>割裂（分离）</strong>。</li>
+<li><strong>编辑灵活：</strong> 定义字体样式后，用户仍可以对使用该样式的文本进行<strong>后续修改</strong>，例如修改<strong>对齐方式</strong>（左对齐、居中等），而<strong>不需要</strong>为每种对齐方式都创建一个新的字体样式。</li>
+<li><strong>颜色应用：</strong> 字体颜色是通过<strong>填充（Fill）面板</strong>来设置和定义样式的，<strong>而不是</strong>在字体样式面板内部设置。</li>
+</ul>
+<h3 id="4-格线grid-style">4. 格线（Grid Style）<a href="#4-格线grid-style" class="header-anchor" ariaLabel="Anchor"> # </a></h3>
+<ul>
+<li>栅格系统也可以创建样式，例如网页中常用的<strong>12 列三格</strong>参数，可以继承并复用于后续页面。</li>
+<li><strong>使用频率低：</strong> 视频中建议<strong>前期可以不用管</strong>，因为在 UI 设计中，格线样式的使用频率<strong>不高</strong>。</li>
+</ul>
+<h3 id="五-样式管理与分类local-style">五、 样式管理与分类（Local Style）<a href="#五-样式管理与分类local-style" class="header-anchor" ariaLabel="Anchor"> # </a></h3>
+<h3 id="1-本地样式local-style的显示">1. 本地样式（Local Style）的显示<a href="#1-本地样式local-style的显示" class="header-anchor" ariaLabel="Anchor"> # </a></h3>
+<ul>
+<li>当用户点击画板的<strong>空白区域</strong>时，右侧属性面板会显示在这个页面（Page）中定义过的所有样式，这被称为 <strong>Local Style（本地样式）</strong>。</li>
+<li>本地样式会根据类型（字体、颜色、效果、格线）进行<strong>子分类</strong>显示。</li>
+</ul>
+<h4 id="2-样式的分类与文件夹管理">2. 样式的分类与文件夹管理<a href="#2-样式的分类与文件夹管理" class="header-anchor" ariaLabel="Anchor"> # </a></h4>
+<ul>
+<li>为了避免样式数量过多导致选择困难，需要对样式进行<strong>分类</strong>。</li>
+<li><strong>命名法：</strong> 最简单有效的方法是在样式名称中使用**斜杠（<code>/</code>）**进行分隔，例如“主色/主色名”。</li>
+<li><strong>结果：</strong> 使用斜杠命名后，Figma 会自动生成一个**文件夹（Folder）**来组织这些样式，使选择和切换变得直观和方便。</li>
+<li><strong>建议：</strong> 建议<strong>不要创建太多层级</strong>（套娃）的文件夹。</li>
+</ul>
+<h3 id="3-样式的关联与断开">3. 样式的关联与断开<a href="#3-样式的关联与断开" class="header-anchor" ariaLabel="Anchor"> # </a></h3>
+<ul>
+<li><strong>关联：</strong> 创建或应用样式是元素去<strong>连接</strong>一个样式点。</li>
+<li><strong>断开连接：</strong> 如果不想使用某个样式，可以在属性面板中点击**“断开连接”（Detach）**图标（通常是一个打叉的小圆圈），元素将恢复为自定义状态。</li>
+<li><strong>删除样式：</strong> 即使断开了所有元素的连接，样式本身仍然存在于 Local Style 中。必须在右侧 Local Style 面板中，<strong>右键点击</strong>样式，选择 <strong>Delete</strong>，才能真正将其删除。</li>
+</ul>
+
+
+  
+    
+      <a href="http://localhost:1313//tags/figma%E5%AD%A6%E4%B9%A0%E6%8C%87%E5%8D%97/">#Figma学习指南</a>
+    
+      <a href="http://localhost:1313//tags/%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/">#学习笔记</a>
+    
+  
+
+<p style="color:#777;">最后一次修改于 2025-11-21</p>
+</div>
+<a href="#top"><i class="fa fa-chevron-up" style="font-size: 30px; color: black;"></i></a>
+
+</main>
+
+<footer class="footer">
+  <div class="content">
+
+<script src="https://giscus.app/client.js"
+        data-repo="finderaha/myblog"
+        data-repo-id="R_kgDOLxcP2A"
+        data-category="Announcements"
+        data-category-id="DIC_kwDOLxcP2M4Ce2as"
+        data-mapping="pathname"
+        data-strict="0"
+        data-reactions-enabled="1"
+        data-emit-metadata="0"
+        data-input-position="top"
+        data-theme="preferred_color_scheme"
+        data-lang="zh-CN"
+        data-loading="lazy"
+        crossorigin="anonymous"
+        async>
+</script>
+</br>
+ 
+</div>
+
+  <script type="text/javascript" src="/js/math-code.js"></script>
+<script async src="//mathjax.rstudio.com/latest/MathJax.js?config=TeX-MML-AM_CHTML"></script>
+<script type="text/javascript" src="/js/center-img.js"></script>
+
+
+
+     <ul class="footer-links">
+      
+       
+       
+       
+       <li><a href="/cn/posts/index.xml" type="application/rss+xml" title="RSS feed">
+       订阅 </a>
+       </li>
+       
+       
+       <li>
+       
+       <a href="http://creativecommons.org/licenses/by-nc-sa/4.0/deed.zh" target="_blank">
+       
+        版权
+        <i class="fa fa-cc" aria-hidden="true" title="Attribution-NonCommercial-ShareAlike 4.0 International"></i> 
+        </a>
+       </li>
+       
+     </ul>
+     <div class="copyright-text">
+            
+            ©
+            
+            郝志杰
+            
+            2024
+            
+     </div>
+
+</footer>
+
+
+
+
+

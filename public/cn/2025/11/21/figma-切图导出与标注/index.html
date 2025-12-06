@@ -1,0 +1,242 @@
+<script src="/livereload.js?mindelay=10&amp;v=2&amp;port=1313&amp;path=livereload" data-no-instant defer></script><a name="top"></a>
+<!DOCTYPE html>
+<html lang="en-us">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Finder</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+
+    <link rel="stylesheet" href="/css/style.css" />
+    <link rel="stylesheet" href="/css/fonts.css" />
+     
+  </head>
+  
+  <body>
+    <div class="wrapper">
+      <header class="header">
+        <nav class="nav" >
+      <a href="/" class="nav-logo">
+        <img src="/media/hugo-logo.png"
+         width="50"
+         height="50"
+         alt="Hugo-ht">
+      </a>
+
+      <ul class="nav-links" >
+        
+        
+           <li><a href="/">主页</a></li>
+       
+           <li><a href="/cn/posts/">日志</a></li>
+       
+           <li><a href="/cn/about/">关于</a></li>
+       
+       
+      </ul>
+</nav>
+
+      </header>
+
+<main class = "content" role="main">
+<div style="text-align: center">
+
+<h1>Figma 切图与标注</h1>
+
+<p>Finder 
+ / 2025-11-21 </p>
+
+<hr/>
+</div>
+
+<span class="article-toolbar">
+  
+  
+  
+  
+  
+  
+  
+  <a href='https://github.com/UFinderaha/myblog/edit/main/content/cn/posts/2025-11-21-Figma%20%e5%88%87%e5%9b%be%e4%b8%8e%e6%a0%87%e6%b3%a8.md'style="font-size: 24px; color: black;" target="_blank"><i class="fa fa-edit" aria-hidden="true" title="编辑本页"></i>
+  </a>
+  
+  
+  
+</span>
+
+
+
+<div class="body-text list-text">
+<h2 id="一-设计交付的必要性切图与标注">一、 设计交付的必要性：切图与标注<a href="#一-设计交付的必要性切图与标注" class="header-anchor" ariaLabel="Anchor"> # </a></h2>
+<ul>
+<li><strong>交付内容：</strong> 设计完成后需要进行交付，主要包括 **标注（標註）**和 <strong>切图（切圖）</strong>。</li>
+<li><strong>标注（Annotations）：</strong> 指设计元素中的<strong>属性和参数</strong>，以及设计过程中一些<strong>特殊的思路解释</strong>。</li>
+<li><strong>切图（Slicing/Exporting）：</strong> 指向程序提供<strong>开发过程中需要的图形素材</strong>或<strong>位图图片</strong>（如背景图、特定头像、IP 形象等），这些文件是前端实现应用所必需的。</li>
+</ul>
+<h2 id="二-figma-中切图的两种方法">二、 Figma 中切图的两种方法<a href="#二-figma-中切图的两种方法" class="header-anchor" ariaLabel="Anchor"> # </a></h2>
+<p>Figma 提供了两种切图方式：**切片（Slice）**和 <strong>导出（Export）</strong>。</p>
+<h3 id="1-切片slice">1. 切片（Slice）<a href="#1-切片slice" class="header-anchor" ariaLabel="Anchor"> # </a></h3>
+<ul>
+<li><strong>定义：</strong> 一种对<strong>可见区域或视觉内容</strong>进行导出的工具。</li>
+<li><strong>历史背景：</strong> 这是一个<strong>相对古老</strong>的工具，源于早年网页设计中，使用表格化布局将页面<strong>切成若干块</strong>再拼装起来实现网页的逻辑。</li>
+<li><strong>应用频率：</strong> 在今天的正常 UI 设计环境中，<code>Slice</code> 工具的<strong>使用环境非常少</strong>，大致可以忽略。</li>
+</ul>
+<h3 id="2-导出export">2. 导出（Export）<a href="#2-导出export" class="header-anchor" ariaLabel="Anchor"> # </a></h3>
+<ul>
+<li><strong>定义：</strong> 将选中的<strong>任何图层</strong>直接用导出的方法输出。</li>
+<li><strong>可导出对象：</strong> 可以导出任何元素，包括选中的<strong>整个 Frame、Section、组件或图层</strong>。</li>
+</ul>
+<h2 id="三-导出时的关键注意事项">三、 导出时的关键注意事项<a href="#三-导出时的关键注意事项" class="header-anchor" ariaLabel="Anchor"> # </a></h2>
+<p>在进行导出操作（Export）时，必须关注以下属性，因为它们会影响最终图片的尺寸和效果：</p>
+<ol>
+<li>
+<p><strong>投影（投影）与描边（描邊）</strong></p>
+<ul>
+<li>导出的图形尺寸<strong>会受到投影和描边的影响</strong>。</li>
+<li>例如，如果描边设置为 <code>outside</code>（外部），它会<strong>增加</strong>图形的原始尺寸，因为左右上下多出的描边宽度会被算进最终导出的图片中。</li>
+<li>设计师在导出时必须重点关注这两个参数，才能获得想要的尺寸。</li>
+</ul>
+</li>
+<li>
+<p><strong>背景模糊（背景模糊）</strong></p>
+<ul>
+<li>背景模糊效果<strong>无法在导出后保留</strong>。</li>
+<li>如果直接导出具有背景模糊的图层，它只能变成一个<strong>透明度</strong>效果，但<strong>不会</strong>在实际应用环境中保留对背景的模糊效果。</li>
+</ul>
+</li>
+</ol>
+<h2 id="四-导出的图片格式与应用场景">四、 导出的图片格式与应用场景<a href="#四-导出的图片格式与应用场景" class="header-anchor" ariaLabel="Anchor"> # </a></h2>
+<p>Figma 提供了四种主要的导出格式，每种格式适用于不同的场景：</p>
+<table>
+<thead>
+<tr>
+<th style="text-align:left">格式</th>
+<th style="text-align:left">类型</th>
+<th style="text-align:left">核心特点</th>
+<th style="text-align:left">应用场景</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:left"><strong>PNG</strong></td>
+<td style="text-align:left">位图（Bitmap）</td>
+<td style="text-align:left"><strong>带透明度</strong>的<strong>无损</strong>格式。文件较大。</td>
+<td style="text-align:left">需要背景透明的图形、比较正式的图形。</td>
+</tr>
+<tr>
+<td style="text-align:left"><strong>JPG</strong></td>
+<td style="text-align:left">位图（Bitmap）</td>
+<td style="text-align:left"><strong>没有透明度</strong>的<strong>压缩</strong>格式。文件较小，肉眼不易察觉信息损失。</td>
+<td style="text-align:left">网页背景图、不要求透明度的大图，追求文件体积小。</td>
+</tr>
+<tr>
+<td style="text-align:left"><strong>PDF</strong></td>
+<td style="text-align:left">矢量（Vector）</td>
+<td style="text-align:left">iOS 使用的一种<strong>矢量格式切图</strong>。</td>
+<td style="text-align:left"><strong>iOS 平台</strong>的图标准备。</td>
+</tr>
+<tr>
+<td style="text-align:left"><strong>SVG</strong></td>
+<td style="text-align:left">矢量（Vector）</td>
+<td style="text-align:left">常规的<strong>矢量图形</strong>格式。</td>
+<td style="text-align:left"><strong>安卓</strong>和<strong>网页</strong>的图标准备、其他矢量图形。</td>
+</tr>
+</tbody>
+</table>
+<h2 id="五-位图与矢量图的导出逻辑差异">五、 位图与矢量图的导出逻辑差异<a href="#五-位图与矢量图的导出逻辑差异" class="header-anchor" ariaLabel="Anchor"> # </a></h2>
+<h3 id="1-位图导出png--jpg">1. 位图导出（PNG / JPG）<a href="#1-位图导出png--jpg" class="header-anchor" ariaLabel="Anchor"> # </a></h3>
+<ul>
+<li><strong>倍率（Multipliers）：</strong> 在正常的界面设计中，位图（如图标或 UI 元素图片）需要导出 <strong>1x、2x、3x</strong> 三种倍率的图。
+<ul>
+<li>这是为了匹配不同设备的屏幕密度，避免低倍率设备加载过大的文件。</li>
+</ul>
+</li>
+<li><strong>优化建议：</strong> 对于<strong>非关键</strong>的位图内容（如背景图），通常导出 <strong>2x JPG</strong> 格式就足够了。</li>
+<li><strong>质量控制：</strong> JPG 格式支持<strong>质量（Quality）设置</strong>（高、中、低），用于进一步压缩文件大小，加快加载速度。</li>
+</ul>
+<h3 id="2-矢量图导出svg--pdf">2. 矢量图导出（SVG / PDF）<a href="#2-矢量图导出svg--pdf" class="header-anchor" ariaLabel="Anchor"> # </a></h3>
+<ul>
+<li><strong>无需倍率：</strong> 矢量格式（SVG/PDF）<strong>不适用</strong> 1x、2x、3x 的倍率设置，因为矢量图本身可以无损放大缩小。</li>
+<li><strong>选中范围：</strong> 导出矢量元素（尤其是图标）时，<strong>必须</strong>选中<strong>外部的边框/外轮廓</strong>（如 Component 或 Auto Layout 容器），而不是仅仅选中内部的图形。这样才能确保导出的图形尺寸稳定。</li>
+</ul>
+
+
+  
+    
+      <a href="http://localhost:1313//tags/figma%E5%AD%A6%E4%B9%A0%E6%8C%87%E5%8D%97/">#Figma学习指南</a>
+    
+      <a href="http://localhost:1313//tags/%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/">#学习笔记</a>
+    
+  
+
+<p style="color:#777;">最后一次修改于 2025-11-21</p>
+</div>
+<a href="#top"><i class="fa fa-chevron-up" style="font-size: 30px; color: black;"></i></a>
+
+</main>
+
+<footer class="footer">
+  <div class="content">
+
+<script src="https://giscus.app/client.js"
+        data-repo="finderaha/myblog"
+        data-repo-id="R_kgDOLxcP2A"
+        data-category="Announcements"
+        data-category-id="DIC_kwDOLxcP2M4Ce2as"
+        data-mapping="pathname"
+        data-strict="0"
+        data-reactions-enabled="1"
+        data-emit-metadata="0"
+        data-input-position="top"
+        data-theme="preferred_color_scheme"
+        data-lang="zh-CN"
+        data-loading="lazy"
+        crossorigin="anonymous"
+        async>
+</script>
+</br>
+ 
+</div>
+
+  <script type="text/javascript" src="/js/math-code.js"></script>
+<script async src="//mathjax.rstudio.com/latest/MathJax.js?config=TeX-MML-AM_CHTML"></script>
+<script type="text/javascript" src="/js/center-img.js"></script>
+
+
+
+     <ul class="footer-links">
+      
+       
+       
+       
+       <li><a href="/cn/posts/index.xml" type="application/rss+xml" title="RSS feed">
+       订阅 </a>
+       </li>
+       
+       
+       <li>
+       
+       <a href="http://creativecommons.org/licenses/by-nc-sa/4.0/deed.zh" target="_blank">
+       
+        版权
+        <i class="fa fa-cc" aria-hidden="true" title="Attribution-NonCommercial-ShareAlike 4.0 International"></i> 
+        </a>
+       </li>
+       
+     </ul>
+     <div class="copyright-text">
+            
+            ©
+            
+            郝志杰
+            
+            2024
+            
+     </div>
+
+</footer>
+
+
+
+
+
