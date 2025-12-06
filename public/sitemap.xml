@@ -3,7 +3,25 @@
   xmlns:xhtml="http://www.w3.org/1999/xhtml">
   <url>
     <loc>http://localhost:1313/</loc>
-    <lastmod>2025-12-05T00:00:00+00:00</lastmod>
+    <lastmod>2025-12-06T00:00:00+00:00</lastmod>
+  </url><url>
+    <loc>http://localhost:1313/cn/2025/12/06/weibo/</loc>
+    <lastmod>2025-12-06T00:00:00+00:00</lastmod>
+  </url><url>
+    <loc>http://localhost:1313/cn/2025/12/06/wechat/</loc>
+    <lastmod>2025-12-06T00:00:00+00:00</lastmod>
+  </url><url>
+    <loc>http://localhost:1313/tags/</loc>
+    <lastmod>2025-12-06T00:00:00+00:00</lastmod>
+  </url><url>
+    <loc>http://localhost:1313/cn/posts/</loc>
+    <lastmod>2025-12-06T00:00:00+00:00</lastmod>
+  </url><url>
+    <loc>http://localhost:1313/cn/</loc>
+    <lastmod>2025-12-06T00:00:00+00:00</lastmod>
+  </url><url>
+    <loc>http://localhost:1313/tags/%E4%BA%92%E8%81%94%E7%BD%91%E4%BA%A7%E5%93%81%E5%8F%B2%E8%AF%9D/</loc>
+    <lastmod>2025-12-06T00:00:00+00:00</lastmod>
   </url><url>
     <loc>http://localhost:1313/cn/2025/12/05/icq/</loc>
     <lastmod>2025-12-05T00:00:00+00:00</lastmod>
@@ -21,18 +39,6 @@
     <lastmod>2025-12-05T00:00:00+00:00</lastmod>
   </url><url>
     <loc>http://localhost:1313/cn/2025/12/05/msn/</loc>
-    <lastmod>2025-12-05T00:00:00+00:00</lastmod>
-  </url><url>
-    <loc>http://localhost:1313/tags/</loc>
-    <lastmod>2025-12-05T00:00:00+00:00</lastmod>
-  </url><url>
-    <loc>http://localhost:1313/cn/posts/</loc>
-    <lastmod>2025-12-05T00:00:00+00:00</lastmod>
-  </url><url>
-    <loc>http://localhost:1313/cn/</loc>
-    <lastmod>2025-12-05T00:00:00+00:00</lastmod>
-  </url><url>
-    <loc>http://localhost:1313/tags/%E4%BA%92%E8%81%94%E7%BD%91%E4%BA%A7%E5%93%81%E5%8F%B2%E8%AF%9D/</loc>
     <lastmod>2025-12-05T00:00:00+00:00</lastmod>
   </url><url>
     <loc>http://localhost:1313/cn/2025/12/04/irc/</loc>

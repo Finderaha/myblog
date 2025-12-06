@@ -256,6 +256,12 @@ code {
 /* misc elements */
 img, iframe, video { max-width: 100%; }
 
+/* 文章内容中的图片居中显示 */
+.content p img {
+  display: block;
+  margin: 1.5em auto;
+}
+
 blockquote {
   background: #f9f9f9;
   margin: 1em 0;
