@@ -4,5 +4,6 @@
   "markdown.preview.fontFamily": "-apple-system, BlinkMacSystemFont, 'Segoe WPC', 'Segoe UI'",
   "markdown.preview.linkify": true,
   "markdown.preview.scrollEditorWithPreview": true,
-  "markdown.preview.scrollPreviewWithEditor": true
+  "markdown.preview.scrollPreviewWithEditor": true,
+  "commentTranslate.hover.enabled": true
 } 

@@ -1,0 +1,16 @@
+# Hugo 构建输出
+public/
+
+# Hugo 资源缓存
+resources/_gen/
+
+# 系统文件
+.DS_Store
+Thumbs.db
+
+# IDE
+.idea/
+.vscode/
+*.swp
+*.swo
+
