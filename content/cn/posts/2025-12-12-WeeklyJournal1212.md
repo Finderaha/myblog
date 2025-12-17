@@ -30,4 +30,3 @@ AI在中国感觉是不受监管的，那些大模型的数据从何而来，是
 ![](https://cdn.jsdelivr.net/gh/Finderaha/pictures@master/bloge4329ff101d8fbf6a4caeaa3bc6b5145.jpg)
 
 2025年又接近尾声，虚长一岁。
-
