@@ -50,7 +50,7 @@ posts = "/posts/:year/:month/:day/:slug/"
     # Edit by yourself:
     GithubEdit = "https://github.com/UFinderaha/myblog/edit/main/content/"
     copyright = "&copy;"
-    copyrightYear = "2024"
+    copyrightYear = "2024-2026"
     # Edit by yourself:
     GithubRepo = "https://github.com/Finderaha/myblog"
     # Edit by yourself:
