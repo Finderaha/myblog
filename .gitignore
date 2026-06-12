@@ -14,3 +14,6 @@ Thumbs.db
 *.swp
 *.swo
 
+.DS_Store
+content/.DS_Store
+themes/.DS_Store
