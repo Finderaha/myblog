@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?><rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>Next.js on Finder</title><link>https://finderaha.com/tags/next.js/</link><description>Recent content in Next.js on Finder</description><generator>Hugo</generator><language>en-us</language><lastBuildDate>Fri, 12 Dec 2025 00:00:00 +0000</lastBuildDate><atom:link href="https://finderaha.com/tags/next.js/index.xml" rel="self" type="application/rss+xml"/><item><title>初识 Next.js</title><link>https://finderaha.com/cn/2025/12/12/next.js01/</link><pubDate>Fri, 12 Dec 2025 00:00:00 +0000</pubDate><guid>https://finderaha.com/cn/2025/12/12/next.js01/</guid><description>&lt;p&gt;Next.js 是一个运行在 Node.js 服务器上的全栈框架，它用服务端能力来增强前端应用的性能和开发体验。它不是纯粹的前端或后端，而是以前端开发体验为中心，整合了后端能力的完整解决方案。&lt;/p&gt;
+&lt;p&gt;本文为Next.js学习指引，并非Next.js的教程本身。系统学习Next.js，请参看：&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;Next.js 官方教程：https://nextjs.org/learn&lt;/li&gt;
+&lt;li&gt;Next.js 视频教程: https://www.youtube.com/watch?v=b4ba60j_4o8&amp;amp;list=PLC3y8-rFHvwhIEc4I4YsRz5C7GOBnxSJY&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;判断自己学会的标准：本人能够看懂每一行由AI工具生成的代码。&lt;/p&gt;
+&lt;h2 id="序言nodejsnpmnextjs-三者的关系"&gt;序言：NodeJS、npm、Next.js 三者的关系&lt;/h2&gt;
+&lt;table&gt;
+	&lt;thead&gt;
+			&lt;tr&gt;
+					&lt;th&gt;技术&lt;/th&gt;
+					&lt;th&gt;说明&lt;/th&gt;
+			&lt;/tr&gt;
+	&lt;/thead&gt;
+	&lt;tbody&gt;
+			&lt;tr&gt;
+					&lt;td&gt;NodeJS&lt;/td&gt;
+					&lt;td&gt;房屋地基和主体框架，提供坚实基础，保证项目可以运行起来&lt;/td&gt;
+			&lt;/tr&gt;
+			&lt;tr&gt;
+					&lt;td&gt;NPM&lt;/td&gt;
+					&lt;td&gt;建筑的工具箱和建材商店，需要自己没有的建筑材料时，通过它来完成购入（安装）。避免所有的材料自己建造。&lt;/td&gt;
+			&lt;/tr&gt;
+			&lt;tr&gt;
+					&lt;td&gt;Next.js&lt;/td&gt;
+					&lt;td&gt;房屋设计方案，帮我们规划了房间布置，方便我们清晰的知道什么设施（代码）放在什么位置，方便管理&lt;/td&gt;
+			&lt;/tr&gt;
+	&lt;/tbody&gt;
+&lt;/table&gt;
+&lt;p&gt;首先安装NodeJS，其自带NPM。然后用NPM安装Next.js。这样就可以开始建造房屋（代码项目工程）了。&lt;/p&gt;
+&lt;h2 id="入门nextjs"&gt;入门Next.js&lt;/h2&gt;
+&lt;h3 id="环境准备"&gt;环境准备&lt;/h3&gt;
+&lt;ol&gt;
+&lt;li&gt;打开终端，输入 npx create-next-app@latest ,点击回车&lt;/li&gt;
+&lt;li&gt;一直点击回车，选择默认选项即可&lt;/li&gt;
+&lt;li&gt;等待项目创建完成，Next.js初始项目文件就创建好了。要记住项目路径&lt;/li&gt;
+&lt;li&gt;打开Cursor，打开上面的项目路径即可&lt;/li&gt;
+&lt;/ol&gt;
+&lt;h3 id="项目结构"&gt;项目结构&lt;/h3&gt;
+&lt;p&gt;Next.js 项目结构如下：&lt;/p&gt;
+&lt;pre tabindex="0"&gt;&lt;code&gt;├── app/ # ➜*App Router 核心*
+│ ├── layout.tsx # 所有子路由的根布局
+│ ├── page.tsx # 访问 / 时渲染
+│ └── globals.css
+├── public/ # 静态资源
+├── tsconfig.json
+└── tailwind.config.ts
+&lt;/code&gt;&lt;/pre&gt;&lt;p&gt;&lt;strong&gt;app文件夹&lt;/strong&gt; ： Next.js路由核心。在这个文件夹下，每个文件或者文件夹都对应一个页面路由。例如，创建一个 home.js(或者 home.tsx)文件在app文件夹下，就可以通过浏览器访问对应的页面；如果创建子文件夹，如 app/blog/[slug].js , 可以实现动态路由，用于展示博客详情页。举个例子：&lt;/p&gt;</description></item></channel></rss>

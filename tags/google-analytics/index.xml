@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?><rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>Google Analytics on Finder</title><link>https://finderaha.com/tags/google-analytics/</link><description>Recent content in Google Analytics on Finder</description><generator>Hugo</generator><language>en-us</language><lastBuildDate>Wed, 18 Jun 2025 00:00:00 +0000</lastBuildDate><atom:link href="https://finderaha.com/tags/google-analytics/index.xml" rel="self" type="application/rss+xml"/><item><title>Google Analytics 4 集成完整指南</title><link>https://finderaha.com/cn/2025/06/18/google-analytics/</link><pubDate>Wed, 18 Jun 2025 00:00:00 +0000</pubDate><guid>https://finderaha.com/cn/2025/06/18/google-analytics/</guid><description>&lt;h2 id="-项目概述"&gt;📖 项目概述&lt;/h2&gt;
+&lt;p&gt;本文档记录了在 Next.js 白噪声应用&amp;quot;静界声境 | Murmur&amp;quot;中集成 Google Analytics 4 的完整过程，包括遇到的问题和解决方案。&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;项目技术栈&lt;/strong&gt;：&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;Next.js 14.0.4&lt;/li&gt;
+&lt;li&gt;React&lt;/li&gt;
+&lt;li&gt;Tailwind CSS&lt;/li&gt;
+&lt;li&gt;Vercel 部署&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;&lt;strong&gt;最终目标&lt;/strong&gt;：&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;✅ 在开发和生产环境中正确追踪用户行为&lt;/li&gt;
+&lt;li&gt;✅ 收集页面浏览、事件和用户交互数据&lt;/li&gt;
+&lt;li&gt;✅ 确保数据在 Google Analytics 中正确显示&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h2 id="-集成步骤详解"&gt;🎯 集成步骤详解&lt;/h2&gt;
+&lt;h3 id="第一步获取-google-analytics-追踪-id"&gt;第一步：获取 Google Analytics 追踪 ID&lt;/h3&gt;
+&lt;ol&gt;
+&lt;li&gt;
+&lt;p&gt;&lt;strong&gt;创建 GA4 属性&lt;/strong&gt;&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;访问 &lt;a href="https://analytics.google.com/" target="_blank" rel="noreferrer noopener"&gt;Google Analytics&lt;/a&gt;
+
+&lt;/li&gt;
+&lt;li&gt;创建新账户或选择现有账户&lt;/li&gt;
+&lt;li&gt;创建新属性（GA4）&lt;/li&gt;
+&lt;li&gt;添加数据流（网站）&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;&lt;strong&gt;获取衡量 ID&lt;/strong&gt;&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;格式：&lt;code&gt;G-XXXXXXXXXX&lt;/code&gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;/ol&gt;
+&lt;h3 id="第二步环境变量配置"&gt;第二步：环境变量配置&lt;/h3&gt;
+&lt;p&gt;创建 &lt;code&gt;.env.local&lt;/code&gt; 文件：&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre tabindex="0" style=";-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"&gt;&lt;code class="language-bash" data-lang="bash"&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;&lt;span style="color:#408080;font-style:italic"&gt;# Google Analytics 4 测量 ID&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;&lt;span style="color:#19177c"&gt;NEXT_PUBLIC_GA_MEASUREMENT_ID&lt;/span&gt;&lt;span style="color:#666"&gt;=&lt;/span&gt;G-xxxxxxxxxx
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;&lt;span style="color:#408080;font-style:italic"&gt;# Microsoft Clarity 项目 ID（可选）&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;&lt;span style="color:#19177c"&gt;NEXT_PUBLIC_CLARITY_PROJECT_ID&lt;/span&gt;&lt;span style="color:#666"&gt;=&lt;/span&gt;xxxxxxxxxx
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;&lt;span style="color:#408080;font-style:italic"&gt;# 开发环境启用分析（重要！）&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;&lt;span style="color:#19177c"&gt;NEXT_PUBLIC_ANALYTICS_IN_DEV&lt;/span&gt;&lt;span style="color:#666"&gt;=&lt;/span&gt;&lt;span style="color:#008000"&gt;true&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;&lt;strong&gt;重要注意事项&lt;/strong&gt;：&lt;/p&gt;</description></item></channel></rss>

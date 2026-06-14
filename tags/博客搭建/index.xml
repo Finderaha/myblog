@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?><rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>博客搭建 on Finder</title><link>https://finderaha.com/tags/%E5%8D%9A%E5%AE%A2%E6%90%AD%E5%BB%BA/</link><description>Recent content in 博客搭建 on Finder</description><generator>Hugo</generator><language>en-us</language><lastBuildDate>Sun, 14 Apr 2024 00:00:00 +0000</lastBuildDate><atom:link href="https://finderaha.com/tags/%E5%8D%9A%E5%AE%A2%E6%90%AD%E5%BB%BA/index.xml" rel="self" type="application/rss+xml"/><item><title>hugo搭建博客过程中遇到的问题</title><link>https://finderaha.com/cn/2024/04/14/blog/</link><pubDate>Sun, 14 Apr 2024 00:00:00 +0000</pubDate><guid>https://finderaha.com/cn/2024/04/14/blog/</guid><description>&lt;p&gt;本文基于郝鸿涛&lt;a href="https://hongtaoh.com/cn/2024/03/22/personal-website-tutorial/" target="_blank" rel="noreferrer noopener"&gt;如何零基础免费搭建个人网站 (2024 更新版)&lt;/a&gt;
+
+，将个人参考教程中遇到的问题进行详细记述。下面会根据原文流程中的步骤逐条记录。&lt;/p&gt;
+&lt;h2 id="网站主题"&gt;网站主题&lt;/h2&gt;
+&lt;p&gt;&lt;a href="https://hongtaoh.com/cn/2021/03/02/personal-website-tutorial/#%E7%BD%91%E7%AB%99%E4%B8%BB%E9%A2%98" target="_blank" rel="noreferrer noopener"&gt;如何零基础免费搭建个人网站&lt;/a&gt;
+
+ 中的这个步骤是可以不执行的，直接进入&lt;a href="https://hongtaoh.com/cn/2024/03/22/personal-website-tutorial/" target="_blank" rel="noreferrer noopener"&gt;如何零基础免费搭建个人网站 (2024 更新版)&lt;/a&gt;
+
+ 往下操作即可。但是如果你执行了这一步骤，有 2 点需要关注：&lt;/p&gt;
+&lt;h3 id="1-为什么要执行下面这段代码"&gt;1. 为什么要执行下面这段代码&lt;/h3&gt;
+&lt;pre tabindex="0"&gt;&lt;code&gt;mkdir hugo-ht-new # create a new folder called hugo-ht-new
+cp -r hugo-ht/* hugo-ht-new # copy everything in hugo-ht to hugo-ht-new
+rm -rf hugo-ht # delete the folder of hugo-ht
+mv hugo-ht-new hugo-ht # change folder name
+&lt;/code&gt;&lt;/pre&gt;&lt;p&gt;这段代码看上去好像没有意义，但其实非常重要，需要特别关注。执行完&lt;/p&gt;
+&lt;pre tabindex="0"&gt;&lt;code&gt;git clone https://github.com/hongtaoh/hugo-ht
+&lt;/code&gt;&lt;/pre&gt;&lt;p&gt;将 hugo-ht 复制到本地，这里需要注意是，虽然本地有了 hugo-ht 的的文件，但是其实并不属于你自己的博客项目，而是一个外部引用。因为是一个外部引用，所以后面无论你改动 themes/hugo-ht 下的什么内容，都无法实际生效。执行上面的代码意义就是将其从引用，变为个人项目的一部分。&lt;/p&gt;
+&lt;h3 id="2-hugo-server--d-报错"&gt;2. hugo server -D 报错&lt;/h3&gt;
+&lt;p&gt;当你执行&lt;/p&gt;
+&lt;pre tabindex="0"&gt;&lt;code&gt;hugo server -D # 这里的 D 是 draft 的意思
+&lt;/code&gt;&lt;/pre&gt;&lt;p&gt;可能会遇到报错：page not found.&lt;/p&gt;</description></item></channel></rss>

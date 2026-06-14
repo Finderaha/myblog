@@ -1,0 +1,93 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?><rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>Cursor on Finder</title><link>https://finderaha.com/tags/cursor/</link><description>Recent content in Cursor on Finder</description><generator>Hugo</generator><language>en-us</language><lastBuildDate>Wed, 26 Mar 2025 00:00:00 +0000</lastBuildDate><atom:link href="https://finderaha.com/tags/cursor/index.xml" rel="self" type="application/rss+xml"/><item><title>需求整理模板</title><link>https://finderaha.com/cn/2025/03/26/pm/</link><pubDate>Wed, 26 Mar 2025 00:00:00 +0000</pubDate><guid>https://finderaha.com/cn/2025/03/26/pm/</guid><description>&lt;h1 id="项目概述"&gt;项目概述&lt;/h1&gt;
+&lt;h2 id="项目名称"&gt;项目名称&lt;/h2&gt;
+&lt;p&gt;一个好的项目名称应该：&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;简洁明了：通常不超过2-3个词&lt;/li&gt;
+&lt;li&gt;容易记忆：避免使用复杂或难以拼写的词汇&lt;/li&gt;
+&lt;li&gt;反映核心价值：能暗示产品的主要功能或价值主张&lt;/li&gt;
+&lt;li&gt;独特性：避免与现有产品过于相似，防止混淆&lt;/li&gt;
+&lt;li&gt;域名可用性：最好确保相关的域名还未被注册
+例如：
+&amp;ldquo;TaskFlow&amp;rdquo;（一个任务管理应用）
+&amp;ldquo;HealthHub&amp;rdquo;（一个健康管理平台）
+&amp;ldquo;LearnLoop&amp;rdquo;（一个在线学习系统）&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h2 id="项目愿景"&gt;项目愿景&lt;/h2&gt;
+&lt;p&gt;项目愿景应清晰表达：&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;要解决的核心问题：描述目前存在的痛点或机会&lt;/li&gt;
+&lt;li&gt;解决方案概述：简述你的应用如何解决这个问题&lt;/li&gt;
+&lt;li&gt;价值主张：说明用户使用你的应用后能获得的具体价值&lt;/li&gt;
+&lt;li&gt;长期目标：描述这个项目的长远发展方向&lt;/li&gt;
+&lt;li&gt;与竞品的差异：简述你的解决方案与现有方案的不同之处&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;愿景陈述格式示例：
+&amp;ldquo;[项目名称]旨在通过[核心功能/方法]解决[目标用户]的[核心问题]，帮助他们[获得的价值]，最终实现[长期目标]。与现有解决方案相比，我们[差异化优势]。&amp;rdquo;&lt;/p&gt;
+&lt;h2 id="目标用户群体"&gt;目标用户群体&lt;/h2&gt;
+&lt;p&gt;详细描述你的目标用户：&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;人口统计信息：年龄范围、职业、教育水平、收入水平等&lt;/li&gt;
+&lt;li&gt;行为特征：使用习惯、技术熟悉度、生活方式等&lt;/li&gt;
+&lt;li&gt;具体需求：这类用户有哪些具体需求需要满足&lt;/li&gt;
+&lt;li&gt;痛点：他们目前面临哪些困难或不便&lt;/li&gt;
+&lt;li&gt;使用场景：在什么情况下会使用你的应用&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;可以创建1-3个主要用户画像，例如：
+&amp;ldquo;主要用户A：25-35岁的职场人士，工作繁忙，需要高效管理时间和任务，技术接受度高，经常使用智能手机和电脑工作，希望通过更好的任务管理来减轻压力并提高效率。&amp;rdquo;&lt;/p&gt;
+&lt;pre tabindex="0"&gt;&lt;code&gt;## 完整示例
+以下是一个完整的项目概述示例：
+项目名称：TaskMaster
+项目愿景：
+TaskMaster旨在通过智能任务分配和进度跟踪解决团队协作中的任务管理混乱问题，帮助小型团队更高效地完成项目，减少沟通成本，提高工作透明度。我们的长期目标是成为远程团队的首选协作工具。与传统项目管理工具相比，我们专注于简单易用和智能推荐，无需复杂的学习过程。
+目标用户群体：
+小型创业团队（5-20人）：需要高效协调但资源有限，希望避免过于复杂的企业级工具。
+远程工作团队：分布在不同地点工作，需要清晰的任务分配和进度可视化。
+项目经理：需要便捷地分配任务并获取实时进度报告，年龄28-45岁，熟悉数字工具但希望减少工具使用的复杂性。
+你可以参考这种方式来描述你的项目概述。这样的详细描述将帮助我更准确地理解你的项目定位和目标，为后续的设计和开发提供清晰的指导方向。
+你希望在项目概述的哪一部分进一步深入探讨，或者想要继续细化模板的下一个部分？
+&lt;/code&gt;&lt;/pre&gt;&lt;h1 id="功能需求"&gt;功能需求&lt;/h1&gt;
+&lt;h2 id="1-核心功能描述"&gt;1. 核心功能描述&lt;/h2&gt;
+&lt;p&gt;核心功能是产品的主要价值点，建议按以下方式描述每个核心功能：&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;功能名称：简短的标题（3-5个字）&lt;/li&gt;
+&lt;li&gt;功能目的：此功能解决什么问题/满足什么需求&lt;/li&gt;
+&lt;li&gt;功能描述：详细说明此功能做什么，包括：
+&lt;ul&gt;
+&lt;li&gt;主要功能点（2-4点）&lt;/li&gt;
+&lt;li&gt;输入和输出&lt;/li&gt;
+&lt;li&gt;业务规则和限制条件&lt;/li&gt;
+&lt;li&gt;异常情况处理&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;功能优先级：必要(Must)、重要(Should)、可选(Could)、未来(Would)&lt;/li&gt;
+&lt;li&gt;验收标准：如何判断此功能实现成功&lt;/li&gt;
+&lt;/ul&gt;
+&lt;pre tabindex="0"&gt;&lt;code&gt;示例：任务管理
+功能名称：任务管理
+功能目的：帮助用户创建、组织和跟踪工作任务，防止任务遗漏和延误。
+功能描述：
+系统允许用户创建、编辑、删除和查看任务。每个任务包含标题、描述、优先级、截止日期、状态和负责人。用户可以：
+1. 创建新任务，填写所有必要信息
+2. 编辑现有任务的任何字段
+3. 将任务标记为不同状态（待办、进行中、已完成、已取消）
+4. 通过优先级、状态、截止日期和负责人筛选任务列表
+5. 为任务添加评论和附件
+输入：任务信息（所有字段）、筛选条件
+输出：任务列表、任务详情、任务状态更新
+业务规则：
+* 任务标题、优先级和状态为必填字段
+* 高优先级任务在列表中视觉突出显示
+* 只有任务创建者和负责人可以编辑任务
+* 逾期任务会自动标记并发送提醒
+异常处理：
+* 当创建/编辑任务的必填信息不完整时，系统显示验证错误
+* 当多用户同时编辑同一任务时，采用乐观锁定策略防止数据冲突
+功能优先级：必要(Must)
+验收标准：
+1. 用户能成功创建包含所有必要信息的新任务
+2. 任务列表能正确显示所有相关任务并支持筛选
+3. 状态变更能实时反映在系统中
+4. 逾期任务能被自动标记并发送提醒
+5. 任务编辑权限控制正确实施
+&lt;/code&gt;&lt;/pre&gt;&lt;h2 id="2-次要功能描述"&gt;2. 次要功能描述&lt;/h2&gt;
+&lt;p&gt;次要功能支持核心功能，可以相对简化描述：&lt;/p&gt;</description></item></channel></rss>
